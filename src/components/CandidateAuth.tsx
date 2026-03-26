@@ -1,0 +1,163 @@
+import React, { useState } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
+import { useAuth } from '../contexts/AuthContext';
+import { useTranslation } from '../contexts/LanguageContext';
+import { motion } from 'framer-motion';
+import { ArrowLeft, Eye, EyeOff, Loader2 } from 'lucide-react';
+
+export function CandidateAuth() {
+    const { t } = useTranslation();
+    const navigate = useNavigate();
+    const { signIn, user, loading: authLoading } = useAuth();
+    const [showPassword, setShowPassword] = useState(false);
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [error, setError] = useState<string | null>(null);
+    const [loading, setLoading] = useState(false);
+
+    // If already authenticated, redirect
+    if (!authLoading && user) {
+        navigate('/candidate-space/dashboard', { replace: true });
+        return null;
+    }
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setError(null);
+        setLoading(true);
+
+        const { error: err } = await signIn(email, password);
+
+        if (err) {
+            setError(err);
+            setLoading(false);
+        } else {
+            navigate('/candidate-space/dashboard');
+        }
+    };
+
+    return (
+        <div className="min-h-screen flex font-[Inter,ui-sans-serif,system-ui,sans-serif]">
+            {/* LEFT — Branding Side */}
+            <div className="hidden lg:flex lg:w-[45%] relative overflow-hidden flex-col justify-between p-12"
+                style={{ background: 'linear-gradient(160deg, #172008 0%, #2a3a12 35%, #1a2b0a 70%, #0f1a05 100%)' }}
+            >
+                {/* Subtle organic shapes */}
+                <div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full opacity-[0.04]"
+                    style={{ background: 'radial-gradient(circle, rgba(166,184,148,0.5) 0%, transparent 70%)' }}
+                />
+                <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full opacity-[0.03]"
+                    style={{ background: 'radial-gradient(circle, rgba(200,220,180,0.5) 0%, transparent 70%)' }}
+                />
+
+                <div className="relative z-10">
+                    <Link to="/" className="flex items-center gap-3 group">
+                        <ArrowLeft className="w-4 h-4 text-white/40 group-hover:text-white/70 transition-colors" />
+                        <span className="text-white/40 text-xs font-medium uppercase tracking-widest group-hover:text-white/70 transition-colors">{t('common.backToTribu')}</span>
+                    </Link>
+                    <div className="mt-16">
+                        <div className="text-white/20 text-[11px] font-bold uppercase tracking-[0.3em] mb-6">{t('common.candidateSpace')}</div>
+                        <h1 className="text-5xl font-bold text-white tracking-tight leading-tight">
+                            {t('common.yourTribu')}<br />
+                            <span className="bg-gradient-to-r from-[#a8b894] to-[#7a9160] bg-clip-text text-transparent">{t('common.candidateSpace')}</span>
+                        </h1>
+                        <p className="mt-6 text-white/50 text-lg leading-relaxed max-w-md">
+                            {t('dashboard.description')}
+                        </p>
+                    </div>
+                </div>
+
+                <div className="relative z-10">
+                    <div className="border-t border-white/10 pt-8">
+                        <div className="flex items-center gap-3">
+                            <div className="flex -space-x-2">
+                                {[0, 1, 2].map(i => (
+                                    <div key={i} className="w-8 h-8 rounded-full border-2 border-[#172008]"
+                                        style={{ background: `linear-gradient(135deg, ${['#a8b894', '#7a9160', '#5a7040'][i]} 0%, ${['#7a9160', '#5a7040', '#3a5020'][i]} 100%)` }}
+                                    />
+                                ))}
+                            </div>
+                            <p className="text-white/40 text-sm">{t('common.trustedBy')} <span className="text-white/70 font-medium">120+ {t('common.consultants')}</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {/* RIGHT — Auth Form */}
+            <div className="flex-1 flex items-center justify-center p-8 bg-[#FAFBFA]">
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                    className="w-full max-w-md"
+                >
+                    {/* Mobile logo */}
+                    <div className="lg:hidden mb-10">
+                        <Link to="/" className="text-xs font-medium text-gray-400 uppercase tracking-widest hover:text-gray-600 transition-colors flex items-center gap-2">
+                            <ArrowLeft className="w-3.5 h-3.5" />
+                            {t('common.backToTribu')}
+                        </Link>
+                        <h2 className="mt-6 text-2xl font-bold text-gray-900 tracking-tight">{t('common.yourTribuCandidateSpace')}</h2>
+                    </div>
+
+                    <div className="bg-white rounded-2xl border border-gray-100 shadow-[0_2px_20px_rgba(0,0,0,0.04)] p-10">
+                        <div className="mb-8">
+                            <h3 className="text-xl font-bold text-gray-900 tracking-tight">{t('common.welcomeBack')}</h3>
+                            <p className="mt-1.5 text-sm text-gray-400">{t('common.signInToYourSpace')}</p>
+                        </div>
+
+                        {error && (
+                            <div className="mb-5 p-3 rounded-xl bg-red-50 border border-red-100 text-sm text-red-600">
+                                {error}
+                            </div>
+                        )}
+
+                        <form onSubmit={handleSubmit} className="space-y-5">
+                            <div>
+                                <label className="block text-[11px] font-semibold text-gray-500 uppercase tracking-wider mb-2">{t('common.email')}</label>
+                                <input
+                                    type="email"
+                                    value={email}
+                                    onChange={e => setEmail(e.target.value)}
+                                    placeholder="name@company.com"
+                                    required
+                                    className="w-full px-4 py-3 bg-[#F6F8F6] border border-gray-100 rounded-xl text-sm text-gray-900 placeholder:text-gray-300 focus:outline-none focus:ring-2 focus:ring-[#172008]/10 focus:border-[#172008]/20 transition-all"
+                                />
+                            </div>
+
+                            <div>
+                                <label className="block text-[11px] font-semibold text-gray-500 uppercase tracking-wider mb-2">{t('common.password')}</label>
+                                <div className="relative">
+                                    <input
+                                        type={showPassword ? 'text' : 'password'}
+                                        value={password}
+                                        onChange={e => setPassword(e.target.value)}
+                                        placeholder="••••••••"
+                                        required
+                                        className="w-full px-4 py-3 pr-12 bg-[#F6F8F6] border border-gray-100 rounded-xl text-sm text-gray-900 placeholder:text-gray-300 focus:outline-none focus:ring-2 focus:ring-[#172008]/10 focus:border-[#172008]/20 transition-all"
+                                    />
+                                    <button type="button" onClick={() => setShowPassword(!showPassword)} className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-300 hover:text-gray-500 transition-colors">
+                                        {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                                    </button>
+                                </div>
+                            </div>
+
+                            <button
+                                type="submit"
+                                disabled={loading}
+                                className="w-full py-3.5 rounded-xl text-sm font-semibold tracking-wide transition-all duration-300 bg-[#172008] text-white hover:bg-[#1e2a0e] active:scale-[0.98] shadow-[0_2px_12px_rgba(23,32,8,0.3)] disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                            >
+                                {loading && <Loader2 className="w-4 h-4 animate-spin" />}
+                                {loading ? t('common.signingIn') : t('common.signIn')}
+                            </button>
+                        </form>
+                    </div>
+
+                    <p className="mt-6 text-center text-[11px] text-gray-300">
+                        {t('common.inviteOnly')}
+                    </p>
+                </motion.div>
+            </div>
+        </div>
+    );
+}

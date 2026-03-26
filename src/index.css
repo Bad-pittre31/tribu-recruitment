@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-geist: "Geist", ui-sans-serif, system-ui, sans-serif;
+  --font-instrument: "Instrument Serif", ui-serif, Georgia, serif;
+  --color-tribu-bg: #0a0c0a;
+  --color-tribu-surface: #111411;
+  --color-tribu-surface-hover: #1a1e1a;
+  --color-tribu-border: rgba(255, 255, 255, 0.08);
+  --color-tribu-text: #f0f2f0;
+  --color-tribu-muted: #8a928a;
+  --color-tribu-accent: #e6f2e6;
+  --color-tribu-glow: rgba(230, 242, 230, 0.15);
+}
+
+body {
+  background-color: var(--color-tribu-bg);
+  color: var(--color-tribu-text);
+  font-family: "Inter", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-tribu-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-tribu-surface-hover);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-tribu-muted);
+}
+
+/* Noise overlay */
+.noise-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Utility classes for glassmorphism */
+.glass-panel {
+  background: rgba(17, 20, 17, 0.6);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--color-tribu-border);
+}
+
+.glass-card {
+  background: linear-gradient(145deg, rgba(26, 30, 26, 0.8) 0%, rgba(17, 20, 17, 0.4) 100%);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--color-tribu-border);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+}
+
+/* Typography utilities */
+.text-balance {
+  text-wrap: balance;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+@keyframes scan {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(96px); } /* 96px is h-24 */
+}
