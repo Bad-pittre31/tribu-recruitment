@@ -31,6 +31,7 @@ export function Navbar() {
     { label: t('nav.protocol'), href: isLandingPage ? '#protocol' : '/#protocol' },
     { label: t('nav.talent'), href: isLandingPage ? '#talent' : '/#talent' },
     { label: t('nav.transparency'), href: isLandingPage ? '#transparency' : '/#transparency' },
+    { label: t('nav.about'), href: '/about', isRoute: true },
   ];
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
@@ -84,14 +85,24 @@ export function Navbar() {
 
           <div className="hidden md:flex items-center gap-10 text-[13px] font-semibold tracking-wide uppercase text-white md:text-black/70">
             {navLinks.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                onClick={(e) => handleNavClick(e, link.href)}
-                className="hover:text-black transition-colors duration-300"
-              >
-                {link.label}
-              </a>
+              link.isRoute ? (
+                <Link
+                  key={link.label}
+                  to={link.href}
+                  className="hover:text-black transition-colors duration-300"
+                >
+                  {link.label}
+                </Link>
+              ) : (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  onClick={(e) => handleNavClick(e, link.href)}
+                  className="hover:text-black transition-colors duration-300"
+                >
+                  {link.label}
+                </a>
+              )
             ))}
           </div>
 
@@ -139,14 +150,25 @@ export function Navbar() {
           >
             <div className="flex flex-col gap-4 text-base font-semibold tracking-wide text-white/90">
               {navLinks.map((link) => (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  onClick={(e) => handleNavClick(e, link.href)}
-                  className="py-3 border-b border-white/10 hover:text-white transition-colors"
-                >
-                  {link.label}
-                </a>
+                link.isRoute ? (
+                  <Link
+                    key={link.label}
+                    to={link.href}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="py-3 border-b border-white/10 hover:text-white transition-colors"
+                  >
+                    {link.label}
+                  </Link>
+                ) : (
+                  <a
+                    key={link.label}
+                    href={link.href}
+                    onClick={(e) => handleNavClick(e, link.href)}
+                    className="py-3 border-b border-white/10 hover:text-white transition-colors"
+                  >
+                    {link.label}
+                  </a>
+                )
               ))}
               <div className="pt-2 flex flex-col gap-4">
                 <Link

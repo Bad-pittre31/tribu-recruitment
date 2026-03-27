@@ -13,6 +13,7 @@ export function Footer() {
     { label: t('nav.protocol'), href: '#protocol' },
     { label: t('nav.talent'), href: '#talent' },
     { label: t('nav.transparency'), href: '#transparency' },
+    { label: t('nav.about'), href: '/about', isRoute: true },
   ];
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
@@ -48,14 +49,24 @@ export function Footer() {
 
           <div className="flex flex-wrap items-center justify-center gap-6 text-[11px] font-bold uppercase tracking-widest text-gray-500">
             {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={isLandingPage ? link.href : `/${link.href}`}
-                onClick={(e) => handleNavClick(e, link.href)}
-                className="hover:text-black transition-colors duration-300"
-              >
-                {link.label}
-              </a>
+              link.isRoute ? (
+                <Link
+                  key={link.href}
+                  to={link.href}
+                  className="hover:text-black transition-colors duration-300"
+                >
+                  {link.label}
+                </Link>
+              ) : (
+                <a
+                  key={link.href}
+                  href={isLandingPage ? link.href : `/${link.href}`}
+                  onClick={(e) => handleNavClick(e, link.href)}
+                  className="hover:text-black transition-colors duration-300"
+                >
+                  {link.label}
+                </a>
+              )
             ))}
           </div>
 

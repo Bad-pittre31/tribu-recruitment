@@ -22,6 +22,7 @@ import { CandidateAuth } from './components/CandidateAuth';
 import { CandidateDashboard } from './components/CandidateDashboard';
 import { LegalNotice } from './pages/LegalNotice';
 import { PrivacyPolicy } from './pages/PrivacyPolicy';
+import { AboutPage } from './pages/AboutPage';
 import { TermsConditions } from './pages/TermsConditions';
 import { useAuth } from './contexts/AuthContext';
 
@@ -70,6 +71,7 @@ export default function App() {
   return (
     <Routes>
       <Route path="/" element={<LandingPage />} />
+      <Route path="/about" element={<AboutPage />} />
       <Route path="/legal-notice" element={<LegalNotice />} />
       <Route path="/privacy-policy" element={<PrivacyPolicy />} />
       <Route path="/terms" element={<TermsConditions />} />

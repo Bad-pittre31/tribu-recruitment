@@ -16,6 +16,7 @@ export const en = {
     protocol: "Protocol",
     talent: "Talent",
     transparency: "Transparency",
+    about: "About",
   },
   hero: {
     preloading: "Preloading Texture...",
