@@ -17,6 +17,7 @@ export const en = {
     talent: "Talent",
     transparency: "Transparency",
     about: "About",
+    candidates: "Candidates",
     aiRecruitment: "AI Recruitment",
   },
   hero: {

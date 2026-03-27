@@ -17,6 +17,7 @@ export const fr = {
     talent: "Talent",
     transparency: "Transparence",
     about: "À propos",
+    candidates: "Candidats",
     aiRecruitment: "IA Recrutement",
   },
   hero: {

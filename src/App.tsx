@@ -27,6 +27,8 @@ import { AIRecruitmentPage } from './pages/AIRecruitmentPage';
 import { TermsConditions } from './pages/TermsConditions';
 import { useAuth } from './contexts/AuthContext';
 
+import { CandidatesPage } from './pages/CandidatesPage';
+
 function LandingPage() {
   return (
     <div className="min-h-screen bg-[var(--color-tribu-bg)] text-[var(--color-tribu-text)] selection:bg-[var(--color-tribu-accent)] selection:text-[var(--color-tribu-bg)]">
@@ -77,6 +79,7 @@ export default function App() {
       <Route path="/legal-notice" element={<LegalNotice />} />
       <Route path="/privacy-policy" element={<PrivacyPolicy />} />
       <Route path="/terms" element={<TermsConditions />} />
+      <Route path="/candidates" element={<CandidatesPage />} />
       <Route path="/candidate-space" element={<CandidateAuth />} />
       <Route path="/candidate-space/dashboard" element={
         <ProtectedRoute>

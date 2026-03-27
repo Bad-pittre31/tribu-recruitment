@@ -12,6 +12,7 @@ export function Footer() {
     { label: t('nav.model'), href: '#model' },
     { label: t('nav.protocol'), href: '#protocol' },
     { label: t('nav.talent'), href: '#talent' },
+    { label: t('nav.candidates'), href: '/candidates', isRoute: true },
     { label: t('nav.transparency'), href: '#transparency' },
     { label: t('nav.about'), href: '/about', isRoute: true },
     { label: t('nav.aiRecruitment'), href: '/ai-recruitment', isRoute: true },

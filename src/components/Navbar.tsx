@@ -30,6 +30,7 @@ export function Navbar() {
     { label: t('nav.model'), href: isLandingPage ? '#model' : '/#model' },
     { label: t('nav.protocol'), href: isLandingPage ? '#protocol' : '/#protocol' },
     { label: t('nav.talent'), href: isLandingPage ? '#talent' : '/#talent' },
+    { label: t('nav.candidates'), href: '/candidates', isRoute: true },
     { label: t('nav.transparency'), href: isLandingPage ? '#transparency' : '/#transparency' },
     { label: t('nav.about'), href: '/about', isRoute: true },
     { label: t('nav.aiRecruitment'), href: '/ai-recruitment', isRoute: true },
