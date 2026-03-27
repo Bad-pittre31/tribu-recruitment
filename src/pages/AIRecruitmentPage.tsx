@@ -1,8 +1,9 @@
 import React, { useRef } from 'react';
 import { motion, useInView } from 'motion/react';
 import { Link } from 'react-router-dom';
+import { Navbar } from '../components/Navbar';
 import {
-  ArrowUpRight, ArrowRight, Star, Brain, Zap, Shield,
+  Star, Brain, Zap, Shield,
   Users, Target, FileText, Calendar, Clock, Bell,
   Activity, TrendingUp, Layers, MessageSquare, Eye,
   Sparkles, CheckCircle2, Send
@@ -65,27 +66,7 @@ function FeatureCard({ icon: Icon, title, desc, delay = 0 }: { icon: any; title:
   );
 }
 
-// ─── Primary CTA Button ────────────────────────────────────────────────────
 
-function PrimaryCTA({ children, href = '#cta' }: { children: React.ReactNode; href?: string }) {
-  return (
-    <a
-      href={href}
-      className="inline-flex items-center gap-2 rounded-2xl px-6 py-3.5 text-sm font-medium text-white transition-transform duration-200 hover:scale-[1.02]"
-      style={{
-        ...font.body,
-        background: 'rgba(0, 132, 255, 0.8)',
-        backdropFilter: 'blur(2px)',
-        boxShadow: 'inset 0 4px 4px rgba(255,255,255,0.35)',
-      }}
-    >
-      {children}
-      <span className="bg-white rounded-full w-6 h-6 flex items-center justify-center">
-        <ArrowUpRight className="w-3.5 h-3.5 text-[rgba(0,132,255,0.9)]" />
-      </span>
-    </a>
-  );
-}
 
 // ═══════════════════════════════════════════════════════════════════════════
 // AI RECRUITMENT PAGE
@@ -109,68 +90,7 @@ export function AIRecruitmentPage() {
         />
       </div>
 
-      {/* ═════════════════════════════════════════════════════════════════
-          NAVBAR
-      ═════════════════════════════════════════════════════════════════ */}
-      <nav className="sticky top-[30px] z-50 flex justify-center px-6 pt-4">
-        <div
-          className="liquid-glass rounded-2xl flex items-center gap-1 px-3 py-2 w-fit"
-        >
-          <Link to="/" className="flex items-center gap-2 px-3 py-1.5">
-            <img
-              src="/assets/tribu-logo-jungle.png"
-              alt="TRIBU"
-              className="h-7 w-auto object-contain"
-            />
-            <span className="text-sm text-black" style={font.heading}>TRIBU</span>
-          </Link>
-
-          <div className="hidden md:flex items-center gap-0.5 ml-2">
-            {[
-              { label: 'Home', href: '/' },
-              { label: 'Miixeo', href: '#miixeo' },
-              { label: 'Automation', href: '#automation' },
-              { label: 'Portal', href: '#portal' },
-              { label: 'Method', href: '#method' },
-            ].map((link) => (
-              <a
-                key={link.label}
-                href={link.href.startsWith('#') ? link.href : undefined}
-                onClick={(e) => {
-                  if (link.href.startsWith('#')) {
-                    e.preventDefault();
-                    document.getElementById(link.href.slice(1))?.scrollIntoView({ behavior: 'smooth' });
-                  } else {
-                    e.preventDefault();
-                    window.location.href = link.href;
-                  }
-                }}
-                className="text-sm font-medium text-black/70 px-3 py-1.5 rounded-xl hover:bg-black/5 transition-colors"
-                style={font.body}
-              >
-                {link.label}
-              </a>
-            ))}
-          </div>
-
-          <a
-            href="#cta"
-            onClick={(e) => {
-              e.preventDefault();
-              document.getElementById('cta')?.scrollIntoView({ behavior: 'smooth' });
-            }}
-            className="ml-2 inline-flex items-center gap-1.5 rounded-xl px-4 py-1.5 text-sm font-medium text-white transition-transform duration-200 hover:scale-[1.02]"
-            style={{
-              ...font.body,
-              background: 'rgba(0, 132, 255, 0.8)',
-              backdropFilter: 'blur(2px)',
-              boxShadow: 'inset 0 4px 4px rgba(255,255,255,0.35)',
-            }}
-          >
-            Book a call <ArrowUpRight className="w-3.5 h-3.5" />
-          </a>
-        </div>
-      </nav>
+      <Navbar />
 
       {/* ═════════════════════════════════════════════════════════════════
           SECTION 1 — HERO
@@ -218,27 +138,6 @@ export function AIRecruitmentPage() {
               TRIBU combines expert recruitment, AI-powered candidate presentation, workflow automation, and a smart talent experience to deliver faster, sharper, and more premium hiring outcomes.
             </motion.p>
 
-            {/* CTAs */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.5 }}
-              className="flex flex-wrap items-center gap-4 mb-10"
-            >
-              <PrimaryCTA>Book a call</PrimaryCTA>
-              <a
-                href="#approach"
-                onClick={(e) => {
-                  e.preventDefault();
-                  document.getElementById('approach')?.scrollIntoView({ behavior: 'smooth' });
-                }}
-                className="text-sm font-medium text-black/50 hover:text-black transition-colors flex items-center gap-1.5"
-                style={font.body}
-              >
-                Explore our method <ArrowRight className="w-3.5 h-3.5" />
-              </a>
-            </motion.div>
-
             {/* Trust strip */}
             <motion.div
               initial={{ opacity: 0 }}
@@ -268,8 +167,8 @@ export function AIRecruitmentPage() {
               playsInline
               className="w-full max-w-[550px] scale-125"
               style={{
-                mixBlendMode: 'screen',
-                filter: 'hue-rotate(-55deg) saturate(250%) brightness(1.2) contrast(1.1)',
+                mixBlendMode: 'multiply',
+                filter: 'invert(1) hue-rotate(90deg) saturate(250%) brightness(1.1)',
               }}
             >
               <source src="https://future.co/images/homepage/glassy-orb/orb-purple.webm" type="video/webm" />
@@ -341,7 +240,6 @@ export function AIRecruitmentPage() {
               <p className="text-black/50 text-sm leading-relaxed mb-6" style={font.body}>
                 TRIBU uses the Miixeo engine to generate structured, client-ready candidate dossiers. Each dossier includes a clear summary, positioning, and competency presentation that goes far beyond a standard CV. AI-based matching and scoring highlight fit with the role, while DISC personality profiling brings behavioral insight.
               </p>
-              <PrimaryCTA>Learn more</PrimaryCTA>
             </motion.div>
 
             <motion.div
@@ -402,9 +300,6 @@ export function AIRecruitmentPage() {
               <p className="text-black/50 text-sm leading-relaxed mb-6" style={font.body}>
                 Dossiers can include direct interview booking options inside the presentation flow. The result is a cleaner, more convincing, more premium candidate submission that evolves and improves with every engagement.
               </p>
-              <a href="#automation" onClick={(e) => { e.preventDefault(); document.getElementById('automation')?.scrollIntoView({ behavior: 'smooth' }); }} className="text-sm font-medium text-[rgba(0,132,255,0.8)] hover:text-[rgba(0,132,255,1)] flex items-center gap-1.5 transition-colors" style={font.body}>
-                See how it works <ArrowRight className="w-3.5 h-3.5" />
-              </a>
             </motion.div>
 
             <motion.div
@@ -722,16 +617,6 @@ export function AIRecruitmentPage() {
             <p className="text-base text-black/50 max-w-xl mx-auto leading-relaxed mb-10" style={font.body}>
               Discover how our AI-powered recruitment infrastructure helps present candidates better, automate key actions, and create a more fluid experience for clients and talent.
             </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <PrimaryCTA>Book a strategy call</PrimaryCTA>
-              <Link
-                to="/"
-                className="liquid-glass-strong rounded-2xl px-8 py-3.5 text-sm font-medium text-black flex items-center gap-2 hover:shadow-lg transition-shadow duration-200"
-                style={font.body}
-              >
-                Talk to TRIBU <ArrowRight className="w-4 h-4" />
-              </Link>
-            </div>
           </motion.div>
         </div>
 
