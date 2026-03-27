@@ -32,6 +32,7 @@ export function Navbar() {
     { label: t('nav.talent'), href: isLandingPage ? '#talent' : '/#talent' },
     { label: t('nav.transparency'), href: isLandingPage ? '#transparency' : '/#transparency' },
     { label: t('nav.about'), href: '/about', isRoute: true },
+    { label: t('nav.aiRecruitment'), href: '/ai-recruitment', isRoute: true },
   ];
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {

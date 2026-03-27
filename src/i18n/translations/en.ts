@@ -17,6 +17,7 @@ export const en = {
     talent: "Talent",
     transparency: "Transparency",
     about: "About",
+    aiRecruitment: "AI Recruitment",
   },
   hero: {
     preloading: "Preloading Texture...",

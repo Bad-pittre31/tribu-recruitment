@@ -28,13 +28,16 @@ body {
 ::-webkit-scrollbar {
   width: 8px;
 }
+
 ::-webkit-scrollbar-track {
   background: var(--color-tribu-bg);
 }
+
 ::-webkit-scrollbar-thumb {
   background: var(--color-tribu-surface-hover);
   border-radius: 4px;
 }
+
 ::-webkit-scrollbar-thumb:hover {
   background: var(--color-tribu-muted);
 }
@@ -78,7 +81,43 @@ html {
   scroll-behavior: smooth;
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Fustat:wght@400;500;600;700;800&display=swap');
+
 @keyframes scan {
   0% { transform: translateY(0); }
-  100% { transform: translateY(96px); } /* 96px is h-24 */
+  100% { transform: translateY(96px); }
+}
+
+/* ─── Liquid Glass (Light Theme) ──────────────────────────────────────── */
+
+.liquid-glass {
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(50px);
+  -webkit-backdrop-filter: blur(50px);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: inset 0 4px 4px rgba(255, 255, 255, 0.25);
+  position: relative;
+  overflow: hidden;
+}
+
+.liquid-glass-strong {
+  background: rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(50px);
+  -webkit-backdrop-filter: blur(50px);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.06),
+    inset 0 4px 4px rgba(255, 255, 255, 0.35);
+  position: relative;
+  overflow: hidden;
+}
+
+.liquid-glass-card {
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow:
+    0 4px 24px rgba(0, 0, 0, 0.04),
+    inset 0 1px 2px rgba(255, 255, 255, 0.6);
 }

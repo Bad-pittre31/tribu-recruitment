@@ -14,6 +14,7 @@ export function Footer() {
     { label: t('nav.talent'), href: '#talent' },
     { label: t('nav.transparency'), href: '#transparency' },
     { label: t('nav.about'), href: '/about', isRoute: true },
+    { label: t('nav.aiRecruitment'), href: '/ai-recruitment', isRoute: true },
   ];
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
@@ -30,10 +31,10 @@ export function Footer() {
   return (
     <footer className="bg-[#FFFFFF] border-t border-black/5 pt-24 pb-12 overflow-hidden relative z-[10001]">
       <div className="max-w-7xl mx-auto px-8 lg:px-12">
-        
+
         {/* Main Single/Two Line Horizontal Layout Container */}
         <div className="flex flex-col md:flex-row justify-between items-center gap-8">
-          
+
           {/* Status & Logo */}
           <div className="space-y-6">
             <Link to="/" className="inline-block">

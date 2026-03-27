@@ -23,6 +23,7 @@ import { CandidateDashboard } from './components/CandidateDashboard';
 import { LegalNotice } from './pages/LegalNotice';
 import { PrivacyPolicy } from './pages/PrivacyPolicy';
 import { AboutPage } from './pages/AboutPage';
+import { AIRecruitmentPage } from './pages/AIRecruitmentPage';
 import { TermsConditions } from './pages/TermsConditions';
 import { useAuth } from './contexts/AuthContext';
 
@@ -72,6 +73,7 @@ export default function App() {
     <Routes>
       <Route path="/" element={<LandingPage />} />
       <Route path="/about" element={<AboutPage />} />
+      <Route path="/ai-recruitment" element={<AIRecruitmentPage />} />
       <Route path="/legal-notice" element={<LegalNotice />} />
       <Route path="/privacy-policy" element={<PrivacyPolicy />} />
       <Route path="/terms" element={<TermsConditions />} />
