@@ -20,6 +20,16 @@ export const en = {
     candidates: "Candidates",
     aiRecruitment: "AI Recruitment",
   },
+  home: {
+    hero: {
+      badge: "A new vision of work",
+      title: "Where ambition",
+      titleItalic: "meets excellence",
+      subtitle: "Join a community of exceptional talents. We are redefining the standard of umbrella companies by combining technical expertise and premium services.",
+      cta: "Discover TRIBU",
+      trust: "They trust us"
+    },
+  },
   hero: {
     preloading: "Preloading Texture...",
     scrollReveal: "Scroll to reveal",

@@ -10,7 +10,18 @@ import {
 import { Navbar } from '../components/Navbar';
 import { Footer } from '../components/Footer';
 import { useTranslation } from '../contexts/LanguageContext';
+import { LogoLoop } from '../components/ui/LogoLoop';
 
+const companyLogos = [
+  { src: "https://logo.clearbit.com/wmgpharma.de", alt: "WMG PHARMA", href: "https://wmgpharma.de" },
+  { src: "https://logo.clearbit.com/barongo.com", alt: "BARONGO", href: "https://barongo.com" },
+  { src: "https://logo.clearbit.com/lectra.com", alt: "LECTRA", href: "https://lectra.com" },
+  { src: "https://logo.clearbit.com/go7.io", alt: "GO7", href: "https://go7.io" },
+  { src: "https://logo.clearbit.com/criteo.com", alt: "CRITEO", href: "https://criteo.com" },
+  { src: "https://logo.clearbit.com/cgi.com", alt: "CGI", href: "https://cgi.com" },
+  { src: "https://logo.clearbit.com/lvmh.com", alt: "LVMH", href: "https://lvmh.com" },
+  { src: "https://logo.clearbit.com/ag2rlamondiale.fr", alt: "AG2R", href: "https://ag2rlamondiale.fr" },
+];
 
 // ─── Timeline Data ──────────────────────────────────────────────────────────
 
@@ -423,6 +434,28 @@ export function AboutPage() {
                         </div>
                     </motion.div>
                 </div>
+            </section>
+
+            {/* ═══════════════════════════════════════════════════════════════
+                TRUSTED BY SECTION / LOGO LOOP
+            ═══════════════════════════════════════════════════════════════ */}
+            <section className="py-20 md:py-28 bg-[#F8FAF6] overflow-hidden">
+                <div className="max-w-7xl mx-auto px-6 lg:px-10 mb-12 text-center">
+                    <h2 className="text-3xl md:text-4xl text-[#172008] mb-4" style={{ fontFamily: "var(--font-instrument, 'Instrument Serif', serif)" }}>
+                        {isFr ? "Ils nous font confiance" : "They trust us"}
+                    </h2>
+                </div>
+                
+                <LogoLoop 
+                    logos={companyLogos}
+                    speed={40}
+                    direction="left"
+                    logoHeight={50}
+                    gap={80}
+                    fadeOut={true}
+                    fadeOutColor="#F8FAF6"
+                    className="opacity-80 grayscale hover:grayscale-0 transition-all duration-500"
+                />
             </section>
 
             <Footer />
