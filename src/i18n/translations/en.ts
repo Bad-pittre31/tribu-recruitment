@@ -164,8 +164,9 @@ export const en = {
     terms: "Terms & Conditions",
   },
   dashboard: {
-    hello: "Hello,",
+    hello: "Hello",
     description: "Here's your mission space, documents and monthly reporting.",
+    modify: "Modify",
     activeMission: "Active Mission",
     missionWith: "Mission with",
     daysCompleted: "Days completed",

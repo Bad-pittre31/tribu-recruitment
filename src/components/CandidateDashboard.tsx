@@ -314,7 +314,7 @@ function DocumentCenter() {
 // ─── CRA Submission ──────────────────────────────────────────────────────────
 
 function CRACard() {
-    const { submission, days, loading, submitting, currentMonth, currentYear, toggleDay, submitCRA } = useCRA();
+    const { submission, days, loading, submitting, currentMonth, currentYear, toggleDay, submitCRA, unlockCRA } = useCRA();
     const { t } = useTranslation();
 
     if (loading) return <DashCard delay={0.35}><CardLabel>{t('dashboard.timeSubmission')}</CardLabel><div className="animate-pulse h-48 bg-gray-50 rounded-xl" /></DashCard>;
@@ -397,9 +397,19 @@ function CRACard() {
             </div>
 
             {isSubmitted ? (
-                <div className="w-full py-3 rounded-xl text-sm font-semibold bg-emerald-50 text-emerald-600 text-center flex items-center justify-center gap-2">
-                    <CheckCircle2 className="w-4 h-4" />
-                    {t('dashboard.submitted')}
+                <div className="flex flex-col gap-3">
+                    <div className="w-full py-3 rounded-xl text-sm font-semibold bg-emerald-50 text-emerald-600 text-center flex items-center justify-center gap-2">
+                        <CheckCircle2 className="w-4 h-4" />
+                        {t('dashboard.submitted')}
+                    </div>
+                    <button
+                        onClick={unlockCRA}
+                        disabled={submitting}
+                        className="w-full py-2 rounded-lg text-xs font-medium text-gray-400 hover:text-gray-600 hover:bg-gray-50 transition-colors flex items-center justify-center gap-1.5"
+                    >
+                        {submitting ? <Loader2 className="w-3 h-3 animate-spin" /> : null}
+                        {t('dashboard.modify')}
+                    </button>
                 </div>
             ) : (
                 <button

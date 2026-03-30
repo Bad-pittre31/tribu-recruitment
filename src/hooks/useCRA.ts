@@ -143,6 +143,27 @@ export function useCRA() {
         setSubmitting(false);
     }
 
+    async function unlockCRA() {
+        if (!submission || submission.status !== 'submitted') return;
+        setSubmitting(true);
+
+        await supabase
+            .from('cra_submissions')
+            .update({
+                status: 'draft',
+                submitted_at: null,
+            })
+            .eq('id', submission.id);
+
+        setSubmission(prev => prev ? {
+            ...prev,
+            status: 'draft',
+            submitted_at: null,
+        } : null);
+
+        setSubmitting(false);
+    }
+
     return {
         submission,
         days,
@@ -152,5 +173,6 @@ export function useCRA() {
         currentYear,
         toggleDay,
         submitCRA,
+        unlockCRA,
     };
 }

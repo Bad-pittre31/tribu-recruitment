@@ -154,8 +154,9 @@ export const fr = {
     terms: "CGU",
   },
   dashboard: {
-    hello: "Bonjour,",
+    hello: "Bonjour",
     description: "Voici votre espace mission, vos documents et votre suivi mensuel.",
+    modify: "Modifier",
     activeMission: "Mission Active",
     missionWith: "Mission chez",
     daysCompleted: "Jours effectués",
