@@ -245,4 +245,87 @@ export const fr = {
       modText: "TRIBU se réserve le droit de modifier les présentes CGU à tout moment. Les utilisateurs seront informés des changements majeurs lors de leur connexion à leur Espace Candidat ou par e-mail.",
     },
   },
+  candidatesPage: {
+    hero: {
+      badge: "Expérience Candidat",
+      title: "Un espace plus intelligent pour les candidats",
+      description: "TRIBU offre aux candidats et freelances un espace opérationnel premium pour gérer leurs missions, saisir leurs jours travaillés, accéder à leurs documents et suivre leur progression."
+    },
+    intro: {
+      title: "Plus que du recrutement.\nUne meilleure expérience au quotidien.",
+      description: "TRIBU accompagne les candidats non seulement lors du recrutement, mais tout au long de leur mission avec une expérience opérationnelle fluide, structurée et premium."
+    },
+    features: {
+      cras: {
+        title: "Saisie de CRA intuitive",
+        desc: "Les candidats soumettent leurs jours travaillés via un calendrier interactif clair, réduisant les frictions et évitant les retards de validation."
+      },
+      timeline: {
+        title: "Timeline de mission",
+        desc: "Une timeline visuelle aide les candidats à suivre l'avancement de la mission, les dates clés et les prochaines étapes avec clarté."
+      },
+      reminders: {
+        title: "Rappels intelligents",
+        desc: "Des rappels automatisés et des alertes IA aident les candidats à rester à jour sur les actions importantes, les échéances et les étapes manquantes."
+      },
+      documents: {
+        title: "Hub de documents",
+        desc: "Tous les documents importants sont centralisés au même endroit : contrats, NDA et fichiers liés à la mission."
+      },
+      finance: {
+        title: "Simulation de paiement",
+        desc: "Les candidats accèdent à des estimations de revenus basées sur leur mission, les aidant à se projeter plus sereinement."
+      },
+      support: {
+        title: "Contact direct et support",
+        desc: "Un accès direct au bon interlocuteur pour le suivi opérationnel, les documents, les mises à jour et les questions."
+      }
+    },
+    dashboard: {
+      title: "Un dashboard candidat conçu pour fluidifier les missions.",
+      description: "Le portail est conçu pour simplifier le suivi opérationnel, réduire la friction administrative et donner aux candidats une visibilité complète sur leur écosystème.",
+      list: {
+        item1: "Calendrier interactif des jours travaillés",
+        item2: "Documents et contrats centralisés",
+        item3: "Estimations de paiement en temps réel",
+        item4: "Centre d'alertes automatisé"
+      },
+      cards: {
+        timesheets: {
+          title: "Feuilles de temps",
+          subtitle: "Saisie simplifiée"
+        },
+        revenue: {
+          title: "11 000€",
+          subtitle: "Chiffre d'Affaires Estimé"
+        },
+        documents: {
+          title: "Documents",
+          subtitle: "Toujours sécurisés"
+        },
+        timeline: {
+          title: "Timeline",
+          subtitle: "Suivi de mission"
+        }
+      }
+    },
+    why: {
+      title: "Moins de friction. Plus de clarté. Un meilleur suivi.",
+      description: "Cette expérience candidat reflète la philosophie plus large de TRIBU : de meilleurs systèmes créent de meilleures relations et de meilleurs résultats. Nous ne nous contentons pas de placer des candidats — nous les accompagnons sur le long terme.",
+      stats: {
+        label1: "Moins de",
+        value1: "retards",
+        label2: "Plus de",
+        value2: "clarté",
+        label3: "Meilleure",
+        value3: "visibilité",
+        label4: "Expérience",
+        value4: "premium"
+      }
+    },
+    closing: {
+      title: "Une expérience candidat plus moderne commence ici.",
+      description: "Du suivi de mission aux documents, en passant par les rappels et la saisie d'activité, TRIBU offre aux candidats un espace intelligent pour opérer en toute confiance."
+    }
+  },
 };

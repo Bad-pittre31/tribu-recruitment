@@ -7,6 +7,7 @@ import {
   Calendar, FileText, Bell, CreditCard, MessageSquare,
   Activity, CheckCircle2
 } from 'lucide-react';
+import { useTranslation } from '../contexts/LanguageContext';
 
 const font = {
   heading: { fontFamily: "'Instrument Serif', serif" },
@@ -58,6 +59,17 @@ const FeatureCard: React.FC<{ icon: any; title: string; desc: string; delay?: nu
 }
 
 export function CandidatesPage() {
+  const { t } = useTranslation();
+
+  const features = [
+    { icon: Calendar, title: t('candidatesPage.features.cras.title'), desc: t('candidatesPage.features.cras.desc') },
+    { icon: Activity, title: t('candidatesPage.features.timeline.title'), desc: t('candidatesPage.features.timeline.desc') },
+    { icon: Bell, title: t('candidatesPage.features.reminders.title'), desc: t('candidatesPage.features.reminders.desc') },
+    { icon: FileText, title: t('candidatesPage.features.documents.title'), desc: t('candidatesPage.features.documents.desc') },
+    { icon: CreditCard, title: t('candidatesPage.features.finance.title'), desc: t('candidatesPage.features.finance.desc') },
+    { icon: MessageSquare, title: t('candidatesPage.features.support.title'), desc: t('candidatesPage.features.support.desc') },
+  ];
+
   return (
     <div className="min-h-screen bg-white text-[#172008] selection:bg-[#caff04] selection:text-[#172008] overflow-x-hidden">
       <Navbar />
@@ -94,13 +106,13 @@ export function CandidatesPage() {
               className="text-[#172008]/60 font-medium uppercase text-sm md:text-base mb-4 tracking-[4px]"
               style={font.body}
             >
-              Candidate Experience
+              {t('candidatesPage.hero.badge')}
             </div>
             <h1
               className="text-5xl md:text-6xl lg:text-[84px] text-[#172008] italic leading-[0.95] tracking-tight"
               style={font.heading}
             >
-              A smarter space for candidates
+              {t('candidatesPage.hero.title')}
             </h1>
           </motion.div>
 
@@ -111,7 +123,7 @@ export function CandidatesPage() {
             className="text-gray-600 text-lg max-w-3xl mx-auto leading-relaxed mb-16 font-medium"
             style={font.body}
           >
-            TRIBU gives candidates and freelancers a premium operational space to manage missions, submit worked days, access documents, follow timelines, and stay aligned every step of the way.
+            {t('candidatesPage.hero.description')}
           </motion.p>
 
           <motion.div
@@ -141,12 +153,11 @@ export function CandidatesPage() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <Badge className="border-gray-200 bg-gray-50 text-gray-500 mb-6">Built for real life</Badge>
             <SectionHeading className="mb-6 mx-auto max-w-3xl text-[#172008]">
-              More than recruitment.<br />A better day-to-day experience.
+              {t('candidatesPage.intro.title')}
             </SectionHeading>
             <p className="text-lg text-gray-500 max-w-2xl mx-auto leading-relaxed" style={font.body}>
-              TRIBU supports candidates not only during the recruitment phase, but throughout their entire mission lifecycle with a smart, structured, and premium operational experience.
+              {t('candidatesPage.intro.description')}
             </p>
           </motion.div>
         </div>
@@ -158,14 +169,7 @@ export function CandidatesPage() {
       <section id="features" className="py-24 md:py-32 px-6 bg-[#F8FAF6]">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              { icon: Calendar, title: 'Intuitive CRA submission', desc: 'Candidates can submit worked days directly through a clear interactive calendar, reducing friction and avoiding late timesheet validation.' },
-              { icon: Activity, title: 'Mission timeline', desc: 'A visual timeline helps candidates track mission progress, key dates, and upcoming steps with more clarity.' },
-              { icon: Bell, title: 'Smart reminders', desc: 'Automated reminders and AI-powered alerts help candidates stay on top of important actions, deadlines, and missing steps.' },
-              { icon: FileText, title: 'Document hub', desc: 'All important documents are centralized in one place, including contracts, NDAs, and mission-related files.' },
-              { icon: CreditCard, title: 'Payment simulation', desc: 'Candidates can access revenue or payment estimations based on their mission setup, helping them project more clearly.' },
-              { icon: MessageSquare, title: 'Direct contact and support', desc: 'A clearer line to the right contact person for operational follow-up, documents, mission updates, and questions.' },
-            ].map((feature, i) => (
+            {features.map((feature, i) => (
               <FeatureCard key={i} icon={feature.icon} title={feature.title} desc={feature.desc} delay={i * 0.1} />
             ))}
           </div>
@@ -187,15 +191,19 @@ export function CandidatesPage() {
             transition={{ duration: 0.6 }}
             className="flex flex-col items-start"
           >
-            <Badge className="mb-6 border-[#caff04]/20 bg-[#caff04]/10 text-[#caff04]">Inside the portal</Badge>
             <SectionHeading className="mb-6 text-white">
-              A candidate dashboard designed to make missions smoother.
+              {t('candidatesPage.dashboard.title')}
             </SectionHeading>
             <p className="text-lg text-white/60 leading-relaxed max-w-lg mb-8" style={font.body}>
-              The portal is designed to simplify operational follow-up, reduce admin friction, and give candidates complete visibility over their ecosystem.
+              {t('candidatesPage.dashboard.description')}
             </p>
             <ul className="space-y-4">
-              {['Interactive worked days calendar', 'Centralized documents & contracts', 'Live payment estimates', 'Automated alert center'].map((item, i) => (
+              {[
+                t('candidatesPage.dashboard.list.item1'),
+                t('candidatesPage.dashboard.list.item2'),
+                t('candidatesPage.dashboard.list.item3'),
+                t('candidatesPage.dashboard.list.item4')
+              ].map((item, i) => (
                 <li key={i} className="flex items-center gap-3 text-white/80 text-sm" style={font.body}>
                   <CheckCircle2 className="w-5 h-5 text-[#caff04]" />
                   {item}
@@ -216,25 +224,25 @@ export function CandidatesPage() {
               <div className="space-y-4 pt-8">
                 <div className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-md">
                   <Calendar className="w-6 h-6 text-[#caff04] mb-4" />
-                  <div className="text-2xl text-white mb-1" style={font.heading}>Timesheets</div>
-                  <div className="text-xs text-white/50 font-medium tracking-wide uppercase" style={font.body}>Submission made easy</div>
+                  <div className="text-2xl text-white mb-1" style={font.heading}>{t('candidatesPage.dashboard.cards.timesheets.title')}</div>
+                  <div className="text-xs text-white/50 font-medium tracking-wide uppercase" style={font.body}>{t('candidatesPage.dashboard.cards.timesheets.subtitle')}</div>
                 </div>
                 <div className="rounded-2xl border border-white/10 bg-gradient-to-br from-[#2a3a12] to-[#4a6a24] p-6 backdrop-blur-md shadow-lg">
                   <CreditCard className="w-6 h-6 text-white mb-4" />
-                  <div className="text-2xl text-white mb-1" style={font.heading}>11,000€</div>
-                  <div className="text-xs text-white/70 font-medium tracking-wide uppercase" style={font.body}>Estimated Revenue</div>
+                  <div className="text-2xl text-white mb-1" style={font.heading}>{t('candidatesPage.dashboard.cards.revenue.title')}</div>
+                  <div className="text-xs text-white/70 font-medium tracking-wide uppercase" style={font.body}>{t('candidatesPage.dashboard.cards.revenue.subtitle')}</div>
                 </div>
               </div>
               <div className="space-y-4">
                 <div className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-md">
                   <FileText className="w-6 h-6 text-white/60 mb-4" />
-                  <div className="text-2xl text-white mb-1" style={font.heading}>Documents</div>
-                  <div className="text-xs text-white/50 font-medium tracking-wide uppercase" style={font.body}>Always secure</div>
+                  <div className="text-2xl text-white mb-1" style={font.heading}>{t('candidatesPage.dashboard.cards.documents.title')}</div>
+                  <div className="text-xs text-white/50 font-medium tracking-wide uppercase" style={font.body}>{t('candidatesPage.dashboard.cards.documents.subtitle')}</div>
                 </div>
                 <div className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-md">
                   <Activity className="w-6 h-6 text-white/60 mb-4" />
-                  <div className="text-2xl text-white mb-1" style={font.heading}>Timeline</div>
-                  <div className="text-xs text-white/50 font-medium tracking-wide uppercase" style={font.body}>Mission tracking</div>
+                  <div className="text-2xl text-white mb-1" style={font.heading}>{t('candidatesPage.dashboard.cards.timeline.title')}</div>
+                  <div className="text-xs text-white/50 font-medium tracking-wide uppercase" style={font.body}>{t('candidatesPage.dashboard.cards.timeline.subtitle')}</div>
                 </div>
               </div>
             </div>
@@ -254,18 +262,17 @@ export function CandidatesPage() {
             transition={{ duration: 0.6 }}
             className="mb-16"
           >
-            <Badge className="border-[#4a6a24]/20 bg-[#caff04]/20 text-[#4a6a24] mb-6">Why it matters</Badge>
             <SectionHeading className="text-[#172008]">
-              Less friction. More clarity. Better follow-up.
+              {t('candidatesPage.why.title')}
             </SectionHeading>
           </motion.div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
             {[
-              { label: 'Fewer', value: 'delays' },
-              { label: 'Clearer', value: 'operations' },
-              { label: 'Better', value: 'visibility' },
-              { label: 'Premium', value: 'experience' },
+              { label: t('candidatesPage.why.stats.label1'), value: t('candidatesPage.why.stats.value1') },
+              { label: t('candidatesPage.why.stats.label2'), value: t('candidatesPage.why.stats.value2') },
+              { label: t('candidatesPage.why.stats.label3'), value: t('candidatesPage.why.stats.value3') },
+              { label: t('candidatesPage.why.stats.label4'), value: t('candidatesPage.why.stats.value4') },
             ].map((stat, i) => (
               <motion.div
                 key={i}
@@ -289,7 +296,7 @@ export function CandidatesPage() {
             className="text-gray-500 text-sm max-w-2xl mx-auto leading-relaxed"
             style={font.body}
           >
-            This candidate experience reflects TRIBU's broader philosophy: better systems create better relationships and better outcomes. We don't just place candidates — we partner with them long-term.
+            {t('candidatesPage.why.description')}
           </motion.p>
         </div>
       </section>
@@ -305,15 +312,14 @@ export function CandidatesPage() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <Badge className="border-gray-200 bg-gray-50 text-gray-500 mb-6">Join TRIBU</Badge>
             <h2
               className="text-5xl md:text-7xl text-[#172008] leading-[1.05] tracking-tight mb-6"
               style={font.heading}
             >
-              A more modern candidate experience starts here.
+              {t('candidatesPage.closing.title')}
             </h2>
             <p className="text-lg text-gray-500 max-w-2xl mx-auto leading-relaxed" style={font.body}>
-              From mission follow-up to documents, reminders, and worked-day submission, TRIBU gives candidates a smarter space to operate with confidence.
+              {t('candidatesPage.closing.description')}
             </p>
           </motion.div>
         </div>
