@@ -338,4 +338,33 @@ export const en = {
       description: "From mission follow-up to documents, reminders, and worked-day submission, TRIBU gives candidates a smarter space to operate with confidence."
     }
   },
+  aiRecruitmentPage: {
+    hero: {
+      title: "Human recruitment.\nEnhanced by intelligent systems.",
+      description: "TRIBU combines expert recruitment, AI-powered candidate presentation, workflow automation, and a smart talent experience to deliver faster, sharper, and more premium hiring outcomes."
+    },
+    approach: {
+      title: "AI is not replacing recruitment. It is refining it.",
+      description: "TRIBU uses AI to improve precision, speed, clarity, candidate presentation, and follow-up quality — while keeping the recruiter's judgment, relationship-building, and hiring intuition at the center of every decision."
+    },
+    miixeo: {
+      title: "Every candidate presented with more clarity, more depth, and more impact."
+    },
+    automation: {
+      title: "Critical recruitment actions, intelligently automated.",
+      description: "TRIBU has automated key workflow steps to improve responsiveness, follow-up quality, market visibility, and consistency across every engagement."
+    },
+    portal: {
+      title: "A smarter candidate space, built for real operational life.",
+      description: "TRIBU does not stop at candidate placement. It provides a smart operational candidate portal designed to make mission follow-up smoother, clearer, and more modern."
+    },
+    why: {
+      title: "Better structure creates better recruitment outcomes.",
+      description: "TRIBU's AI layer improves the quality of delivery at multiple stages: candidate evaluation, presentation, follow-up, onboarding, and mission monitoring — creating compounding value throughout the entire recruitment lifecycle."
+    },
+    difference: {
+      title: "Not a traditional recruitment firm. Not a generic AI tool.",
+      description: "TRIBU sits at the intersection of premium recruitment, intelligent automation, and modern talent operations. The promise is not \"more AI for the sake of AI\". The promise is a better recruitment experience for both clients and candidates."
+    }
+  }
 };

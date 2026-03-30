@@ -8,6 +8,7 @@ import {
   Activity, TrendingUp, Layers, MessageSquare, Eye,
   Sparkles, CheckCircle2, Send
 } from 'lucide-react';
+import { useTranslation } from '../contexts/LanguageContext';
 
 // ─── Shared Styles ──────────────────────────────────────────────────────────
 
@@ -73,6 +74,7 @@ function FeatureCard({ icon: Icon, title, desc, delay = 0 }: { icon: any; title:
 // ═══════════════════════════════════════════════════════════════════════════
 
 export function AIRecruitmentPage() {
+  const { t } = useTranslation();
   return (
     <div
       className="bg-white text-black overflow-x-hidden relative"
@@ -95,7 +97,7 @@ export function AIRecruitmentPage() {
       {/* ═════════════════════════════════════════════════════════════════
           SECTION 1 — HERO
       ═════════════════════════════════════════════════════════════════ */}
-      <section className="relative z-10 max-w-[1600px] mx-auto px-6 md:px-16 lg:px-24 pt-16 md:pt-24 pb-16">
+      <section className="relative z-10 max-w-[1600px] mx-auto px-6 md:px-16 lg:px-24 pt-40 md:pt-60 pb-16">
         <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-8">
           {/* Left: Content */}
           <div className="flex-1 max-w-2xl">
@@ -121,10 +123,12 @@ export function AIRecruitmentPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="text-5xl md:text-6xl lg:text-[75px] text-black leading-[1.05] tracking-[-2px] mb-6"
+              className="text-5xl md:text-6xl lg:text-[75px] leading-[1.05] tracking-[-2px] mb-6"
               style={font.heading}
             >
-              Human recruitment. Enhanced by intelligent systems.
+              <span className="bg-gradient-to-r from-[#19200B] via-[#4a6a24] to-[#19200B] bg-clip-text text-transparent bold">
+                {t('aiRecruitmentPage.hero.title')}
+              </span>
             </motion.h1>
 
             {/* Subtext */}
@@ -135,7 +139,7 @@ export function AIRecruitmentPage() {
               className="text-lg text-black/50 leading-relaxed tracking-[-1px] mb-8 max-w-lg"
               style={font.body}
             >
-              TRIBU combines expert recruitment, AI-powered candidate presentation, workflow automation, and a smart talent experience to deliver faster, sharper, and more premium hiring outcomes.
+              {t('aiRecruitmentPage.hero.description')}
             </motion.p>
 
             {/* Trust strip */}
@@ -183,12 +187,13 @@ export function AIRecruitmentPage() {
       <section id="approach" className="relative z-10 py-24 md:py-32 px-6 md:px-16 lg:px-24">
         <div className="max-w-6xl mx-auto text-center">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
-            <Badge>Our approach</Badge>
             <Heading className="mb-6 max-w-3xl mx-auto">
-              AI is not replacing recruitment. It is refining it.
+              <span className="bg-gradient-to-r from-[#19200B] to-[#4a6a24] bg-clip-text text-transparent">
+                {t('aiRecruitmentPage.approach.title')}
+              </span>
             </Heading>
             <p className="text-base text-black/50 max-w-2xl mx-auto leading-relaxed mb-16" style={font.body}>
-              TRIBU uses AI to improve precision, speed, clarity, candidate presentation, and follow-up quality — while keeping the recruiter's judgment, relationship-building, and hiring intuition at the center of every decision.
+              {t('aiRecruitmentPage.approach.description')}
             </p>
           </motion.div>
 
@@ -219,9 +224,10 @@ export function AIRecruitmentPage() {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <Badge>Miixeo inside</Badge>
             <Heading className="max-w-3xl mx-auto">
-              Every candidate presented with more clarity, more depth, and more impact.
+              <span className="bg-gradient-to-r from-[#19200B] to-[#4a6a24] bg-clip-text text-transparent">
+                {t('aiRecruitmentPage.miixeo.title')}
+              </span>
             </Heading>
           </motion.div>
 
@@ -341,7 +347,7 @@ export function AIRecruitmentPage() {
       {/* ═════════════════════════════════════════════════════════════════
           SECTION 4 — AUTOMATION LAYER
       ═════════════════════════════════════════════════════════════════ */}
-      <section id="automation" className="relative z-10 py-24 px-6 md:px-16 lg:px-24">
+      <section id="automation" className="relative z-[10000] py-32 md:py-48 px-6 md:px-16 lg:px-24 bg-tribu-brand-green overflow-hidden">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -350,16 +356,17 @@ export function AIRecruitmentPage() {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <Badge>Automation layer</Badge>
-            <Heading className="mb-4">
-              Critical recruitment actions, intelligently automated.
+            <Heading className="mb-4 text-white">
+              <span className="bg-gradient-to-r from-[#caff04] via-white to-[#caff04] bg-clip-text text-transparent">
+                {t('aiRecruitmentPage.automation.title')}
+              </span>
             </Heading>
-            <p className="text-base text-black/50 max-w-2xl mx-auto leading-relaxed" style={font.body}>
-              TRIBU has automated key workflow steps to improve responsiveness, follow-up quality, market visibility, and consistency across every engagement.
+            <p className="text-base text-white/60 max-w-2xl mx-auto leading-relaxed" style={font.body}>
+              {t('aiRecruitmentPage.automation.description')}
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-white">
             {[
               { icon: MessageSquare, title: 'Client follow-up automation', desc: 'Automated reminders and follow-up flows to reduce missed opportunities and improve responsiveness.' },
               { icon: Users, title: 'DISC personality analysis', desc: 'AI-supported behavioral profiling to enrich candidate understanding with actionable personality insights.' },
@@ -368,7 +375,20 @@ export function AIRecruitmentPage() {
               { icon: Zap, title: 'Workflow acceleration', desc: 'Less admin friction, more recruiter focus on relationships and decision-making where it matters most.' },
               { icon: Shield, title: 'Recruitment consistency', desc: 'Repeatable premium quality across submissions, updates, and communication at every touchpoint.' },
             ].map((item, i) => (
-              <FeatureCard key={i} icon={item.icon} title={item.title} desc={item.desc} delay={i * 0.08} />
+              <div
+                key={i}
+                className="liquid-glass-card rounded-2xl p-6 border border-white/5 bg-white/5 hover:bg-white/10 transition-all duration-300 group"
+              >
+                <div className="liquid-glass rounded-full w-10 h-10 flex items-center justify-center mb-4 bg-white/10">
+                  <item.icon className="w-[18px] h-[18px] text-white/80" />
+                </div>
+                <h3 className="text-lg text-white mb-2" style={font.heading}>
+                  {item.title}
+                </h3>
+                <p className="text-white/50 text-sm leading-relaxed" style={font.body}>
+                  {item.desc}
+                </p>
+              </div>
             ))}
           </div>
         </div>
@@ -389,12 +409,13 @@ export function AIRecruitmentPage() {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <Badge>Candidate experience</Badge>
             <Heading className="mb-4">
-              A smarter candidate space, built for real operational life.
+              <span className="bg-gradient-to-r from-[#19200B] to-[#4a6a24] bg-clip-text text-transparent">
+                {t('aiRecruitmentPage.portal.title')}
+              </span>
             </Heading>
             <p className="text-base text-black/50 max-w-2xl mx-auto leading-relaxed" style={font.body}>
-              TRIBU does not stop at candidate placement. It provides a smart operational candidate portal designed to make mission follow-up smoother, clearer, and more modern.
+              {t('aiRecruitmentPage.portal.description')}
             </p>
           </motion.div>
 
@@ -546,12 +567,13 @@ export function AIRecruitmentPage() {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <Badge>The TRIBU difference</Badge>
             <Heading className="mb-4">
-              Not a traditional recruitment firm. Not a generic AI tool.
+              <span className="bg-gradient-to-r from-[#19200B] to-[#4a6a24] bg-clip-text text-transparent">
+                {t('aiRecruitmentPage.difference.title')}
+              </span>
             </Heading>
             <p className="text-base text-black/50 max-w-2xl mx-auto leading-relaxed" style={font.body}>
-              TRIBU sits at the intersection of premium recruitment, intelligent automation, and modern talent operations. The promise is not "more AI for the sake of AI". The promise is a better recruitment experience for both clients and candidates.
+              {t('aiRecruitmentPage.difference.description')}
             </p>
           </motion.div>
 

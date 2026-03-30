@@ -328,4 +328,33 @@ export const fr = {
       description: "Du suivi de mission aux documents, en passant par les rappels et la saisie d'activité, TRIBU offre aux candidats un espace intelligent pour opérer en toute confiance."
     }
   },
+  aiRecruitmentPage: {
+    hero: {
+      title: "Le recrutement humain.\nAmplifié par l'intelligence des systèmes.",
+      description: "TRIBU combine l'expertise en recrutement, la présentation de candidats assistée par l'IA, l'automatisation des flux de travail et une expérience talent intelligente."
+    },
+    approach: {
+      title: "L'IA ne remplace pas le recrutement. Elle le sublime.",
+      description: "TRIBU utilise l'IA pour améliorer la précision, la rapidité, la clarté et la qualité du suivi, tout en gardant le jugement humain au centre."
+    },
+    miixeo: {
+      title: "Chaque candidat présenté avec plus de clarté, de profondeur et d'impact."
+    },
+    automation: {
+      title: "Actions critiques, intelligemment automatisées.",
+      description: "TRIBU automatise les étapes clés pour améliorer la réactivité, la qualité du suivi et la visibilité du marché."
+    },
+    portal: {
+      title: "Un espace candidat plus intelligent, conçu pour la réalité opérationnelle.",
+      description: "TRIBU ne s'arrête pas au placement. Nous offrons un portail opérationnel intelligent pour rendre le suivi de mission plus fluide."
+    },
+    why: {
+      title: "Une meilleure structure crée de meilleurs résultats de recrutement.",
+      description: "La couche IA de TRIBU améliore la qualité de la livraison à chaque étape, créant une valeur exponentielle tout au long du cycle de recrutement."
+    },
+    difference: {
+      title: "Ni un cabinet traditionnel. Ni un simple outil IA.",
+      description: "TRIBU se situe à l'intersection du recrutement premium, de l'automatisation intelligente et des opérations de talent modernes."
+    }
+  }
 };
