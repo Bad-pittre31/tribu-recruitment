@@ -71,15 +71,15 @@ export function Protocol() {
   }, []);
 
   return (
-    <section ref={containerRef} id="protocol" className="relative pt-0 pb-20 bg-white overflow-hidden">
+    <section ref={containerRef} id="protocol" className="relative pt-0 pb-20 bg-[#2d4a35] overflow-hidden">
 
       <div className="max-w-4xl mx-auto px-6 relative z-10">
         <div className="mb-32 text-center">
-          <h2 className="text-4xl md:text-6xl font-bold tracking-tighter mb-6 text-black">
-            <span className="text-gray-400 block">{t('protocol.titlePrefix')}</span>
+          <h2 className="text-4xl md:text-6xl font-bold tracking-tighter mb-6 text-white">
+            <span className="text-white/50 block">{t('protocol.titlePrefix')}</span>
             <span>{t('protocol.titleSuffix')}</span>
           </h2>
-          <p className="text-xl text-gray-500 max-w-2xl mx-auto">
+          <p className="text-xl text-white/60 max-w-2xl mx-auto">
             {t('protocol.description')}
           </p>
         </div>
@@ -89,19 +89,19 @@ export function Protocol() {
             <div
               key={step.id}
               ref={el => { if (el) cardsRef.current[index] = el; }}
-              className="w-full max-w-3xl rounded-3xl p-10 md:p-16 flex flex-col md:flex-row gap-10 items-start sticky top-[20vh] bg-white/80 backdrop-blur-xl border border-gray-100 shadow-[0_8px_32px_rgba(0,0,0,0.06)]"
+              className="w-full max-w-3xl rounded-3xl p-10 md:p-16 flex flex-col md:flex-row gap-10 items-start sticky top-[20vh] bg-white/95 backdrop-blur-xl border border-white/20 shadow-[0_8px_32px_rgba(0,0,0,0.12)]"
               style={{ zIndex: index }}
             >
-              <div className="w-16 h-16 rounded-full bg-gray-50 border border-gray-100 flex items-center justify-center shrink-0 shadow-sm">
-                <step.icon className="w-8 h-8 text-black" />
+              <div className="w-16 h-16 rounded-full bg-[#e8f0ea] border border-[#d0ddd3] flex items-center justify-center shrink-0 shadow-sm">
+                <step.icon className="w-8 h-8 text-[#2d4a35]" />
               </div>
 
               <div>
                 <div className="flex items-center gap-4 mb-4">
-                  <span className="text-sm font-mono text-gray-400 tracking-widest">{t('common.step')} {step.id}</span>
-                  <div className="h-[1px] w-12 bg-gray-200" />
+                  <span className="text-sm font-mono text-[#4a7c59] tracking-widest">{t('common.step')} {step.id}</span>
+                  <div className="h-[1px] w-12 bg-[#c5d6c9]" />
                 </div>
-                <h3 className="text-3xl font-bold mb-6 tracking-tight text-black">{step.title}</h3>
+                <h3 className="text-3xl font-bold mb-6 tracking-tight text-[#1a2e1f]">{step.title}</h3>
                 <p className="text-lg text-gray-500 leading-relaxed">
                   {step.description}
                 </p>
