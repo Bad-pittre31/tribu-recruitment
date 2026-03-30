@@ -255,4 +255,70 @@ export const en = {
       modText: "TRIBU reserves the right to modify these GCU at any time. Users will be informed of major changes during their connection to their Candidate Space or by email.",
     },
   },
+  candidatesPage: {
+    hero: {
+      label: "Candidate Experience",
+      title: "A smarter space for candidates",
+      description: "TRIBU gives candidates and freelancers a premium operational space to manage missions, submit worked days, access documents, follow timelines, and stay aligned every step of the way.",
+    },
+    intro: {
+      title: "More than recruitment.",
+      subtitle: "A better day-to-day experience.",
+      description: "TRIBU supports candidates not only during the recruitment phase, but throughout their entire mission lifecycle with a smart, structured, and premium operational experience.",
+    },
+    features: {
+      card1: {
+        title: "Intuitive CRA submission",
+        desc: "Candidates can submit worked days directly through a clear interactive calendar, reducing friction and avoiding late timesheet validation.",
+      },
+      card2: {
+        title: "Mission timeline",
+        desc: "A visual timeline helps candidates track mission progress, key dates, and upcoming steps with more clarity.",
+      },
+      card3: {
+        title: "Smart reminders",
+        desc: "Automated reminders and AI-powered alerts help candidates stay on top of important actions, deadlines, and missing steps.",
+      },
+      card4: {
+        title: "Document hub",
+        desc: "All important documents are centralized in one place, including contracts, NDAs, and mission-related files.",
+      },
+      card5: {
+        title: "Payment simulation",
+        desc: "Candidates can access revenue or payment estimations based on their mission setup, helping them project more clearly.",
+      },
+      card6: {
+        title: "Direct contact and support",
+        desc: "A clearer line to the right contact person for operational follow-up, documents, mission updates, and questions.",
+      },
+    },
+    portal: {
+      title: "A candidate dashboard designed to make missions smoother.",
+      description: "The portal is designed to simplify operational follow-up, reduce admin friction, and give candidates complete visibility over their ecosystem.",
+      item1: "Interactive worked days calendar",
+      item2: "Centralized documents & contracts",
+      item3: "Live payment estimates",
+      item4: "Automated alert center",
+      visual1: { title: "Timesheets", subtitle: "Submission made easy" },
+      visual2: { title: "11,000€", subtitle: "Estimated Revenue" },
+      visual3: { title: "Documents", subtitle: "Always secure" },
+      visual4: { title: "Timeline", subtitle: "Mission tracking" },
+    },
+    whyItMatters: {
+      title: "Less friction. More clarity. Better follow-up.",
+      description: "This candidate experience reflects TRIBU's broader philosophy: better systems create better relationships and better outcomes. We don't just place candidates — we partner with them long-term.",
+      statLabel1: "Fewer",
+      statValue1: "delays",
+      statLabel2: "Clearer",
+      statValue2: "operations",
+      statLabel3: "Better",
+      statValue3: "visibility",
+      statLabel4: "Premium",
+      statValue4: "experience",
+    },
+    closing: {
+      title: "A more modern candidate experience starts here.",
+      description: "From mission follow-up to documents, reminders, and worked-day submission, TRIBU gives candidates a smarter space to operate with confidence.",
+    },
+  },
 };
