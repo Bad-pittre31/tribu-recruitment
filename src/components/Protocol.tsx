@@ -71,7 +71,7 @@ export function Protocol() {
   }, []);
 
   return (
-    <section ref={containerRef} id="protocol" className="relative pt-0 pb-20 bg-[#2d4a35] overflow-hidden">
+    <section ref={containerRef} id="protocol" className="relative pt-0 pb-20 bg-tribu-brand-green overflow-hidden">
 
       <div className="max-w-4xl mx-auto px-6 relative z-10">
         <div className="mb-32 text-center">
@@ -92,16 +92,16 @@ export function Protocol() {
               className="w-full max-w-3xl rounded-3xl p-10 md:p-16 flex flex-col md:flex-row gap-10 items-start sticky top-[20vh] bg-white/95 backdrop-blur-xl border border-white/20 shadow-[0_8px_32px_rgba(0,0,0,0.12)]"
               style={{ zIndex: index }}
             >
-              <div className="w-16 h-16 rounded-full bg-[#e8f0ea] border border-[#d0ddd3] flex items-center justify-center shrink-0 shadow-sm">
-                <step.icon className="w-8 h-8 text-[#2d4a35]" />
+              <div className="w-16 h-16 rounded-full bg-[#f0f4f1] border border-[#d0ddd3] flex items-center justify-center shrink-0 shadow-sm">
+                <step.icon className="w-8 h-8 text-tribu-brand-green" />
               </div>
 
               <div>
                 <div className="flex items-center gap-4 mb-4">
-                  <span className="text-sm font-mono text-[#4a7c59] tracking-widest">{t('common.step')} {step.id}</span>
-                  <div className="h-[1px] w-12 bg-[#c5d6c9]" />
+                  <span className="text-sm font-mono text-tribu-brand-green tracking-widest">{t('common.step')} {step.id}</span>
+                  <div className="h-[1px] w-12 bg-tribu-brand-green/20" />
                 </div>
-                <h3 className="text-3xl font-bold mb-6 tracking-tight text-[#1a2e1f]">{step.title}</h3>
+                <h3 className="text-3xl font-bold mb-6 tracking-tight text-tribu-brand-green">{step.title}</h3>
                 <p className="text-lg text-gray-500 leading-relaxed">
                   {step.description}
                 </p>

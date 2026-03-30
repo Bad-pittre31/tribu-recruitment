@@ -70,7 +70,7 @@ export function Differentiators() {
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="mb-32 text-center">
           <h2 className="text-4xl md:text-6xl font-bold tracking-tighter mb-6">
-            <span className="bg-gradient-to-r from-[#4D6614] via-[#3A4D0F] to-[#2D3D0C] bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-[#19200B] via-[#4a7c59] to-[#19200B] bg-clip-text text-transparent">
               {t('differentiators.title')}
             </span>
           </h2>

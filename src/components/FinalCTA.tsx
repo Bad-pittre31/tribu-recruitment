@@ -34,7 +34,7 @@ export function FinalCTA() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative z-[10000] py-40 bg-[#172008] overflow-hidden flex flex-col items-center justify-center min-h-[800px] gap-24">
+    <section ref={sectionRef} className="relative z-[10000] py-40 bg-tribu-brand-green overflow-hidden flex flex-col items-center justify-center min-h-[800px] gap-24">
       
       {/* Top Content Block */}
       <div className="max-w-4xl mx-auto px-6 relative z-10 text-center w-full mt-10">
@@ -51,7 +51,7 @@ export function FinalCTA() {
           {/* Candidate CTA */}
           <Link 
             to="/candidate-space"
-            className="w-full sm:w-auto relative group overflow-hidden rounded-[2rem] bg-white text-[#172008] px-12 py-5 font-semibold tracking-wide transition-all duration-500 hover:shadow-[0_0_40px_rgba(255,255,255,0.3)] hover:scale-105"
+            className="w-full sm:w-auto relative group overflow-hidden rounded-[2rem] bg-white text-tribu-brand-green px-12 py-5 font-semibold tracking-wide transition-all duration-500 hover:shadow-[0_0_40px_rgba(255,255,255,0.3)] hover:scale-105"
           >
             <span className="relative z-10">{t('finalCTA.ctaCandidate')}</span>
             <div className="absolute inset-0 bg-gradient-to-r from-white via-gray-100 to-white opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -76,7 +76,7 @@ export function FinalCTA() {
           <source src="/video/forest-sequence.mp4" type="video/mp4" />
         </video>
         {/* Subtle dark overlay to integrate the video seamlessly into the dark background */}
-        <div className="absolute inset-0 bg-[#172008]/40 mix-blend-multiply pointer-events-none" />
+        <div className="absolute inset-0 bg-tribu-brand-green/40 mix-blend-multiply pointer-events-none" />
         <div className="absolute inset-0 ring-1 ring-white/10 rounded-[3rem] pointer-events-none" />
       </div>
     </section>
