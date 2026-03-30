@@ -37,7 +37,7 @@ export function Manifesto() {
   const manifestoItems = [1, 2, 3, 4];
 
   return (
-    <section ref={sectionRef} className="relative py-40 bg-[#172008] overflow-hidden">
+    <section ref={sectionRef} className="relative z-[10000] py-40 bg-tribu-brand-green overflow-hidden">
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-[#d0e0b8]/5 rounded-full blur-[200px] opacity-20 -translate-y-1/2 translate-x-1/3" />
       </div>

@@ -34,7 +34,7 @@ export function TalentPortal() {
   }, []);
 
   return (
-    <section ref={sectionRef} id="talent" className="relative z-[10000] py-32 bg-[#172008]">
+    <section ref={sectionRef} id="talent" className="relative z-[10000] py-32 bg-tribu-brand-green">
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex flex-col md:flex-row justify-between items-end mb-24 gap-12">
 

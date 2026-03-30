@@ -71,7 +71,7 @@ export function Protocol() {
   }, []);
 
   return (
-    <section ref={containerRef} id="protocol" className="relative pt-0 pb-20 bg-tribu-brand-green overflow-hidden">
+    <section ref={containerRef} id="protocol" className="relative z-[10000] pt-40 pb-20 bg-tribu-brand-green overflow-hidden">
 
       <div className="max-w-4xl mx-auto px-6 relative z-10">
         <div className="mb-32 text-center">
