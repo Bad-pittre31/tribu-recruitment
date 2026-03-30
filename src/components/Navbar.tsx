@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, useScroll, useMotionValueEvent, AnimatePresence } from 'motion/react';
 import { Link, useLocation } from 'react-router-dom';
-import { MagneticButton } from './ui/MagneticButton';
 import { cn } from '@/src/utils/cn';
 import { useTranslation } from '../contexts/LanguageContext';
 import { LanguageSwitcher } from './LanguageSwitcher';
@@ -10,7 +9,6 @@ export function Navbar() {
   const { t } = useTranslation();
   const { scrollY } = useScroll();
   const location = useLocation();
-  const isLandingPage = location.pathname === '/';
 
   const [hidden, setHidden] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -27,28 +25,11 @@ export function Navbar() {
   });
 
   const navLinks = [
-    { label: t('nav.model'), href: isLandingPage ? '#model' : '/#model' },
-    { label: t('nav.protocol'), href: isLandingPage ? '#protocol' : '/#protocol' },
-    { label: t('nav.talent'), href: isLandingPage ? '#talent' : '/#talent' },
+    { label: t('nav.home'), href: '/', isRoute: true },
     { label: t('nav.candidates'), href: '/candidates', isRoute: true },
-    { label: t('nav.transparency'), href: isLandingPage ? '#transparency' : '/#transparency' },
     { label: t('nav.about'), href: '/about', isRoute: true },
     { label: t('nav.aiRecruitment'), href: '/ai-recruitment', isRoute: true },
   ];
-
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    setMobileMenuOpen(false);
-
-    // For smooth scrolling on the current landing page
-    if (isLandingPage && href.startsWith('#')) {
-      e.preventDefault();
-      const targetId = href.replace('#', '');
-      const element = document.getElementById(targetId);
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-    }
-  };
 
   return (
     <motion.nav
@@ -72,7 +53,7 @@ export function Navbar() {
         />
       </Link>
 
-      {/* Main Container tailored for centering the navbar correctly */}
+      {/* Main Container */}
       <div className="w-full max-w-5xl relative pointer-events-none flex justify-end md:justify-center">
         <div className={cn(
           "relative flex items-center justify-between rounded-full px-8 py-3 transition-all duration-700 pointer-events-auto overflow-hidden",
@@ -82,43 +63,38 @@ export function Navbar() {
           {/* Glossy Reflection Overlay */}
           <div className="absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-white/10 to-transparent pointer-events-none" />
 
-          {/* Adjusted spacing div for logo gap on desktop */}
+          {/* Spacer for logo gap on desktop */}
           <div className="hidden md:block w-12 md:w-20" />
 
-          <div className="hidden md:flex items-center gap-10 text-[13px] font-semibold tracking-wide uppercase text-white md:text-black/70">
+          {/* Desktop Nav Links */}
+          <div className="hidden md:flex items-center gap-8 text-[13px] font-semibold tracking-wide uppercase text-white md:text-black/70">
             {navLinks.map((link) => (
-              link.isRoute ? (
-                <Link
-                  key={link.label}
-                  to={link.href}
-                  className="hover:text-black transition-colors duration-300"
-                >
-                  {link.label}
-                </Link>
-              ) : (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  onClick={(e) => handleNavClick(e, link.href)}
-                  className="hover:text-black transition-colors duration-300"
-                >
-                  {link.label}
-                </a>
-              )
+              <Link
+                key={link.label}
+                to={link.href}
+                className={cn(
+                  "hover:text-black transition-colors duration-300 whitespace-nowrap",
+                  location.pathname === link.href && "text-black"
+                )}
+              >
+                {link.label}
+              </Link>
             ))}
           </div>
 
-          <div className="flex items-center gap-6 ml-auto md:ml-0">
-            <div className="flex items-center gap-4">
-              <LanguageSwitcher className="hidden sm:flex" />
-              <Link to="/candidate-space" className="hidden sm:flex px-5 py-2 text-[10px] font-bold uppercase tracking-[0.1em] text-white md:text-black/70 hover:text-white md:hover:text-black border border-white/20 md:border-black/10 rounded-full transition-all duration-300 hover:border-white/40 md:hover:border-black/20 hover:bg-white/10 md:hover:bg-black/5">
-                {t('common.candidateSpace')}
-              </Link>
-            </div>
-            <MagneticButton variant="primary" className="hidden sm:flex px-6 py-2 text-[10px] font-bold uppercase tracking-[0.1em] bg-white text-black border-none hover:bg-white/90 shadow-xl transition-all">
-              {t('common.bookCall')}
-            </MagneticButton>
+          {/* Right side: Language Switcher + Green CTA */}
+          <div className="flex items-center gap-4 ml-auto md:ml-0 md:pl-6">
+            <LanguageSwitcher className="hidden sm:flex" />
 
+            {/* Green ESPACE CANDIDAT CTA */}
+            <Link
+              to="/candidate-space"
+              className="hidden sm:flex items-center px-5 py-2 text-[10px] font-bold uppercase tracking-[0.1em] text-white bg-[#4a7c59] hover:bg-[#3d6a4a] rounded-full transition-all duration-300 shadow-md hover:shadow-lg whitespace-nowrap"
+            >
+              {t('common.candidateSpace')}
+            </Link>
+
+            {/* Mobile Hamburger */}
             <button
               className="md:hidden text-white md:text-black p-2 relative z-50 pointer-events-auto flex items-center justify-center bg-black/40 md:bg-transparent rounded-full backdrop-blur-md"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -152,41 +128,30 @@ export function Navbar() {
           >
             <div className="flex flex-col gap-4 text-base font-semibold tracking-wide text-white/90">
               {navLinks.map((link) => (
-                link.isRoute ? (
-                  <Link
-                    key={link.label}
-                    to={link.href}
-                    onClick={() => setMobileMenuOpen(false)}
-                    className="py-3 border-b border-white/10 hover:text-white transition-colors"
-                  >
-                    {link.label}
-                  </Link>
-                ) : (
-                  <a
-                    key={link.label}
-                    href={link.href}
-                    onClick={(e) => handleNavClick(e, link.href)}
-                    className="py-3 border-b border-white/10 hover:text-white transition-colors"
-                  >
-                    {link.label}
-                  </a>
-                )
+                <Link
+                  key={link.label}
+                  to={link.href}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className={cn(
+                    "py-3 border-b border-white/10 hover:text-white transition-colors",
+                    location.pathname === link.href && "text-white"
+                  )}
+                >
+                  {link.label}
+                </Link>
               ))}
               <div className="pt-2 flex flex-col gap-4">
+                {/* Language switcher in mobile menu */}
+                <div className="flex justify-center py-2">
+                  <LanguageSwitcher className="!text-white/70 [&_button]:!text-white/50 [&_button.text-black]:!text-white [&_span]:!text-white/30" />
+                </div>
                 <Link
                   to="/candidate-space"
-                  className="py-2 text-center border font-bold border-white/20 rounded-full hover:bg-white/10 transition-colors uppercase text-[12px] tracking-wider text-white"
+                  className="py-3 text-center bg-[#4a7c59] text-white rounded-full font-bold uppercase text-[12px] tracking-wider hover:bg-[#3d6a4a] transition-colors"
                   onClick={() => setMobileMenuOpen(false)}
                 >
-                  Candidate Space
+                  {t('common.candidateSpace')}
                 </Link>
-                <a
-                  href="#"
-                  className="py-3 text-center bg-white text-black rounded-full font-bold uppercase text-[12px] tracking-wider"
-                  onClick={(e) => { e.preventDefault(); setMobileMenuOpen(false); }}
-                >
-                  Book a strategic call
-                </a>
               </div>
             </div>
           </motion.div>

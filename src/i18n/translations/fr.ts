@@ -12,6 +12,7 @@ export const fr = {
     step: "ÉTAPE",
   },
   nav: {
+    home: "Accueil",
     model: "Modèle",
     protocol: "Protocole",
     talent: "Talent",
