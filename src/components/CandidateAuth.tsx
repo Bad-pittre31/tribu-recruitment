@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import { useTranslation } from '../contexts/LanguageContext';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import { ArrowLeft, Eye, EyeOff, Loader2 } from 'lucide-react';
 
 export function CandidateAuth() {
@@ -51,15 +51,18 @@ export function CandidateAuth() {
                 />
 
                 <div className="relative z-10">
-                    <Link to="/" className="flex items-center gap-3 group">
+                    <Link to="/" className="flex items-center gap-3 group mb-12">
                         <ArrowLeft className="w-4 h-4 text-white/40 group-hover:text-white/70 transition-colors" />
                         <span className="text-white/40 text-xs font-medium uppercase tracking-widest group-hover:text-white/70 transition-colors">{t('common.backToTribu')}</span>
                     </Link>
-                    <div className="mt-16">
+                    
+                    <img src="/assets/tribu-logo-jungle.png" alt="TRIBU" className="h-16 w-auto mb-16 brightness-0 invert opacity-90" />
+
+                    <div>
                         <div className="text-white/20 text-[11px] font-bold uppercase tracking-[0.3em] mb-6">{t('common.candidateSpace')}</div>
                         <h1 className="text-5xl font-bold text-white tracking-tight leading-tight">
                             {t('common.yourTribu')}<br />
-                            <span className="bg-gradient-to-r from-[#a8b894] to-[#7a9160] bg-clip-text text-transparent">{t('common.candidateSpace')}</span>
+                            <span className="bg-gradient-to-r from-[#caff04] to-[#a8b894] bg-clip-text text-transparent">{t('common.candidateSpace')}</span>
                         </h1>
                         <p className="mt-6 text-white/50 text-lg leading-relaxed max-w-md">
                             {t('dashboard.description')}
@@ -70,14 +73,18 @@ export function CandidateAuth() {
                 <div className="relative z-10">
                     <div className="border-t border-white/10 pt-8">
                         <div className="flex items-center gap-3">
-                            <div className="flex -space-x-2">
-                                {[0, 1, 2].map(i => (
-                                    <div key={i} className="w-8 h-8 rounded-full border-2 border-[#172008]"
-                                        style={{ background: `linear-gradient(135deg, ${['#a8b894', '#7a9160', '#5a7040'][i]} 0%, ${['#7a9160', '#5a7040', '#3a5020'][i]} 100%)` }}
-                                    />
+                            <div className="flex -space-x-3">
+                                {[
+                                    "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=100&h=100",
+                                    "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=100&h=100",
+                                    "https://images.unsplash.com/photo-1599566150163-29194dcaad36?auto=format&fit=crop&q=80&w=100&h=100"
+                                ].map((url, i) => (
+                                    <div key={i} className="w-9 h-9 rounded-full border-2 border-[#172008] overflow-hidden">
+                                        <img src={url} alt="User" className="w-full h-full object-cover" />
+                                    </div>
                                 ))}
                             </div>
-                            <p className="text-white/40 text-sm">{t('common.trustedBy')} <span className="text-white/70 font-medium">120+ {t('common.consultants')}</span></p>
+                            <p className="text-white/40 text-sm italic">{t('common.trustedBy')} <span className="text-white/70 font-medium">700+ {t('common.consultants')}</span></p>
                         </div>
                     </div>
                 </div>

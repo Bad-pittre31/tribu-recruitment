@@ -10,6 +10,13 @@ export const en = {
     inviteOnly: "Access is invite-only. Contact TRIBU if you need an account.",
     loading: "Loading...",
     step: "STEP",
+    yourTribu: "Your TRIBU",
+    trustedBy: "Trusted by",
+    consultants: "candidates",
+    signInToYourSpace: "Sign in to your mission space",
+    email: "Email",
+    password: "Password",
+    yourTribuCandidateSpace: "Your TRIBU Candidate Space",
   },
   nav: {
     home: "Home",

@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useRef, useEffect, useState } from 'react';
-import { useScroll, useTransform, motion, useSpring } from 'framer-motion';
+import { useScroll, useTransform, motion, useSpring } from 'motion/react';
 import { useTranslation } from '../contexts/LanguageContext';
 
 const TOTAL_FRAMES = 192;
