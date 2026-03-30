@@ -109,7 +109,7 @@ export function AIRecruitmentPage() {
               className="liquid-glass rounded-full px-3 py-1.5 inline-flex items-center gap-2 mb-6"
             >
               <span className="text-xs font-medium text-black/70" style={font.body}>
-                AI Recruitment, the TRIBU way
+                {t('aiRecruitmentPage.hero.badge')}
               </span>
               <div className="flex gap-0.5">
                 {[...Array(5)].map((_, i) => (
@@ -149,7 +149,11 @@ export function AIRecruitmentPage() {
               transition={{ duration: 0.6, delay: 0.7 }}
               className="flex flex-wrap gap-6"
             >
-              {['AI-enhanced candidate dossiers', 'Automated recruitment workflows', 'Smart candidate portal'].map((item) => (
+              {[
+                t('aiRecruitmentPage.hero.trust.item1'),
+                t('aiRecruitmentPage.hero.trust.item2'),
+                t('aiRecruitmentPage.hero.trust.item3')
+              ].map((item) => (
                 <span key={item} className="liquid-glass rounded-full px-3 py-1 text-[11px] font-medium text-black/50">
                   {item}
                 </span>
@@ -199,9 +203,9 @@ export function AIRecruitmentPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
-              { icon: Brain, title: 'Human decision-making stays central', desc: 'AI assists and enhances — it never replaces the recruiter\'s judgment, empathy, and strategic intuition.' },
-              { icon: Zap, title: 'AI improves structure, consistency & speed', desc: 'From candidate evaluation to client presentation, every step becomes faster, cleaner, and more reliable.' },
-              { icon: Star, title: 'Premium experience for everyone', desc: 'Both candidates and clients benefit from a more polished, transparent, and professional recruitment journey.' },
+              { icon: Brain, title: t('aiRecruitmentPage.approach.card1.title'), desc: t('aiRecruitmentPage.approach.card1.desc') },
+              { icon: Zap, title: t('aiRecruitmentPage.approach.card2.title'), desc: t('aiRecruitmentPage.approach.card2.desc') },
+              { icon: Star, title: t('aiRecruitmentPage.approach.card3.title'), desc: t('aiRecruitmentPage.approach.card3.desc') },
             ].map((item, i) => (
               <FeatureCard key={i} icon={item.icon} title={item.title} desc={item.desc} delay={i * 0.1} />
             ))}
@@ -241,10 +245,10 @@ export function AIRecruitmentPage() {
               className="flex-1"
             >
               <h3 className="text-2xl md:text-3xl text-black mb-4 tracking-[-1px]" style={font.heading}>
-                Structured, client-ready candidate dossiers.
+                {t('aiRecruitmentPage.miixeo.dossier.title')}
               </h3>
               <p className="text-black/50 text-sm leading-relaxed mb-6" style={font.body}>
-                TRIBU uses the Miixeo engine to generate structured, client-ready candidate dossiers. Each dossier includes a clear summary, positioning, and competency presentation that goes far beyond a standard CV. AI-based matching and scoring highlight fit with the role, while DISC personality profiling brings behavioral insight.
+                {t('aiRecruitmentPage.miixeo.dossier.description')}
               </p>
             </motion.div>
 
@@ -266,17 +270,21 @@ export function AIRecruitmentPage() {
                       </div>
                     </div>
                     <div className="rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-emerald-600 bg-emerald-50 border border-emerald-200">
-                      98% match
+                      {t('aiRecruitmentPage.miixeo.dossier.match')}
                     </div>
                   </div>
                   <div className="h-px bg-black/5" />
                   <div className="grid grid-cols-3 gap-3">
-                    {['Technical', 'Leadership', 'Culture fit'].map((label, i) => (
+                    {[
+                      { label: t('aiRecruitmentPage.miixeo.dossier.tech'), value: '9.2' },
+                      { label: t('aiRecruitmentPage.miixeo.dossier.lead'), value: '8.7' },
+                      { label: t('aiRecruitmentPage.miixeo.dossier.culture'), value: '9.5' }
+                    ].map((item, i) => (
                       <div key={i} className="text-center">
                         <div className="text-xl font-bold text-black" style={font.heading}>
-                          {['9.2', '8.7', '9.5'][i]}
+                          {item.value}
                         </div>
-                        <div className="text-[10px] text-black/40 uppercase tracking-wider" style={font.body}>{label}</div>
+                        <div className="text-[10px] text-black/40 uppercase tracking-wider" style={font.body}>{item.label}</div>
                       </div>
                     ))}
                   </div>
@@ -301,10 +309,10 @@ export function AIRecruitmentPage() {
               className="flex-1"
             >
               <h3 className="text-2xl md:text-3xl text-black mb-4 tracking-[-1px]" style={font.heading}>
-                It gets smarter. Automatically.
+                {t('aiRecruitmentPage.miixeo.automation.title')}
               </h3>
               <p className="text-black/50 text-sm leading-relaxed mb-6" style={font.body}>
-                Dossiers can include direct interview booking options inside the presentation flow. The result is a cleaner, more convincing, more premium candidate submission that evolves and improves with every engagement.
+                {t('aiRecruitmentPage.miixeo.automation.description')}
               </p>
             </motion.div>
 
@@ -317,12 +325,12 @@ export function AIRecruitmentPage() {
             >
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
                 {[
-                  { icon: FileText, label: 'Competency dossier' },
-                  { icon: Target, label: 'Match scoring' },
-                  { icon: Users, label: 'DISC profile' },
-                  { icon: Calendar, label: 'Interview booking' },
-                  { icon: Eye, label: 'Client-ready presentation' },
-                  { icon: Sparkles, label: 'AI-powered insights' },
+                  { icon: FileText, label: t('aiRecruitmentPage.miixeo.grid.item1') },
+                  { icon: Target, label: t('aiRecruitmentPage.miixeo.grid.item2') },
+                  { icon: Users, label: t('aiRecruitmentPage.miixeo.grid.item3') },
+                  { icon: Calendar, label: t('aiRecruitmentPage.miixeo.grid.item4') },
+                  { icon: Eye, label: t('aiRecruitmentPage.miixeo.grid.item5') },
+                  { icon: Sparkles, label: t('aiRecruitmentPage.miixeo.grid.item6') },
                 ].map((item, i) => (
                   <motion.div
                     key={i}
@@ -368,12 +376,12 @@ export function AIRecruitmentPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-white">
             {[
-              { icon: MessageSquare, title: 'Client follow-up automation', desc: 'Automated reminders and follow-up flows to reduce missed opportunities and improve responsiveness.' },
-              { icon: Users, title: 'DISC personality analysis', desc: 'AI-supported behavioral profiling to enrich candidate understanding with actionable personality insights.' },
-              { icon: Eye, title: 'Market monitoring', desc: 'Ongoing talent market watch, demand signals, and positioning insights to stay ahead of hiring trends.' },
-              { icon: Target, title: 'AI-powered positioning', desc: 'Better candidate framing and sharper presentation aligned to client expectations and role requirements.' },
-              { icon: Zap, title: 'Workflow acceleration', desc: 'Less admin friction, more recruiter focus on relationships and decision-making where it matters most.' },
-              { icon: Shield, title: 'Recruitment consistency', desc: 'Repeatable premium quality across submissions, updates, and communication at every touchpoint.' },
+              { icon: MessageSquare, title: t('aiRecruitmentPage.automation.card1.title'), desc: t('aiRecruitmentPage.automation.card1.desc') },
+              { icon: Users, title: t('aiRecruitmentPage.automation.card2.title'), desc: t('aiRecruitmentPage.automation.card2.desc') },
+              { icon: Eye, title: t('aiRecruitmentPage.automation.card3.title'), desc: t('aiRecruitmentPage.automation.card3.desc') },
+              { icon: Target, title: t('aiRecruitmentPage.automation.card4.title'), desc: t('aiRecruitmentPage.automation.card4.desc') },
+              { icon: Zap, title: t('aiRecruitmentPage.automation.card5.title'), desc: t('aiRecruitmentPage.automation.card5.desc') },
+              { icon: Shield, title: t('aiRecruitmentPage.automation.card6.title'), desc: t('aiRecruitmentPage.automation.card6.desc') },
             ].map((item, i) => (
               <div
                 key={i}
@@ -423,10 +431,10 @@ export function AIRecruitmentPage() {
             {/* Left column */}
             <div className="space-y-4">
               {[
-                { icon: Calendar, title: 'Interactive timesheet calendar', desc: 'Day-by-day worked days submission with a visual calendar interface.' },
-                { icon: Clock, title: 'Reduced payment delays', desc: 'Better timesheet clarity means faster processing and fewer delays.' },
-                { icon: FileText, title: 'Secure document hub', desc: 'Contracts, NDAs, and mission documents always accessible.' },
-                { icon: Bell, title: 'AI reminders & warnings', desc: 'Smart alerts for upcoming actions or missing steps to keep missions on track.' },
+                { icon: Calendar, title: t('aiRecruitmentPage.portal.card1.title'), desc: t('aiRecruitmentPage.portal.card1.desc') },
+                { icon: Clock, title: t('aiRecruitmentPage.portal.card2.title'), desc: t('aiRecruitmentPage.portal.card2.desc') },
+                { icon: FileText, title: t('aiRecruitmentPage.portal.card3.title'), desc: t('aiRecruitmentPage.portal.card3.desc') },
+                { icon: Bell, title: t('aiRecruitmentPage.portal.card4.title'), desc: t('aiRecruitmentPage.portal.card4.desc') },
               ].map((item, i) => (
                 <motion.div
                   key={i}
@@ -450,9 +458,9 @@ export function AIRecruitmentPage() {
             {/* Right column */}
             <div className="space-y-4">
               {[
-                { icon: Activity, title: 'Mission timeline visibility', desc: 'Track progress, milestones, and remaining days at a glance.' },
-                { icon: TrendingUp, title: 'Revenue estimation', desc: 'See projected earnings based on your TJM and worked days.' },
-                { icon: Layers, title: 'Better transparency', desc: 'Full visibility into economics, fees, and mission structure.' },
+                { icon: Activity, title: t('aiRecruitmentPage.portal.card5.title'), desc: t('aiRecruitmentPage.portal.card5.desc') },
+                { icon: TrendingUp, title: t('aiRecruitmentPage.portal.card6.title'), desc: t('aiRecruitmentPage.portal.card6.desc') },
+                { icon: Layers, title: t('aiRecruitmentPage.portal.card7.title'), desc: t('aiRecruitmentPage.portal.card7.desc') },
               ].map((item, i) => (
                 <motion.div
                   key={i}
@@ -475,8 +483,8 @@ export function AIRecruitmentPage() {
               {/* Mini feature cards */}
               <div className="grid grid-cols-2 gap-3 pt-2">
                 {[
-                  { icon: CheckCircle2, label: 'Smooth follow-up' },
-                  { icon: Send, label: 'Day-to-day clarity' },
+                  { icon: CheckCircle2, label: t('aiRecruitmentPage.portal.mini1') },
+                  { icon: Send, label: t('aiRecruitmentPage.portal.mini2') },
                 ].map((item, i) => (
                   <div key={i} className="liquid-glass rounded-xl p-3 flex items-center gap-2">
                     <item.icon className="w-3.5 h-3.5 text-black/40" />
@@ -501,9 +509,9 @@ export function AIRecruitmentPage() {
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <Badge>Why it matters</Badge>
+            <Badge>{t('aiRecruitmentPage.why.title')}</Badge>
             <Heading>
-              Better structure creates better recruitment outcomes.
+              {t('aiRecruitmentPage.why.title')}
             </Heading>
           </motion.div>
 
@@ -514,12 +522,12 @@ export function AIRecruitmentPage() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="liquid-glass-strong rounded-3xl p-8 md:p-12"
           >
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center text-white">
               {[
-                { value: 'Sharper', label: 'Candidate positioning' },
-                { value: 'Faster', label: 'Submission workflows' },
-                { value: 'Premium', label: 'Client experience' },
-                { value: 'Less', label: 'Friction after placement' },
+                { value: t('aiRecruitmentPage.why.stat1.value'), label: t('aiRecruitmentPage.why.stat1.label') },
+                { value: t('aiRecruitmentPage.why.stat2.value'), label: t('aiRecruitmentPage.why.stat2.label') },
+                { value: t('aiRecruitmentPage.why.stat3.value'), label: t('aiRecruitmentPage.why.stat3.label') },
+                { value: t('aiRecruitmentPage.why.stat4.value'), label: t('aiRecruitmentPage.why.stat4.label') },
               ].map((stat, i) => (
                 <motion.div
                   key={i}
@@ -550,7 +558,7 @@ export function AIRecruitmentPage() {
             className="text-center text-black/40 text-sm max-w-2xl mx-auto leading-relaxed mt-10"
             style={font.body}
           >
-            TRIBU's AI layer improves the quality of delivery at multiple stages: candidate evaluation, presentation, follow-up, onboarding, and mission monitoring — creating compounding value throughout the entire recruitment lifecycle.
+            {t('aiRecruitmentPage.why.description')}
           </motion.p>
         </div>
       </section>
@@ -582,18 +590,18 @@ export function AIRecruitmentPage() {
             {[
               {
                 icon: FileText,
-                title: 'Premium candidate presentation',
-                desc: 'AI-powered competency dossiers that go far beyond raw CVs. Structured, scored, and client-ready from the first interaction.',
+                title: t('aiRecruitmentPage.difference.card1.title'),
+                desc: t('aiRecruitmentPage.difference.card1.desc'),
               },
               {
                 icon: Zap,
-                title: 'Smarter recruiter operations',
-                desc: 'Automated follow-ups, market intelligence, and workflow acceleration that let recruiters focus on what humans do best — build relationships.',
+                title: t('aiRecruitmentPage.difference.card2.title'),
+                desc: t('aiRecruitmentPage.difference.card2.desc'),
               },
               {
                 icon: Users,
-                title: 'Better talent experience',
-                desc: 'A dedicated candidate portal with mission tracking, timesheet management, document access, and AI-powered reminders for seamless operations.',
+                title: t('aiRecruitmentPage.difference.card3.title'),
+                desc: t('aiRecruitmentPage.difference.card3.desc'),
               },
             ].map((pillar, i) => (
               <motion.div
@@ -634,21 +642,21 @@ export function AIRecruitmentPage() {
             transition={{ duration: 0.7 }}
           >
             <Heading className="mb-6">
-              See how TRIBU turns recruitment into a smarter system.
+              {t('aiRecruitmentPage.cta.title')}
             </Heading>
             <p className="text-base text-black/50 max-w-xl mx-auto leading-relaxed mb-10" style={font.body}>
-              Discover how our AI-powered recruitment infrastructure helps present candidates better, automate key actions, and create a more fluid experience for clients and talent.
+              {t('aiRecruitmentPage.cta.description')}
             </p>
           </motion.div>
         </div>
 
         {/* Footer */}
         <div className="relative z-10 mt-32 pt-8 border-t border-black/5 flex flex-col md:flex-row justify-between items-center text-black/30 text-xs" style={font.body}>
-          <span>© 2025 TRIBU — All rights reserved.</span>
+          <span>{t('aiRecruitmentPage.footer.copy')}</span>
           <div className="flex items-center gap-6 mt-4 md:mt-0">
-            <Link to="/privacy-policy" className="hover:text-black/50 transition-colors">Privacy</Link>
-            <Link to="/terms" className="hover:text-black/50 transition-colors">Terms</Link>
-            <Link to="/legal-notice" className="hover:text-black/50 transition-colors">Contact</Link>
+            <Link to="/privacy-policy" className="hover:text-black/50 transition-colors">{t('aiRecruitmentPage.footer.privacy')}</Link>
+            <Link to="/terms" className="hover:text-black/50 transition-colors">{t('aiRecruitmentPage.footer.terms')}</Link>
+            <Link to="/legal-notice" className="hover:text-black/50 transition-colors">{t('aiRecruitmentPage.footer.contact')}</Link>
           </div>
         </div>
       </section>

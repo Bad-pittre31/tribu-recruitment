@@ -340,31 +340,92 @@ export const en = {
   },
   aiRecruitmentPage: {
     hero: {
+      badge: "AI Recruitment, the TRIBU way",
       title: "Human recruitment.\nEnhanced by intelligent systems.",
-      description: "TRIBU combines expert recruitment, AI-powered candidate presentation, workflow automation, and a smart talent experience to deliver faster, sharper, and more premium hiring outcomes."
+      description: "TRIBU combines expert recruitment, AI-powered candidate presentation, workflow automation, and a smart talent experience to deliver faster, sharper, and more premium hiring outcomes.",
+      trust: {
+        item1: "AI-enhanced candidate dossiers",
+        item2: "Automated recruitment workflows",
+        item3: "Smart candidate portal"
+      }
     },
     approach: {
       title: "AI is not replacing recruitment. It is refining it.",
-      description: "TRIBU uses AI to improve precision, speed, clarity, candidate presentation, and follow-up quality — while keeping the recruiter's judgment, relationship-building, and hiring intuition at the center of every decision."
+      description: "TRIBU uses AI to improve precision, speed, clarity, candidate presentation, and follow-up quality — while keeping the recruiter's judgment, relationship-building, and hiring intuition at the center of every decision.",
+      card1: { title: "Human decision-making stays central", desc: "AI assists and enhances — it never replaces the recruiter's judgment, empathy, and strategic intuition." },
+      card2: { title: "AI improves structure, consistency & speed", desc: "From candidate evaluation to client presentation, every step becomes faster, cleaner, and more reliable." },
+      card3: { title: "Premium experience for everyone", desc: "Both candidates and clients benefit from a more polished, transparent, and professional recruitment journey." }
     },
     miixeo: {
-      title: "Every candidate presented with more clarity, more depth, and more impact."
+      title: "Every candidate presented with more clarity, more depth, and more impact.",
+      dossier: {
+        title: "Structured, client-ready candidate dossiers.",
+        description: "TRIBU uses the Miixeo engine to generate structured, client-ready candidate dossiers. Each dossier includes a clear summary, positioning, and competency presentation that goes far beyond a standard CV. AI-based matching and scoring highlight fit with the role, while DISC personality profiling brings behavioral insight.",
+        match: "98% match",
+        tech: "Technical",
+        lead: "Leadership",
+        culture: "Culture fit"
+      },
+      automation: {
+        title: "It gets smarter. Automatically.",
+        description: "Dossiers can include direct interview booking options inside the presentation flow. The result is a cleaner, more convincing, more premium candidate submission that evolves and improves with every engagement."
+      },
+      grid: {
+        item1: "Competency dossier",
+        item2: "Match scoring",
+        item3: "DISC profile",
+        item4: "Interview booking",
+        item5: "Client-ready presentation",
+        item6: "AI-powered insights"
+      }
     },
     automation: {
       title: "Critical recruitment actions, intelligently automated.",
-      description: "TRIBU has automated key workflow steps to improve responsiveness, follow-up quality, market visibility, and consistency across every engagement."
+      description: "TRIBU has automated key workflow steps to improve responsiveness, follow-up quality, market visibility, and consistency across every engagement.",
+      card1: { title: "Client follow-up automation", desc: "Automated reminders and follow-up flows to reduce missed opportunities and improve responsiveness." },
+      card2: { title: "DISC personality analysis", desc: "AI-supported behavioral profiling to enrich candidate understanding with actionable personality insights." },
+      card3: { title: "Market monitoring", desc: "Ongoing talent market watch, demand signals, and positioning insights to stay ahead of hiring trends." },
+      card4: { title: "AI-powered positioning", desc: "Better candidate framing and sharper presentation aligned to client expectations and role requirements." },
+      card5: { title: "Workflow acceleration", desc: "Less admin friction, more recruiter focus on relationships and decision-making where it matters most." },
+      card6: { title: "Recruitment consistency", desc: "Repeatable premium quality across submissions, updates, and communication at every touchpoint." }
     },
     portal: {
       title: "A smarter candidate space, built for real operational life.",
-      description: "TRIBU does not stop at candidate placement. It provides a smart operational candidate portal designed to make mission follow-up smoother, clearer, and more modern."
+      description: "TRIBU does not stop at candidate placement. It provides a smart operational candidate portal designed to make mission follow-up smoother, clearer, and more modern.",
+      card1: { title: "Interactive timesheet calendar", desc: "Day-by-day worked days submission with a visual calendar interface." },
+      card2: { title: "Reduced payment delays", desc: "Better timesheet clarity means faster processing and fewer delays." },
+      card3: { title: "Secure document hub", desc: "Contracts, NDAs, and mission documents always accessible." },
+      card4: { title: "AI reminders & warnings", desc: "Smart alerts for upcoming actions or missing steps to keep missions on track." },
+      card5: { title: "Mission timeline visibility", desc: "Track progress, milestones, and remaining days at a glance." },
+      card6: { title: "Revenue estimation", desc: "See projected earnings based on your TJM and worked days." },
+      card7: { title: "Better transparency", desc: "Full visibility into economics, fees, and mission structure." },
+      mini1: "Smooth follow-up",
+      mini2: "Day-to-day clarity"
     },
     why: {
       title: "Better structure creates better recruitment outcomes.",
-      description: "TRIBU's AI layer improves the quality of delivery at multiple stages: candidate evaluation, presentation, follow-up, onboarding, and mission monitoring — creating compounding value throughout the entire recruitment lifecycle."
+      description: "TRIBU's AI layer improves the quality of delivery at multiple stages: candidate evaluation, presentation, follow-up, onboarding, and mission monitoring — creating compounding value throughout the entire recruitment lifecycle.",
+      stat1: { value: "Sharper", label: "Candidate positioning" },
+      stat2: { value: "Faster", label: "Submission workflows" },
+      stat3: { value: "Premium", label: "Client experience" },
+      stat4: { value: "Less", label: "Friction after placement" }
     },
     difference: {
       title: "Not a traditional recruitment firm. Not a generic AI tool.",
-      description: "TRIBU sits at the intersection of premium recruitment, intelligent automation, and modern talent operations. The promise is not \"more AI for the sake of AI\". The promise is a better recruitment experience for both clients and candidates."
+      description: "TRIBU sits at the intersection of premium recruitment, intelligent automation, and modern talent operations. The promise is not \"more AI for the sake of AI\". The promise is a better recruitment experience for both clients and candidates.",
+      card1: { title: "Premium candidate presentation", desc: "AI-powered competency dossiers that go far beyond raw CVs. Structured, scored, and client-ready from the first interaction." },
+      card2: { title: "Smarter recruiter operations", desc: "Automated follow-ups, market intelligence, and workflow acceleration that let recruiters focus on what humans do best — build relationships." },
+      card3: { title: "Better talent experience", desc: "A dedicated candidate portal with mission tracking, timesheet management, document access, and AI-powered reminders for seamless operations." }
+    },
+    cta: {
+      title: "See how TRIBU turns recruitment into a smarter system.",
+      description: "Discover how our AI-powered recruitment infrastructure helps present candidates better, automate key actions, and create a more fluid experience for clients and talent."
+    },
+    footer: {
+      copy: "© 2025 TRIBU — All rights reserved.",
+      privacy: "Privacy",
+      terms: "Terms",
+      contact: "Contact"
     }
   }
 };

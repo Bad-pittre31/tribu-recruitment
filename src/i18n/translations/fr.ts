@@ -330,31 +330,92 @@ export const fr = {
   },
   aiRecruitmentPage: {
     hero: {
+      badge: "Recrutement IA, à la manière TRIBU",
       title: "Le recrutement humain.\nAmplifié par l'intelligence des systèmes.",
-      description: "TRIBU combine l'expertise en recrutement, la présentation de candidats assistée par l'IA, l'automatisation des flux de travail et une expérience talent intelligente."
+      description: "TRIBU combine l'expertise en recrutement, la présentation de candidats assistée par l'IA, l'automatisation des flux de travail et une expérience talent intelligente pour livrer des résultats plus rapides et plus précis.",
+      trust: {
+        item1: "Dossiers candidats enrichis par l'IA",
+        item2: "Flux de recrutement automatisés",
+        item3: "Portail candidat intelligent"
+      }
     },
     approach: {
       title: "L'IA ne remplace pas le recrutement. Elle le sublime.",
-      description: "TRIBU utilise l'IA pour améliorer la précision, la rapidité, la clarté et la qualité du suivi, tout en gardant le jugement humain au centre."
+      description: "TRIBU utilise l'IA pour améliorer la précision, la rapidité, la clarté et la qualité du suivi — tout en gardant le jugement, la relation et l'intuition du recruteur au centre de chaque décision.",
+      card1: { title: "La décision humaine reste centrale", desc: "L'IA assiste et améliore — elle ne remplace jamais le jugement, l'empathie et l'intuition stratégique du recruteur." },
+      card2: { title: "L'IA améliore la structure et la vitesse", desc: "De l'évaluation du candidat à la présentation client, chaque étape devient plus rapide, plus claire et plus fiable." },
+      card3: { title: "Expérience premium pour tous", desc: "Les candidats comme les clients bénéficient d'un parcours de recrutement plus soigné, transparent et professionnel." }
     },
     miixeo: {
-      title: "Chaque candidat présenté avec plus de clarté, de profondeur et d'impact."
+      title: "Chaque candidat présenté avec plus de clarté, de profondeur et d'impact.",
+      dossier: {
+        title: "Dossiers candidats structurés et prêts pour le client.",
+        description: "TRIBU utilise le moteur Miixeo pour générer des dossiers candidats structurés. Chaque dossier inclut un résumé clair, le positionnement et une présentation des compétences qui va bien au-delà d'un simple CV. Le matching IA et le scoring mettent en avant l'adéquation au poste, tandis que le profilage DISC apporte un éclairage comportemental.",
+        match: "Matching 98%",
+        tech: "Technique",
+        lead: "Leadership",
+        culture: "Culture fit"
+      },
+      automation: {
+        title: "Le système devient plus intelligent. Automatiquement.",
+        description: "Les dossiers peuvent inclure des options de prise de rendez-vous directes. Le résultat est une soumission de candidat plus propre, plus convaincante et plus premium qui évolue à chaque interaction."
+      },
+      grid: {
+        item1: "Dossier de compétences",
+        item2: "Scoring de matching",
+        item3: "Profil DISC",
+        item4: "Réservation d'entretien",
+        item5: "Présentation prête pour le client",
+        item6: "Insights propulsés par l'IA"
+      }
     },
     automation: {
       title: "Actions critiques, intelligemment automatisées.",
-      description: "TRIBU automatise les étapes clés pour améliorer la réactivité, la qualité du suivi et la visibilité du marché."
+      description: "TRIBU a automatisé les étapes clés pour améliorer la réactivité, la qualité du suivi, la visibilité du marché et la cohérence de chaque mission.",
+      card1: { title: "Automatisation du suivi client", desc: "Rappels et flux de suivi automatisés pour réduire les opportunités manquées et améliorer la réactivité." },
+      card2: { title: "Analyse de personnalité DISC", desc: "Profilage comportemental assisté par l'IA pour enrichir la compréhension des candidats avec des insights exploitables." },
+      card3: { title: "Veille de marché", desc: "Surveillance continue du marché des talents, des signaux de demande et des insights de positionnement." },
+      card4: { title: "Positionnement par IA", desc: "Meilleur cadrage des candidats et présentation alignée sur les attentes du client et les exigences du poste." },
+      card5: { title: "Accélération des flux", desc: "Moins de friction administrative, plus de focus du recruteur sur la relation et la prise de décision." },
+      card6: { title: "Cohérence du recrutement", desc: "Qualité premium reproductible sur les soumissions, les mises à jour et la communication à chaque point de contact." }
     },
     portal: {
       title: "Un espace candidat plus intelligent, conçu pour la réalité opérationnelle.",
-      description: "TRIBU ne s'arrête pas au placement. Nous offrons un portail opérationnel intelligent pour rendre le suivi de mission plus fluide."
+      description: "TRIBU ne s'arrête pas au placement. Nous offrons un portail opérationnel intelligent pour rendre le suivi de mission plus fluide, clair et moderne.",
+      card1: { title: "Calendrier de CRA interactif", desc: "Saisie des jours travaillés jour après jour via une interface calendrier visuelle." },
+      card2: { title: "Délais de paiement réduits", desc: "Une meilleure clarté des feuilles de temps signifie un traitement plus rapide et moins de retards." },
+      card3: { title: "Hub de documents sécurisé", desc: "Contrats, NDA et documents de mission toujours accessibles." },
+      card4: { title: "Rappels et alertes IA", desc: "Alertes intelligentes pour les actions à venir ou les étapes manquantes pour garder les missions sur les rails." },
+      card5: { title: "Visibilité sur la timeline", desc: "Suivez la progression, les jalons et les jours restants en un coup d'œil." },
+      card6: { title: "Estimation de revenus", desc: "Consultez vos gains projetés basés sur votre TJM et vos jours travaillés." },
+      card7: { title: "Meilleure transparence", desc: "Visibilité complète sur l'économie, les frais et la structure de la mission." },
+      mini1: "Suivi fluide",
+      mini2: "Clarté au quotidien"
     },
     why: {
       title: "Une meilleure structure crée de meilleurs résultats de recrutement.",
-      description: "La couche IA de TRIBU améliore la qualité de la livraison à chaque étape, créant une valeur exponentielle tout au long du cycle de recrutement."
+      description: "La couche IA de TRIBU améliore la qualité de la livraison à plusieurs étapes : évaluation, présentation, suivi, onboarding et monitoring de mission — créant une valeur exponentielle.",
+      stat1: { value: "Précis", label: "Positionnement candidat" },
+      stat2: { value: "Rapide", label: "Flux de soumission" },
+      stat3: { value: "Premium", label: "Expérience client" },
+      stat4: { value: "Fluide", label: "Suivi post-placement" }
     },
     difference: {
       title: "Ni un cabinet traditionnel. Ni un simple outil IA.",
-      description: "TRIBU se situe à l'intersection du recrutement premium, de l'automatisation intelligente et des opérations de talent modernes."
+      description: "TRIBU se situe à l'intersection du recrutement premium, de l'automatisation intelligente et des opérations de talent modernes. La promesse n'est pas \"plus d'IA pour l'IA\", mais une meilleure expérience pour tous.",
+      card1: { title: "Présentation candidat premium", desc: "Dossiers de compétences propulsés par l'IA qui vont bien au-delà du CV brut. Structurés, scorés et prêts pour le client." },
+      card2: { title: "Opérations recruteur intelligentes", desc: "Suivis automatisés, intelligence de marché et accélération des flux pour se concentrer sur l'humain." },
+      card3: { title: "Meilleure expérience talent", desc: "Un portail candidat dédié avec suivi de mission, gestion de CRA, accès aux documents et rappels IA." }
+    },
+    cta: {
+      title: "Découvrez comment TRIBU transforme le recrutement en un système intelligent.",
+      description: "Découvrez comment notre infrastructure de recrutement propulsée par l'IA aide à mieux présenter les candidats, automatiser les actions clés et créer une expérience plus fluide."
+    },
+    footer: {
+      copy: "© 2025 TRIBU — Tous droits réservés.",
+      privacy: "Confidentialité",
+      terms: "CGU",
+      contact: "Contact"
     }
   }
 };
