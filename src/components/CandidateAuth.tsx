@@ -16,9 +16,18 @@ export function CandidateAuth() {
     const [loading, setLoading] = useState(false);
 
     // If already authenticated, redirect
-    if (!authLoading && user) {
-        navigate('/candidate-space/dashboard', { replace: true });
-        return null;
+    React.useEffect(() => {
+        if (!authLoading && user) {
+            navigate('/candidate-space/dashboard', { replace: true });
+        }
+    }, [authLoading, user, navigate]);
+
+    if (authLoading) {
+        return (
+            <div className="min-h-screen bg-[#F7F9F5] flex items-center justify-center font-[Inter,ui-sans-serif,system-ui,sans-serif]">
+                <div className="text-sm font-medium text-gray-400 uppercase tracking-widest animate-pulse">Loading...</div>
+            </div>
+        );
     }
 
     const handleSubmit = async (e: React.FormEvent) => {
