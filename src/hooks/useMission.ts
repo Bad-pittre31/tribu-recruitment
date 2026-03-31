@@ -23,17 +23,23 @@ export function useMission() {
         if (!user) { setLoading(false); return; }
 
         async function fetch() {
-            const { data } = await supabase
-                .from('missions')
-                .select('*')
-                .eq('user_id', user!.id)
-                .eq('mission_status', 'active')
-                .order('created_at', { ascending: false })
-                .limit(1)
-                .single();
+            try {
+                const { data, error } = await supabase
+                    .from('missions')
+                    .select('*')
+                    .eq('user_id', user!.id)
+                    .eq('mission_status', 'active')
+                    .order('created_at', { ascending: false })
+                    .limit(1)
+                    .single();
 
-            setMission(data as Mission | null);
-            setLoading(false);
+                if (error && error.code !== 'PGRST116') throw error;
+                setMission(data as Mission | null);
+            } catch (err) {
+                console.error('Fetch mission error:', err);
+            } finally {
+                setLoading(false);
+            }
         }
         fetch();
     }, [user]);

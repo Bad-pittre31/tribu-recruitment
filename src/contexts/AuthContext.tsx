@@ -30,39 +30,63 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
     // Fetch profile for a given user
     async function fetchProfile(userId: string) {
-        const { data } = await supabase
-            .from('profiles')
-            .select('*')
-            .eq('id', userId)
-            .single();
-        setProfile(data as Profile | null);
+        try {
+            const { data, error } = await supabase
+                .from('profiles')
+                .select('*')
+                .eq('id', userId)
+                .single();
+            
+            if (error) {
+                console.warn('Profile fetch error:', error);
+                setProfile(null);
+            } else {
+                setProfile(data as Profile | null);
+            }
+        } catch (err) {
+            console.error('Unexpected profile fetch error:', err);
+            setProfile(null);
+        }
     }
 
     useEffect(() => {
-        // Get initial session
-        supabase.auth.getSession()
-            .then(({ data: { session: s } }) => {
-                setSession(s);
-                setUser(s?.user ?? null);
-                if (s?.user) {
-                    fetchProfile(s.user.id);
+        let isMounted = true;
+
+        async function initializeAuth() {
+            try {
+                const { data: { session: s }, error } = await supabase.auth.getSession();
+                
+                if (error) throw error;
+
+                if (isMounted) {
+                    setSession(s);
+                    setUser(s?.user ?? null);
+                    if (s?.user) {
+                        await fetchProfile(s.user.id);
+                    }
                 }
-            })
-            .catch(err => {
+            } catch (err) {
                 console.error("Supabase getSession error:", err);
-                setUser(null);
-                setSession(null);
-            })
-            .finally(() => {
-                setLoading(false);
-            });
+                if (isMounted) {
+                    setUser(null);
+                    setSession(null);
+                }
+            } finally {
+                if (isMounted) setLoading(false);
+            }
+        }
+
+        initializeAuth();
 
         // Listen for auth changes
         const { data: { subscription } } = supabase.auth.onAuthStateChange(
             async (_event, s) => {
                 try {
+                    if (!isMounted) return;
+                    
                     setSession(s);
                     setUser(s?.user ?? null);
+                    
                     if (s?.user) {
                         await fetchProfile(s.user.id);
                     } else {
@@ -71,12 +95,15 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
                 } catch (err) {
                     console.error("Auth state change error:", err);
                 } finally {
-                    setLoading(false);
+                    if (isMounted) setLoading(false);
                 }
             }
         );
 
-        return () => subscription.unsubscribe();
+        return () => {
+            isMounted = false;
+            subscription.unsubscribe();
+        };
     }, []);
 
     async function signIn(email: string, password: string) {

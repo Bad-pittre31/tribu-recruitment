@@ -20,14 +20,25 @@ export function useDocuments() {
     const [uploading, setUploading] = useState(false);
 
     const fetchDocuments = useCallback(async () => {
-        if (!user) return;
-        const { data } = await supabase
-            .from('documents')
-            .select('*')
-            .eq('user_id', user.id)
-            .order('created_at', { ascending: false });
-        setDocuments((data as Document[]) || []);
-        setLoading(false);
+        if (!user) {
+            setLoading(false);
+            return;
+        }
+
+        try {
+            const { data, error } = await supabase
+                .from('documents')
+                .select('*')
+                .eq('user_id', user.id)
+                .order('created_at', { ascending: false });
+            
+            if (error) throw error;
+            setDocuments((data as Document[]) || []);
+        } catch (err) {
+            console.error('Fetch documents error:', err);
+        } finally {
+            setLoading(false);
+        }
     }, [user]);
 
     useEffect(() => {

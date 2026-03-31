@@ -31,47 +31,58 @@ export function useCRA() {
     const currentYear = now.getFullYear();
 
     const fetchOrCreateCRA = useCallback(async () => {
-        if (!user) return;
+        if (!user) {
+            setLoading(false);
+            return;
+        }
 
-        // Try to fetch existing CRA for current month
-        let { data: existing } = await supabase
-            .from('cra_submissions')
-            .select('*')
-            .eq('user_id', user.id)
-            .eq('month', currentMonth)
-            .eq('year', currentYear)
-            .single();
-
-        // Create if not exists
-        if (!existing) {
-            const { data: created } = await supabase
+        try {
+            // Try to fetch existing CRA for current month
+            let { data: existing, error: fetchError } = await supabase
                 .from('cra_submissions')
-                .insert({
-                    user_id: user.id,
-                    month: currentMonth,
-                    year: currentYear,
-                    status: 'draft',
-                    expected_days: 20,
-                    worked_days: 0,
-                })
-                .select()
-                .single();
-            existing = created;
-        }
-
-        if (existing) {
-            setSubmission(existing as CRASubmission);
-
-            // Fetch days
-            const { data: dayData } = await supabase
-                .from('cra_days')
                 .select('*')
-                .eq('cra_submission_id', existing.id)
-                .order('day_date', { ascending: true });
-            setDays((dayData as CRADay[]) || []);
-        }
+                .eq('user_id', user.id)
+                .eq('month', currentMonth)
+                .eq('year', currentYear)
+                .single();
 
-        setLoading(false);
+            // Create if not exists
+            if (!existing && (fetchError?.code === 'PGRST116' || !fetchError)) {
+                const { data: created, error: insertError } = await supabase
+                    .from('cra_submissions')
+                    .insert({
+                        user_id: user.id,
+                        month: currentMonth,
+                        year: currentYear,
+                        status: 'draft',
+                        expected_days: 20,
+                        worked_days: 0,
+                    })
+                    .select()
+                    .single();
+                
+                if (insertError) throw insertError;
+                existing = created;
+            }
+
+            if (existing) {
+                setSubmission(existing as CRASubmission);
+
+                // Fetch days
+                const { data: dayData, error: daysError } = await supabase
+                    .from('cra_days')
+                    .select('*')
+                    .eq('cra_submission_id', existing.id)
+                    .order('day_date', { ascending: true });
+                
+                if (daysError) throw daysError;
+                setDays((dayData as CRADay[]) || []);
+            }
+        } catch (err) {
+            console.error('CRA fetch/create error:', err);
+        } finally {
+            setLoading(false);
+        }
     }, [user, currentMonth, currentYear]);
 
     useEffect(() => {

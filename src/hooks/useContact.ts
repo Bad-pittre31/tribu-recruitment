@@ -20,15 +20,21 @@ export function useContact() {
         if (!user) { setLoading(false); return; }
 
         async function fetch() {
-            const { data } = await supabase
-                .from('tribu_contacts')
-                .select('*')
-                .eq('user_id', user!.id)
-                .limit(1)
-                .single();
+            try {
+                const { data, error } = await supabase
+                    .from('tribu_contacts')
+                    .select('*')
+                    .eq('user_id', user!.id)
+                    .limit(1)
+                    .single();
 
-            setContact(data as TribuContact | null);
-            setLoading(false);
+                if (error && error.code !== 'PGRST116') throw error;
+                setContact(data as TribuContact | null);
+            } catch (err) {
+                console.error('Fetch contact error:', err);
+            } finally {
+                setLoading(false);
+            }
         }
         fetch();
     }, [user]);
