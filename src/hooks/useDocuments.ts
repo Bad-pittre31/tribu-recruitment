@@ -34,7 +34,7 @@ export function useDocuments() {
         fetchDocuments();
     }, [fetchDocuments]);
 
-    async function uploadDocument(file: File, docType: string = 'other') {
+    async function uploadDocument(file: File, docType: string = 'other', missionId?: string) {
         if (!user) return;
         setUploading(true);
 
@@ -51,14 +51,15 @@ export function useDocuments() {
             return;
         }
 
-        // Get public URL
+        // Get public URL (though we use download for private bucket)
         const { data: urlData } = supabase.storage
             .from('documents')
             .getPublicUrl(filePath);
 
         // Insert metadata row
-        await supabase.from('documents').insert({
+        const { error: dbError } = await supabase.from('documents').insert({
             user_id: user.id,
+            mission_id: missionId || null,
             document_name: file.name,
             document_type: docType,
             file_path: filePath,
@@ -66,6 +67,10 @@ export function useDocuments() {
             uploaded_by: 'freelancer',
             status: 'available',
         });
+
+        if (dbError) {
+            console.error('Database metadata error:', dbError);
+        }
 
         await fetchDocuments();
         setUploading(false);

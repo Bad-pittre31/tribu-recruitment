@@ -224,6 +224,7 @@ function EconomicsCard() {
 
 function DocumentCenter() {
     const { documents, loading, uploading, uploadDocument, downloadDocument } = useDocuments();
+    const { mission } = useMission();
     const [isDragOver, setIsDragOver] = useState(false);
     const fileInputRef = useRef<HTMLInputElement>(null);
     const { t } = useTranslation();
@@ -238,12 +239,12 @@ function DocumentCenter() {
         e.preventDefault();
         setIsDragOver(false);
         const files = Array.from(e.dataTransfer.files) as File[];
-        files.forEach(f => uploadDocument(f));
-    }, [uploadDocument]);
+        files.forEach(f => uploadDocument(f, 'other', mission?.id));
+    }, [uploadDocument, mission]);
 
     const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
         const files = Array.from(e.target.files || []) as File[];
-        files.forEach(f => uploadDocument(f));
+        files.forEach(f => uploadDocument(f, 'other', mission?.id));
     };
 
     return (
