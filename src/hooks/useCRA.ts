@@ -37,33 +37,25 @@ export function useCRA() {
         }
 
         try {
-            // Try to fetch existing CRA for current month
-            let { data: existing, error: fetchError } = await supabase
+            // Use upsert to handle race conditions (avoids 409 Conflict)
+            const { data: upserted, error: upsertError } = await supabase
                 .from('cra_submissions')
-                .select('*')
-                .eq('user_id', user.id)
-                .eq('month', currentMonth)
-                .eq('year', currentYear)
+                .upsert({
+                    user_id: user.id,
+                    month: currentMonth,
+                    year: currentYear,
+                    status: 'draft',
+                    expected_days: 20,
+                    // worked_days: 0, // Don't reset if it already exists
+                }, {
+                    onConflict: 'user_id, month, year',
+                    ignoreDuplicates: false // We want the data back
+                })
+                .select()
                 .single();
 
-            // Create if not exists
-            if (!existing && (fetchError?.code === 'PGRST116' || !fetchError)) {
-                const { data: created, error: insertError } = await supabase
-                    .from('cra_submissions')
-                    .insert({
-                        user_id: user.id,
-                        month: currentMonth,
-                        year: currentYear,
-                        status: 'draft',
-                        expected_days: 20,
-                        worked_days: 0,
-                    })
-                    .select()
-                    .single();
-                
-                if (insertError) throw insertError;
-                existing = created;
-            }
+            if (upsertError) throw upsertError;
+            let existing = upserted;
 
             if (existing) {
                 setSubmission(existing as CRASubmission);
