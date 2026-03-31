@@ -124,7 +124,8 @@ export function useCRA() {
 
         const workedCount = days.filter(d => d.day_status === 'worked').length;
 
-        await supabase
+        // 1. Update database
+        const { error: updateError } = await supabase
             .from('cra_submissions')
             .update({
                 status: 'submitted',
@@ -132,6 +133,22 @@ export function useCRA() {
                 submitted_at: new Date().toISOString(),
             })
             .eq('id', submission.id);
+
+        if (updateError) {
+            console.error('Error submitting CRA:', updateError);
+            setSubmitting(false);
+            return;
+        }
+
+        // 2. Trigger Email Automation (Edge Function)
+        try {
+            await supabase.functions.invoke('send-cra-submission-email', {
+                body: { submissionId: submission.id }
+            });
+        } catch (err) {
+            console.error('Failed to trigger email automation:', err);
+            // We don't block the user flow if email automation fails
+        }
 
         setSubmission(prev => prev ? {
             ...prev,
