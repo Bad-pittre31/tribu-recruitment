@@ -92,67 +92,73 @@ export function useCRA() {
     async function toggleDay(date: string) {
         if (!submission || submission.status === 'submitted') return;
 
-        const existingDay = days.find(d => d.day_date === date);
+        try {
+            const existingDay = days.find(d => d.day_date === date);
+            let nextDays = [...days];
 
-        if (existingDay) {
-            // Toggle: worked → empty → delete
-            if (existingDay.day_status === 'worked') {
-                await supabase.from('cra_days').delete().eq('id', existingDay.id);
-                setDays(prev => prev.filter(d => d.id !== existingDay.id));
-            }
-        } else {
-            // Create new worked day
-            const { data } = await supabase
-                .from('cra_days')
-                .insert({
-                    cra_submission_id: submission.id,
-                    day_date: date,
-                    day_status: 'worked',
-                })
-                .select()
-                .single();
+            if (existingDay) {
+                // Toggle: worked → delete
+                if (existingDay.day_status === 'worked') {
+                    const { error } = await supabase.from('cra_days').delete().eq('id', existingDay.id);
+                    if (error) throw error;
+                    nextDays = days.filter(d => d.id !== existingDay.id);
+                    setDays(nextDays);
+                }
+            } else {
+                // Create new worked day
+                const { data, error } = await supabase
+                    .from('cra_days')
+                    .insert({
+                        cra_submission_id: submission.id,
+                        day_date: date,
+                        day_status: 'worked',
+                    })
+                    .select()
+                    .single();
 
-            if (data) {
-                setDays(prev => [...prev, data as CRADay]);
+                if (error) throw error;
+                if (data) {
+                    nextDays = [...days, data as CRADay];
+                    setDays(nextDays);
+                }
             }
+
+            // Update worked_days count based on latest state
+            const workedCount = nextDays.filter(d => d.day_status === 'worked').length;
+            
+            const { error: subError } = await supabase
+                .from('cra_submissions')
+                .update({ worked_days: workedCount })
+                .eq('id', submission.id);
+            
+            if (subError) throw subError;
+            setSubmission(prev => prev ? { ...prev, worked_days: workedCount } : null);
+
+        } catch (err) {
+            console.error('Error toggling day:', err);
         }
-
-        // Update worked_days count
-        const newCount = days.filter(d => d.day_status === 'worked' && d.day_date !== date).length +
-            (existingDay ? 0 : 1);
-
-        await supabase
-            .from('cra_submissions')
-            .update({ worked_days: newCount })
-            .eq('id', submission.id);
-
-        setSubmission(prev => prev ? { ...prev, worked_days: newCount } : null);
     }
 
     async function submitCRA() {
         if (!submission) return;
         setSubmitting(true);
 
-        const workedCount = days.filter(d => d.day_status === 'worked').length;
-
-        // 1. Update database
-        const { error: updateError } = await supabase
-            .from('cra_submissions')
-            .update({
-                status: 'submitted',
-                worked_days: workedCount,
-                submitted_at: new Date().toISOString(),
-            })
-            .eq('id', submission.id);
-
-        if (updateError) {
-            console.error('Error submitting CRA:', updateError);
-            setSubmitting(false);
-            return;
-        }
-
-        // 2. Trigger Email Automation (Edge Function)
         try {
+            const workedCount = days.filter(d => d.day_status === 'worked').length;
+
+            // 1. Update database
+            const { error: updateError } = await supabase
+                .from('cra_submissions')
+                .update({
+                    status: 'submitted',
+                    worked_days: workedCount,
+                    submitted_at: new Date().toISOString(),
+                })
+                .eq('id', submission.id);
+
+            if (updateError) throw updateError;
+
+            // 2. Trigger Email Automation (Edge Function)
             console.log('Invoking email automation for submission:', submission.id);
             const { data, error: functionError } = await supabase.functions.invoke('send-cra-submission-email', {
                 body: { submissionId: submission.id }
@@ -162,43 +168,49 @@ export function useCRA() {
                 console.error('Edge Function Invocation Error:', functionError);
             } else if (data && data.error) {
                 console.error('Edge Function Logic Error:', data.error);
-                console.error('Error Details:', data.details || 'No details provided');
             } else {
                 console.log('Email automation triggered successfully:', data);
             }
+
+            setSubmission(prev => prev ? {
+                ...prev,
+                status: 'submitted',
+                worked_days: workedCount,
+                submitted_at: new Date().toISOString(),
+            } : null);
+
         } catch (err) {
-            console.error('Unexpected error during email trigger:', err);
+            console.error('Error submitting CRA:', err);
+        } finally {
+            setSubmitting(false);
         }
-
-        setSubmission(prev => prev ? {
-            ...prev,
-            status: 'submitted',
-            worked_days: workedCount,
-            submitted_at: new Date().toISOString(),
-        } : null);
-
-        setSubmitting(false);
     }
 
     async function unlockCRA() {
         if (!submission || submission.status !== 'submitted') return;
         setSubmitting(true);
 
-        await supabase
-            .from('cra_submissions')
-            .update({
+        try {
+            const { error } = await supabase
+                .from('cra_submissions')
+                .update({
+                    status: 'draft',
+                    submitted_at: null,
+                })
+                .eq('id', submission.id);
+
+            if (error) throw error;
+
+            setSubmission(prev => prev ? {
+                ...prev,
                 status: 'draft',
                 submitted_at: null,
-            })
-            .eq('id', submission.id);
-
-        setSubmission(prev => prev ? {
-            ...prev,
-            status: 'draft',
-            submitted_at: null,
-        } : null);
-
-        setSubmitting(false);
+            } : null);
+        } catch (err) {
+            console.error('Error unlocking CRA:', err);
+        } finally {
+            setSubmitting(false);
+        }
     }
 
     return {
