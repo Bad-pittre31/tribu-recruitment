@@ -290,7 +290,12 @@ function DocumentCenter() {
                                         {doc.type === 'contract' ? <Shield className="w-4 h-4" /> : <FileText className="w-4 h-4" />}
                                     </div>
                                     <div>
-                                        <div className="text-sm font-medium text-gray-900">{doc.document_name}</div>
+                                        <div className="flex items-center gap-2">
+                                            <div className="text-sm font-medium text-gray-900">{doc.document_name}</div>
+                                            {doc.uploaded_by === 'tribu' && (
+                                                <span className="px-1.5 py-0.5 rounded text-[8px] font-bold bg-[#172008] text-white uppercase tracking-tighter">TRIBU</span>
+                                            )}
+                                        </div>
                                         <div className="text-[11px] text-gray-400">{new Date(doc.created_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</div>
                                     </div>
                                 </div>
