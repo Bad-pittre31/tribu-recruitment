@@ -147,14 +147,16 @@ export function useCRA() {
                 body: { submissionId: submission.id }
             });
 
-            if (functionError || (data && data.error)) {
-                console.error('Edge Function Error:', functionError || data.error, data);
+            if (functionError) {
+                console.error('Edge Function Invocation Error:', functionError);
+            } else if (data && data.error) {
+                console.error('Edge Function Logic Error:', data.error);
+                console.error('Error Details:', data.details || 'No details provided');
             } else {
                 console.log('Email automation triggered successfully:', data);
             }
         } catch (err) {
-            console.error('Failed to trigger email automation:', err);
-            // We don't block the user flow if email automation fails
+            console.error('Unexpected error during email trigger:', err);
         }
 
         setSubmission(prev => prev ? {
