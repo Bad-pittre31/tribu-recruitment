@@ -10,7 +10,6 @@ const corsHeaders = {
 }
 
 serve(async (req) => {
-  // Handle CORS
   if (req.method === 'OPTIONS') {
     return new Response('ok', { headers: corsHeaders })
   }
@@ -22,48 +21,69 @@ serve(async (req) => {
     )
 
     const { submissionId } = await req.json()
-    console.log(`Processing report for submission: ${submissionId}`)
+    console.log(`Processing CRA submission: ${submissionId}`)
 
-    // 1. Fetch data: CRA + Profile (Candidate) + Mission (Client)
+    if (!submissionId) {
+      throw new Error('submissionId is required')
+    }
+
+    // 1. Fetch data with improved join syntax
+    // Testing if 'profiles' or 'profiles:user_id' is needed. 
+    // Usually table name is fine if FK is explicit.
     const { data: submission, error: subError } = await supabaseClient
       .from('cra_submissions')
       .select(`
         *,
-        profiles:user_id (email, first_name, last_name),
-        missions:mission_id (client_name)
+        profiles (email, first_name, last_name),
+        missions (client_name)
       `)
       .eq('id', submissionId)
       .single()
 
-    if (subError || !submission) {
-      console.error('Error fetching submission:', subError)
-      throw new Error('CRA Submission not found')
+    if (subError) {
+      console.error('Supabase query error:', subError)
+      return new Response(
+        JSON.stringify({ error: 'Supabase query failed', details: subError.message, code: subError.code }),
+        { headers: { ...corsHeaders, 'Content-Type': 'application/json' }, status: 400 }
+      )
+    }
+
+    if (!submission) {
+      return new Response(
+        JSON.stringify({ error: 'CRA Submission not found in database' }),
+        { headers: { ...corsHeaders, 'Content-Type': 'application/json' }, status: 400 }
+      )
     }
 
     const profile = submission.profiles
     const mission = submission.missions
 
-    // 2. Format localized month name (French)
+    if (!profile) {
+      return new Response(
+        JSON.stringify({ error: 'Candidate profile not found' }),
+        { headers: { ...corsHeaders, 'Content-Type': 'application/json' }, status: 400 }
+      )
+    }
+
     const monthNames = [
       "Janvier", "Février", "Mars", "Avril", "Mai", "Juin",
       "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"
     ]
     const monthName = monthNames[submission.month - 1]
 
-    // 3. Prepare variables for Resend Templates
     const emailVariables = {
       full_name: `${profile.first_name} ${profile.last_name}`,
       first_name: profile.first_name,
       month_name: monthName,
       year: submission.year,
       worked_days: submission.worked_days,
-      client_name: mission ? mission.client_name : 'TRIBU Mission'
+      client_name: mission ? mission.client_name : 'TRIBU'
     }
 
-    console.log('Sending emails with variables:', emailVariables)
+    console.log('Sending emails with variables:', JSON.stringify(emailVariables))
 
-    // 4. Send Internal Email to TRIBU
-    const internalEmail = await fetch('https://api.resend.com/emails', {
+    // 2. Send Internal Email
+    const internalRes = await fetch('https://api.resend.com/emails', {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${RESEND_API_KEY}`,
@@ -73,16 +93,23 @@ serve(async (req) => {
         from: 'TRIBU – Candidate Portal <noreply@wearetribu.fr>',
         to: [TRIBU_NOTIFICATION_EMAIL],
         subject: `CRA soumis – ${emailVariables.full_name} – ${emailVariables.month_name} ${emailVariables.year}`,
+        // Mapping for Resend Dashboard Templates
         template_id: 'cra-submitted-internal',
         data: emailVariables
       })
     })
 
-    const internalData = await internalEmail.json()
-    if (!internalEmail.ok) throw new Error(`Internal email failed: ${JSON.stringify(internalData)}`)
+    const internalData = await internalRes.json()
+    if (!internalRes.ok) {
+      console.error('Resend Internal Error:', internalData)
+      return new Response(
+        JSON.stringify({ error: 'Failed to send internal email via Resend', details: internalData }),
+        { headers: { ...corsHeaders, 'Content-Type': 'application/json' }, status: 400 }
+      )
+    }
 
-    // 5. Send Confirmation Email to Candidate
-    const candidateEmail = await fetch('https://api.resend.com/emails', {
+    // 3. Send Candidate Email
+    const candidateRes = await fetch('https://api.resend.com/emails', {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${RESEND_API_KEY}`,
@@ -97,8 +124,14 @@ serve(async (req) => {
       })
     })
 
-    const candidateData = await candidateEmail.json()
-    if (!candidateEmail.ok) throw new Error(`Candidate email failed: ${JSON.stringify(candidateData)}`)
+    const candidateData = await candidateRes.json()
+    if (!candidateRes.ok) {
+      console.error('Resend Candidate Error:', candidateData)
+      return new Response(
+        JSON.stringify({ error: 'Failed to send candidate email via Resend', details: candidateData }),
+        { headers: { ...corsHeaders, 'Content-Type': 'application/json' }, status: 400 }
+      )
+    }
 
     return new Response(
       JSON.stringify({ success: true, internalId: internalData.id, candidateId: candidateData.id }),
@@ -106,9 +139,9 @@ serve(async (req) => {
     )
 
   } catch (error) {
-    console.error('Edge Function Error:', error.message)
+    console.error('Uncaught Edge Function Error:', error.message)
     return new Response(
-      JSON.stringify({ error: error.message }),
+      JSON.stringify({ error: 'Unexpected server error', message: error.message }),
       { headers: { ...corsHeaders, 'Content-Type': 'application/json' }, status: 400 }
     )
   }

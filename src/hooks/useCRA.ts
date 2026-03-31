@@ -142,9 +142,16 @@ export function useCRA() {
 
         // 2. Trigger Email Automation (Edge Function)
         try {
-            await supabase.functions.invoke('send-cra-submission-email', {
+            console.log('Invoking email automation for submission:', submission.id);
+            const { data, error: functionError } = await supabase.functions.invoke('send-cra-submission-email', {
                 body: { submissionId: submission.id }
             });
+
+            if (functionError || (data && data.error)) {
+                console.error('Edge Function Error:', functionError || data.error, data);
+            } else {
+                console.log('Email automation triggered successfully:', data);
+            }
         } catch (err) {
             console.error('Failed to trigger email automation:', err);
             // We don't block the user flow if email automation fails
