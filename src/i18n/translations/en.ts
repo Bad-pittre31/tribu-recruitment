@@ -208,6 +208,7 @@ export const en = {
     contact: "Your TRIBU Contact",
     noContact: "No contact assigned yet.",
     sendMessage: "Send message",
+    takeAppointment: "Book a meeting",
   },
   legal: {
     notice: {

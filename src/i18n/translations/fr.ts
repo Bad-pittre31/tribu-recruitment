@@ -198,6 +198,7 @@ export const fr = {
     contact: "Votre Contact TRIBU",
     noContact: "Aucun contact assigné pour le moment.",
     sendMessage: "Envoyer un message",
+    takeAppointment: "Prendre RDV",
   },
   legal: {
     notice: {
