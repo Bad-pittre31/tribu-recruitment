@@ -485,42 +485,59 @@ function NextActions() {
 // ─── TRIBU Contact ───────────────────────────────────────────────────────────
 
 function TribuContactCard() {
-    const { contact, loading } = useContact();
     const { t } = useTranslation();
-
-    if (loading) return <DashCard delay={0.45}><CardLabel>{t('dashboard.contact')}</CardLabel><div className="animate-pulse h-24 bg-gray-50 rounded-xl" /></DashCard>;
-    if (!contact) return <DashCard delay={0.45}><CardLabel>{t('dashboard.contact')}</CardLabel><EmptyState text={t('dashboard.noContact')} /></DashCard>;
-
-    const initials = contact.contact_name.split(' ').map(n => n[0]).join('');
+    
+    const contact = {
+        name: "Raphael Paya",
+        role: "Talent Partner",
+        email: "contact@tribu-recruitment.com",
+        phone: "0601770261",
+        calendly: "https://calendly.com/paya-raphael-camille"
+    };
 
     return (
         <DashCard delay={0.45}>
             <CardLabel>{t('dashboard.contact')}</CardLabel>
             <div className="flex items-center gap-4 mb-6">
                 <div className="w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-sm"
-                    style={{ background: 'linear-gradient(135deg, #2a3a12 0%, #4a6a24 100%)' }}
+                    style={{ background: 'linear-gradient(135deg, #172008 0%, #2a3a12 100%)' }}
                 >
-                    {initials}
+                    RP
                 </div>
                 <div>
-                    <div className="font-semibold text-gray-900">{contact.contact_name}</div>
-                    <div className="text-xs text-gray-400">{contact.contact_role}</div>
+                    <div className="font-semibold text-gray-900">{contact.name}</div>
+                    <div className="text-xs text-gray-400">{contact.role}</div>
                 </div>
             </div>
-            <div className="text-sm text-gray-500 mb-6">{contact.contact_email}</div>
-            <div className="flex gap-3">
+            
+            <div className="space-y-3 mb-6">
+                <div className="flex items-center gap-2 text-sm text-gray-500">
+                    <Send className="w-3.5 h-3.5 text-gray-300" />
+                    <a href={`mailto:${contact.email}`} className="hover:text-[#172008] transition-colors">{contact.email}</a>
+                </div>
+                <div className="flex items-center gap-2 text-sm text-gray-500">
+                    <Phone className="w-3.5 h-3.5 text-gray-300" />
+                    <a href={`tel:${contact.phone}`} className="hover:text-[#172008] transition-colors">{contact.phone}</a>
+                </div>
+            </div>
+
+            <div className="flex flex-col gap-2">
                 <a
-                    href={`mailto:${contact.contact_email}`}
-                    className="flex-1 py-2.5 rounded-xl text-sm font-medium bg-[#172008] text-white hover:bg-[#1e2a0e] transition-colors flex items-center justify-center gap-2"
+                    href={contact.calendly}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full py-2.5 rounded-xl text-sm font-medium bg-[#172008] text-white hover:bg-[#1e2a0e] transition-colors flex items-center justify-center gap-2"
                 >
-                    <Send className="w-3.5 h-3.5" />
+                    <Clock className="w-3.5 h-3.5" />
+                    {t('dashboard.takeAppointment') || "Prendre RDV"}
+                </a>
+                <a
+                    href={`mailto:${contact.email}`}
+                    className="w-full py-2.5 rounded-xl text-sm font-medium border border-gray-100 text-gray-500 hover:bg-[#F8FAF6] transition-colors flex items-center justify-center gap-2"
+                >
+                    <MessageSquare className="w-3.5 h-3.5" />
                     {t('dashboard.sendMessage')}
                 </a>
-                {contact.contact_phone && (
-                    <a href={`tel:${contact.contact_phone}`} className="py-2.5 px-4 rounded-xl text-sm font-medium border border-gray-100 text-gray-500 hover:bg-[#F8FAF6] transition-colors">
-                        <Phone className="w-3.5 h-3.5" />
-                    </a>
-                )}
             </div>
         </DashCard>
     );
