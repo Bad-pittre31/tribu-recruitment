@@ -443,7 +443,7 @@ export const en = {
       headline: "Technical excellence.\nHuman impact.",
       italic: "Human impact.",
       headlineStart: "Technical excellence.",
-      description: "We deploy the brightest minds to structure your growth. From platform engineering to data science and CRM strategy: a closed network of elite Freelance and Permanent talent.",
+      description: "Here are our 4 pillars of expertise. We recruit and evaluate the best Tech, Data, CRM, and AI profiles on the market, available immediately for Freelance missions or open to Permanent roles.",
       cta: "Explore the network"
     },
     sectors: {

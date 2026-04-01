@@ -433,7 +433,7 @@ export const fr = {
       headline: "L'excellence technique.\nL'impact humain.",
       italic: "L'impact humain.",
       headlineStart: "L'excellence technique.",
-      description: "Nous déployons les esprits les plus brillants pour structurer votre croissance. Développement de plateformes, data science et stratégie CRM : un réseau fermé de profils Freelances et CDI d'élite.",
+      description: "Voici nos 4 piliers d'expertise. Nous recrutons et qualifions les meilleurs profils Tech, Data, CRM et IA du marché, disponibles immédiatement en Freelance ou à l'écoute d'opportunités en CDI.",
       cta: "Explorer le réseau"
     },
     sectors: {
