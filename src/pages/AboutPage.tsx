@@ -144,16 +144,7 @@ export function AboutPage() {
 
                 {/* Content */}
                 <div className="relative z-10 flex flex-col items-center w-full flex-1 justify-center pt-24 pb-0">
-                    {/* Badge */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5 }}
-                        className="inline-flex items-center gap-1.5 rounded-full border border-[hsl(0,0%,90%)] bg-white px-4 py-1.5 text-sm text-[hsl(184,5%,55%)] mb-6"
-                        style={{ fontFamily: "var(--font-body, 'Inter', sans-serif)" }}
-                    >
-                        {isFr ? 'Notre histoire depuis 2019 ✨' : 'Our story since 2019 ✨'}
-                    </motion.div>
+
 
                     {/* Headline */}
                     <motion.h1
@@ -162,9 +153,11 @@ export function AboutPage() {
                         transition={{ duration: 0.6, delay: 0.1 }}
                         className="text-center text-5xl md:text-6xl lg:text-[5rem] leading-[1.05] tracking-tight font-bold max-w-xl pb-2"
                     >
-                        <span className="bg-gradient-to-r from-[#2D3D0C] via-[#4D6614] to-[#84a232] bg-clip-text text-transparent">
+                        <span className="bg-gradient-to-r from-[#2D3D0C] via-[#4D6614] to-[#84a232] bg-clip-text text-transparent pr-4 pb-1 inline-block">
                             {isFr ? 'L\'histoire de' : 'The Future of'}{' '}
-                            <em>{isFr ? 'TRIBU' : 'Recruitment'}</em>
+                            <span style={{ fontFamily: "var(--font-body, 'Inter', sans-serif)" }} className="font-bold">
+                                {isFr ? 'TRIBU' : 'Recruitment'}
+                            </span>
                         </span>
                     </motion.h1>
 
@@ -265,7 +258,7 @@ export function AboutPage() {
                         <h2
                             className="text-3xl md:text-5xl leading-[1.1] tracking-tight font-bold pb-2"
                         >
-                            <span className="bg-gradient-to-r from-[#0f172a] via-[#1e3a8a] to-[#0f172a] bg-clip-text text-transparent">
+                            <span className="bg-gradient-to-r from-[#0f172a] via-[#1e3a8a] to-[#0f172a] bg-clip-text text-transparent pr-4 pb-1 inline-block">
                                 {isFr ? (
                                     <>De la première embauche <br className="hidden md:block" />à un nouveau <em>modèle</em></>
                                 ) : (
@@ -418,21 +411,7 @@ export function AboutPage() {
                             — Raphael Paya, {isFr ? 'Fondateur de TRIBU' : 'Founder of TRIBU'}
                         </p>
 
-                        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                            <Link
-                                to="/"
-                                className="px-8 py-3.5 rounded-full text-sm font-semibold bg-[#172008] text-white hover:bg-[#1e2a0e] transition-all duration-300 shadow-[0_2px_12px_rgba(23,32,8,0.2)] flex items-center gap-2"
-                            >
-                                {isFr ? 'Découvrir le modèle' : 'Discover the model'}
-                                <ArrowRight className="w-4 h-4" />
-                            </Link>
-                            <Link
-                                to="/candidate-space"
-                                className="px-8 py-3.5 rounded-full text-sm font-semibold border border-gray-200 text-[hsl(210,14%,17%)] hover:bg-[#F8FAF6] transition-all duration-300 flex items-center gap-2"
-                            >
-                                {isFr ? 'Espace Candidat' : 'Candidate Space'}
-                            </Link>
-                        </div>
+
                     </motion.div>
                 </div>
             </section>
