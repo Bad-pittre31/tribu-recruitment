@@ -27,6 +27,7 @@ export const en = {
     about: "About",
     candidates: "Candidates",
     aiRecruitment: "AI Recruitment",
+    expertise: "Expertise",
   },
   home: {
     hero: {
@@ -435,6 +436,41 @@ export const en = {
       privacy: "Privacy",
       terms: "Terms",
       contact: "Contact"
+    }
+  },
+  expertisePage: {
+    hero: {
+      headline: "Technical excellence.\nHuman impact.",
+      italic: "Human impact.",
+      headlineStart: "Technical excellence.",
+      description: "We deploy the brightest minds to structure your growth. From platform engineering to data science and CRM strategy: a closed network of elite Freelance and Permanent talent.",
+      cta: "Explore the network"
+    },
+    sectors: {
+      title: "Our Industries",
+      list: ["Industry", "Luxury", "Finance", "Consulting", "Retail", "Healthcare"]
+    },
+    pillars: {
+      engineering: {
+        title: "Engineering",
+        description: "The backbone of your digital products. From architects to full-stack developers, we source those who write clean, scalable, and maintainable code.",
+        roles: ["Software Engineer", "Full Stack Developer", "Cloud Architect", "Frontend / Backend", "DevOps & SRE"]
+      },
+      data: {
+        title: "Data & Analytics",
+        description: "Turn digital noise into strategic assets. Analytical and technical profiles capable of modeling the future of your company.",
+        roles: ["Data Scientist", "Business Analyst", "Data Engineer", "Data Project Manager", "Analytics Manager"]
+      },
+      crm: {
+        title: "Salesforce & CRM",
+        description: "An obsession with customer experience and acquisition. Certified consultants and developers to maximize retention and tool integration.",
+        roles: ["Salesforce Consultant", "CRM Developer", "Solutions Architect", "CRM Product Owner", "Tech Lead"]
+      },
+      ai: {
+        title: "Artificial Intelligence",
+        description: "Move from theory to implementation. We place technical profiles capable of integrating complex AI models into your business applications.",
+        roles: ["ML Engineer", "Prompt Engineer", "AI Researcher", "NLP Specialist", "AI Director"]
+      }
     }
   }
 };

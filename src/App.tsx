@@ -24,6 +24,7 @@ import { LegalNotice } from './pages/LegalNotice';
 import { PrivacyPolicy } from './pages/PrivacyPolicy';
 import { AboutPage } from './pages/AboutPage';
 import { AIRecruitmentPage } from './pages/AIRecruitmentPage';
+import { ExpertisePage } from './pages/ExpertisePage';
 import { TermsConditions } from './pages/TermsConditions';
 import { useAuth } from './contexts/AuthContext';
 
@@ -75,6 +76,7 @@ export default function App() {
     <Routes>
       <Route path="/" element={<LandingPage />} />
       <Route path="/about" element={<AboutPage />} />
+      <Route path="/expertise" element={<ExpertisePage />} />
       <Route path="/ai-recruitment" element={<AIRecruitmentPage />} />
       <Route path="/legal-notice" element={<LegalNotice />} />
       <Route path="/privacy-policy" element={<PrivacyPolicy />} />

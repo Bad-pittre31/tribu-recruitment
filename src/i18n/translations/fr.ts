@@ -27,6 +27,7 @@ export const fr = {
     about: "À propos",
     candidates: "Candidats",
     aiRecruitment: "IA Recrutement",
+    expertise: "Expertises",
   },
   hero: {
     preloading: "Préchargement des textures...",
@@ -425,6 +426,41 @@ export const fr = {
       privacy: "Confidentialité",
       terms: "CGU",
       contact: "Contact"
+    }
+  },
+  expertisePage: {
+    hero: {
+      headline: "L'excellence technique.\nL'impact humain.",
+      italic: "L'impact humain.",
+      headlineStart: "L'excellence technique.",
+      description: "Nous déployons les esprits les plus brillants pour structurer votre croissance. Développement de plateformes, data science et stratégie CRM : un réseau fermé de profils Freelances et CDI d'élite.",
+      cta: "Explorer le réseau"
+    },
+    sectors: {
+      title: "Nos Secteurs d'Intervention",
+      list: ["Industrie", "Luxe", "Finance", "Conseil", "Retail", "Santé"]
+    },
+    pillars: {
+      engineering: {
+        title: "Engineering",
+        description: "L'épine dorsale de vos produits numériques. Des architectes aux développeurs full-stack, nous sourçons ceux qui écrivent un code propre, scalable et maintenable.",
+        roles: ["Software Engineer", "Développeur Full Stack", "Architecte Cloud", "Frontend / Backend", "DevOps & SRE"]
+      },
+      data: {
+        title: "Data & Analyse",
+        description: "Transformez le bruit numérique en atout stratégique. Des profils analytiques et techniques capables de modéliser l'avenir de votre entreprise.",
+        roles: ["Data Scientist", "Business Analyst", "Data Engineer", "Chef de Projet Data", "Analytics Manager"]
+      },
+      crm: {
+        title: "Salesforce & CRM",
+        description: "L'obsession de l'expérience client et de l'acquisition. Des consultants et développeurs certifiés pour maximiser la rétention et l'intégration de vos outils.",
+        roles: ["Consultant Salesforce", "Développeur CRM", "Architecte Solutions", "Product Owner CRM", "Tech Lead"]
+      },
+      ai: {
+        title: "Intelligence Artificielle",
+        description: "Passez de la théorie à l'implémentation. Nous plaçons les profils techniques capables d'intégrer des modèles d'IA complexes dans vos applications métier.",
+        roles: ["ML Engineer", "Prompt Engineer", "AI Researcher", "NLP Specialist", "Directeur IA"]
+      }
     }
   }
 };
