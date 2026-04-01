@@ -76,15 +76,14 @@ export function ExpertisePage() {
 
   return (
     <div className="min-h-screen bg-[var(--color-tribu-bg)] text-[var(--color-tribu-text)] selection:bg-[var(--color-tribu-accent)] selection:text-[var(--color-tribu-bg)]">
-      <div className="noise-overlay" />
       <Navbar />
       
       {/* Cinematic Hero Section */}
-      <section className="relative min-h-screen w-full flex flex-col items-center justify-center text-center px-6 pt-[calc(8rem-75px)] overflow-hidden">
+      <section className="relative min-h-screen w-full flex flex-col items-center justify-center text-center px-6 pt-24 overflow-hidden">
         
         {/* Video Background Layer with loop logic */}
         <div 
-          className="absolute inset-[300px_0_0_0] z-0 pointer-events-none transition-opacity duration-100 ease-linear"
+          className="absolute inset-0 z-0 pointer-events-none transition-opacity duration-100 ease-linear"
           style={{ opacity: opacity }}
         >
           <video
@@ -98,8 +97,11 @@ export function ExpertisePage() {
           />
         </div>
 
-        {/* Gradient Overlay linking video to background */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[var(--color-tribu-bg)] via-[var(--color-tribu-bg)]/20 to-[var(--color-tribu-bg)] z-0 pointer-events-none" />
+        {/* Dark Overlay for Text Readability */}
+        <div className="absolute inset-0 bg-black/40 z-0 pointer-events-none" />
+
+        {/* Gradient Overlay linking video to background smoothly */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[var(--color-tribu-bg)] via-transparent to-[var(--color-tribu-bg)] opacity-90 z-0 pointer-events-none" />
 
         <div className="relative z-10 w-full max-w-5xl mx-auto flex flex-col items-center">
           
