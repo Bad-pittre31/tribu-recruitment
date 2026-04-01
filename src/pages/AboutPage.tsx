@@ -160,13 +160,12 @@ export function AboutPage() {
                         initial={{ opacity: 0, y: 16 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6, delay: 0.1 }}
-                        className="text-center text-5xl md:text-6xl lg:text-[5rem] leading-[0.95] tracking-tight text-[hsl(210,14%,17%)] max-w-xl"
-                        style={{ fontFamily: "var(--font-instrument, 'Instrument Serif', serif)" }}
+                        className="text-center text-5xl md:text-6xl lg:text-[5rem] leading-[1.05] tracking-tight font-bold max-w-xl pb-2"
                     >
-                        {isFr ? 'L\'histoire de' : 'The Future of'}{' '}
-                        <em style={{ fontFamily: "var(--font-instrument, 'Instrument Serif', serif)" }}>
-                            {isFr ? 'TRIBU' : 'Recruitment'}
-                        </em>
+                        <span className="bg-gradient-to-r from-[#2D3D0C] via-[#4D6614] to-[#84a232] bg-clip-text text-transparent">
+                            {isFr ? 'L\'histoire de' : 'The Future of'}{' '}
+                            <em>{isFr ? 'TRIBU' : 'Recruitment'}</em>
+                        </span>
                     </motion.h1>
 
                     {/* Subheadline */}
@@ -202,14 +201,15 @@ export function AboutPage() {
                             {isFr ? 'L\'HISTOIRE DU FONDATEUR' : 'THE FOUNDER\'S STORY'}
                         </div>
                         <h2
-                            className="text-3xl md:text-5xl lg:text-6xl leading-[1.1] tracking-tight text-[hsl(210,14%,17%)] mb-8"
-                            style={{ fontFamily: "var(--font-instrument, 'Instrument Serif', serif)" }}
+                            className="text-3xl md:text-5xl lg:text-6xl leading-[1.1] tracking-tight font-bold mb-8 pb-2"
                         >
-                            {isFr ? (
-                                <>6 ans d'expérience. <br className="hidden md:block" />Une <em>conviction</em>.</>
-                            ) : (
-                                <>6 years of experience. <br className="hidden md:block" />One <em>conviction</em>.</>
-                            )}
+                            <span className="bg-gradient-to-r from-[#1f2937] via-[#111827] to-[#3a5a18] bg-clip-text text-transparent">
+                                {isFr ? (
+                                    <>6 ans d'expérience. <br className="hidden md:block" />Une <em>conviction</em>.</>
+                                ) : (
+                                    <>6 years of experience. <br className="hidden md:block" />One <em>conviction</em>.</>
+                                )}
+                            </span>
                         </h2>
                         <p className="text-base md:text-lg text-[hsl(184,5%,55%)] max-w-2xl mx-auto leading-relaxed" style={{ fontFamily: "var(--font-body, 'Inter', sans-serif)" }}>
                             {isFr
@@ -235,7 +235,7 @@ export function AboutPage() {
                                 transition={{ duration: 0.5, delay: i * 0.1 }}
                                 className="text-center"
                             >
-                                <div className="text-4xl md:text-5xl font-bold text-[#172008] tracking-tight mb-2" style={{ fontFamily: "var(--font-instrument, 'Instrument Serif', serif)" }}>
+                                <div className="text-4xl md:text-5xl font-bold tracking-tight mb-2 pb-1 bg-gradient-to-b from-[#4a6a24] to-[#172008] bg-clip-text text-transparent">
                                     {stat.number}
                                 </div>
                                 <div className="text-[11px] font-bold uppercase tracking-[0.15em] text-[hsl(184,5%,55%)]">
@@ -263,14 +263,15 @@ export function AboutPage() {
                             {isFr ? 'LE PARCOURS' : 'THE JOURNEY'}
                         </div>
                         <h2
-                            className="text-3xl md:text-5xl leading-[1.1] tracking-tight text-[hsl(210,14%,17%)]"
-                            style={{ fontFamily: "var(--font-instrument, 'Instrument Serif', serif)" }}
+                            className="text-3xl md:text-5xl leading-[1.1] tracking-tight font-bold pb-2"
                         >
-                            {isFr ? (
-                                <>De la première embauche <br className="hidden md:block" />à un nouveau <em>modèle</em></>
-                            ) : (
-                                <>From the first hire <br className="hidden md:block" />to a new <em>model</em></>
-                            )}
+                            <span className="bg-gradient-to-r from-[#0f172a] via-[#1e3a8a] to-[#0f172a] bg-clip-text text-transparent">
+                                {isFr ? (
+                                    <>De la première embauche <br className="hidden md:block" />à un nouveau <em>modèle</em></>
+                                ) : (
+                                    <>From the first hire <br className="hidden md:block" />to a new <em>model</em></>
+                                )}
+                            </span>
                         </h2>
                     </motion.div>
 
@@ -352,14 +353,15 @@ export function AboutPage() {
                             {isFr ? 'NOS PRINCIPES' : 'OUR PRINCIPLES'}
                         </div>
                         <h2
-                            className="text-3xl md:text-5xl leading-[1.1] tracking-tight text-[hsl(210,14%,17%)]"
-                            style={{ fontFamily: "var(--font-instrument, 'Instrument Serif', serif)" }}
+                            className="text-3xl md:text-5xl leading-[1.1] tracking-tight font-bold pb-2"
                         >
-                            {isFr ? (
-                                <>Construit sur des <em>valeurs</em>,<br className="hidden md:block" /> pas des mots-clés</>
-                            ) : (
-                                <>Built on <em>values</em>,<br className="hidden md:block" /> not buzzwords</>
-                            )}
+                            <span className="bg-gradient-to-r from-[#172008] via-[#4a6a24] to-[#172008] bg-clip-text text-transparent">
+                                {isFr ? (
+                                    <>Construit sur des <em>valeurs</em>,<br className="hidden md:block" /> pas des mots-clés</>
+                                ) : (
+                                    <>Built on <em>values</em>,<br className="hidden md:block" /> not buzzwords</>
+                                )}
+                            </span>
                         </h2>
                     </motion.div>
 
@@ -406,8 +408,7 @@ export function AboutPage() {
                             RP
                         </div>
                         <blockquote
-                            className="text-2xl md:text-3xl lg:text-4xl leading-[1.3] tracking-tight text-[hsl(210,14%,17%)] mb-8"
-                            style={{ fontFamily: "var(--font-instrument, 'Instrument Serif', serif)" }}
+                            className="text-2xl md:text-3xl lg:text-4xl font-semibold leading-[1.3] tracking-tight text-[hsl(210,14%,17%)] mb-8"
                         >
                             {isFr
                                 ? '"J\'ai vu pendant 6 ans ce qui ne fonctionnait pas. TRIBU est la réponse : un modèle où la transparence, la précision et le partage du succès ne sont pas des promesses marketing — mais le système lui-même."'
@@ -441,8 +442,10 @@ export function AboutPage() {
             ═══════════════════════════════════════════════════════════════ */}
             <section className="py-20 md:py-28 bg-[#F8FAF6] overflow-hidden">
                 <div className="max-w-7xl mx-auto px-6 lg:px-10 mb-12 text-center">
-                    <h2 className="text-3xl md:text-4xl text-[#172008] mb-4" style={{ fontFamily: "var(--font-instrument, 'Instrument Serif', serif)" }}>
-                        {isFr ? "Ils nous font confiance" : "They trust us"}
+                    <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4 pb-1">
+                        <span className="bg-gradient-to-r from-[#334155] to-[#0f172a] bg-clip-text text-transparent">
+                            {isFr ? "Ils nous font confiance" : "They trust us"}
+                        </span>
                     </h2>
                 </div>
                 
