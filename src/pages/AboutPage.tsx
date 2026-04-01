@@ -27,37 +27,22 @@ const companyLogos = [
 
 const timelineItems = [
     {
-        year: '2019',
-        title: 'The Beginning',
-        description: 'Raphael enters the world of consulting and recruitment in the French tech ecosystem, working across startups and scale-ups to place senior engineering and product talent.',
-        icon: Briefcase,
-        accent: '#4a6a24',
-    },
-    {
-        year: '2021',
-        title: 'Scaling Expertise',
-        description: 'After two years of deep involvement in the recruitment industry, Raphael identifies critical inefficiencies: opaque pricing, commoditized CVs, and a broken trust model between agencies, clients, and candidates.',
-        icon: Target,
-        accent: '#3a5a18',
-    },
-    {
-        year: '2023',
-        title: 'The Vision Takes Shape',
-        description: 'With over 1,000 candidates qualified, 20+ client partnerships, and years spent studying what makes recruitment fail—or succeed—the blueprint for a radically transparent model begins to crystallize.',
-        icon: Sparkles,
-        accent: '#2d4a0f',
-    },
-    {
         year: 'FEB 2025',
+        yearFr: 'FÉV 2025',
         title: 'TRIBU is Born',
-        description: 'After 6 years of learning what the industry gets wrong, Raphael launches TRIBU — a premium, transparent tech recruitment agency powered by AI candidate intelligence, clear economics, and a belief that recruitment should reward everyone.',
+        titleFr: 'La naissance de TRIBU',
+        description: 'TRIBU launches — a premium, transparent tech recruitment agency powered by AI candidate intelligence, clear economics, and a belief that recruitment should reward everyone.',
+        descFr: 'Lancement de TRIBU — une agence de recrutement tech premium et transparente, propulsée par l\'intelligence artificielle, des modèles économiques très clairs et une conviction forte : le recrutement doit récompenser tous les acteurs.',
         icon: Zap,
         accent: '#172008',
     },
     {
         year: 'TODAY',
+        yearFr: 'AUJOURD\'HUI',
         title: 'Building the Future',
+        titleFr: 'Construire l\'avenir',
         description: 'TRIBU now serves 20+ clients across France, with 10+ freelancers on active missions. Every placement is delivered through AI-powered competency dossiers, transparent pricing, and the Pay As They Stay™ model.',
+        descFr: 'TRIBU accompagne désormais plus de 20 clients en France et compte plus de 10 freelances en mission. Chaque placement s\'appuie sur des dossiers de compétences générés par l\'IA, une tarification transparente et le modèle exclusif Pay As They Stay™.',
         icon: Globe,
         accent: '#4a6a24',
     },
@@ -191,23 +176,19 @@ export function AboutPage() {
                         className="text-center"
                     >
                         <div className="text-[11px] font-bold uppercase tracking-[0.2em] text-[hsl(184,5%,55%)] mb-6">
-                            {isFr ? 'L\'HISTOIRE DU FONDATEUR' : 'THE FOUNDER\'S STORY'}
+                            {isFr ? 'QUI SOMMES-NOUS ?' : 'WHO ARE WE?'}
                         </div>
                         <h2
                             className="text-3xl md:text-5xl lg:text-6xl leading-[1.1] tracking-tight font-bold mb-8 pb-2"
                         >
                             <span className="bg-gradient-to-r from-[#1f2937] via-[#111827] to-[#3a5a18] bg-clip-text text-transparent">
-                                {isFr ? (
-                                    <>6 ans d'expérience. <br className="hidden md:block" />Une <em>conviction</em>.</>
-                                ) : (
-                                    <>6 years of experience. <br className="hidden md:block" />One <em>conviction</em>.</>
-                                )}
+                                {isFr ? "Qui sommes-nous ?" : "Who are we ?"}
                             </span>
                         </h2>
                         <p className="text-base md:text-lg text-[hsl(184,5%,55%)] max-w-2xl mx-auto leading-relaxed" style={{ fontFamily: "var(--font-body, 'Inter', sans-serif)" }}>
                             {isFr
-                                ? 'Après 6 ans passés dans le conseil et le recrutement tech, Raphael Paya a vu de l\'intérieur ce qui ne fonctionnait pas : des modèles opaques, des CV non structurés, et des agences qui disparaissent après le placement. En février 2025, il a décidé de construire quelque chose de meilleur.'
-                                : 'After 6 years spent in consulting and tech recruitment, Raphael Paya saw firsthand what was broken: opaque models, unstructured CVs, and agencies that disappear after placement. In February 2025, he decided something better had to be built.'}
+                                ? 'TRIBU est une agence de recrutement et de placement freelance de nouvelle génération. Nous combinons l\'intelligence artificielle, des modèles économiques transparents et une précision technique absolue pour aligner les meilleurs talents Tech avec les entreprises qui construisent demain.'
+                                : 'TRIBU is a next-generation recruitment and freelance placement agency. We combine artificial intelligence, transparent economic models, and absolute technical precision to align the best Tech talents with the companies building tomorrow.'}
                         </p>
                     </motion.div>
                 </div>
@@ -309,13 +290,13 @@ export function AboutPage() {
                                                     className="inline-block text-[11px] font-bold uppercase tracking-[0.15em] mb-2 px-3 py-1 rounded-full"
                                                     style={{ backgroundColor: `${item.accent}10`, color: item.accent }}
                                                 >
-                                                    {item.year}
+                                                    {(item as any).yearFr && isFr ? (item as any).yearFr : item.year}
                                                 </div>
                                                 <h3 className="text-xl font-bold text-[hsl(210,14%,17%)] mb-2 tracking-tight">
-                                                    {item.title}
+                                                    {(item as any).titleFr && isFr ? (item as any).titleFr : item.title}
                                                 </h3>
                                                 <p className="text-sm text-[hsl(184,5%,55%)] leading-relaxed" style={{ fontFamily: "var(--font-body, 'Inter', sans-serif)" }}>
-                                                    {item.description}
+                                                    {(item as any).descFr && isFr ? (item as any).descFr : item.description}
                                                 </p>
                                             </div>
                                         </div>
