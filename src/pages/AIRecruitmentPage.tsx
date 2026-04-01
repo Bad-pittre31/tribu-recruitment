@@ -101,22 +101,6 @@ export function AIRecruitmentPage() {
         <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-8">
           {/* Left: Content */}
           <div className="flex-1 max-w-2xl">
-            {/* Social proof badge */}
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="liquid-glass rounded-full px-3 py-1.5 inline-flex items-center gap-2 mb-6"
-            >
-              <span className="text-xs font-medium text-black/70" style={font.body}>
-                {t('aiRecruitmentPage.hero.badge')}
-              </span>
-              <div className="flex gap-0.5">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-3 h-3 fill-[#FF801E] text-[#FF801E]" />
-                ))}
-              </div>
-            </motion.div>
 
             {/* Heading */}
             <motion.h1
@@ -385,15 +369,15 @@ export function AIRecruitmentPage() {
             ].map((item, i) => (
               <div
                 key={i}
-                className="liquid-glass-card rounded-2xl p-6 border border-white/5 bg-white/5 hover:bg-white/10 transition-all duration-300 group"
+                className="bg-white rounded-2xl p-6 shadow-[0_4px_24px_rgba(0,0,0,0.06)] hover:shadow-[0_8px_32px_rgba(0,0,0,0.1)] transition-all duration-300 group"
               >
-                <div className="liquid-glass rounded-full w-10 h-10 flex items-center justify-center mb-4 bg-white/10">
-                  <item.icon className="w-[18px] h-[18px] text-white/80" />
+                <div className="bg-[#F2F4F0] rounded-full w-10 h-10 flex items-center justify-center mb-4 group-hover:bg-[#172008] transition-colors duration-300">
+                  <item.icon className="w-[18px] h-[18px] text-[#4a6a24] group-hover:text-white transition-colors duration-300" />
                 </div>
-                <h3 className="text-lg text-white mb-2" style={font.heading}>
+                <h3 className="text-lg text-black mb-2" style={font.heading}>
                   {item.title}
                 </h3>
-                <p className="text-white/50 text-sm leading-relaxed" style={font.body}>
+                <p className="text-black/50 text-sm leading-relaxed" style={font.body}>
                   {item.desc}
                 </p>
               </div>
@@ -402,100 +386,7 @@ export function AIRecruitmentPage() {
         </div>
       </section>
 
-      {/* ═════════════════════════════════════════════════════════════════
-          SECTION 5 — SMART CANDIDATE PORTAL
-      ═════════════════════════════════════════════════════════════════ */}
-      <section id="portal" className="relative z-10 py-24 px-6 md:px-16 lg:px-24">
-        {/* Background accent */}
-        <div className="absolute bottom-0 left-0 w-[600px] h-[600px] rounded-full opacity-10 pointer-events-none" style={{ background: 'radial-gradient(circle, #319AFF 0%, transparent 70%)' }} />
 
-        <div className="max-w-7xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-16"
-          >
-            <Heading className="mb-4">
-              <span className="bg-gradient-to-r from-[#19200B] to-[#4a6a24] bg-clip-text text-transparent">
-                {t('aiRecruitmentPage.portal.title')}
-              </span>
-            </Heading>
-            <p className="text-base text-black/50 max-w-2xl mx-auto leading-relaxed" style={font.body}>
-              {t('aiRecruitmentPage.portal.description')}
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {/* Left column */}
-            <div className="space-y-4">
-              {[
-                { icon: Calendar, title: t('aiRecruitmentPage.portal.card1.title'), desc: t('aiRecruitmentPage.portal.card1.desc') },
-                { icon: Clock, title: t('aiRecruitmentPage.portal.card2.title'), desc: t('aiRecruitmentPage.portal.card2.desc') },
-                { icon: FileText, title: t('aiRecruitmentPage.portal.card3.title'), desc: t('aiRecruitmentPage.portal.card3.desc') },
-                { icon: Bell, title: t('aiRecruitmentPage.portal.card4.title'), desc: t('aiRecruitmentPage.portal.card4.desc') },
-              ].map((item, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: i * 0.1 }}
-                  className="liquid-glass-card rounded-2xl p-5 flex items-start gap-4"
-                >
-                  <div className="liquid-glass rounded-full w-9 h-9 flex items-center justify-center shrink-0 mt-0.5">
-                    <item.icon className="w-4 h-4 text-black/50" />
-                  </div>
-                  <div>
-                    <h4 className="text-sm font-medium text-black mb-1" style={font.heading}>{item.title}</h4>
-                    <p className="text-black/40 text-xs leading-relaxed" style={font.body}>{item.desc}</p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-
-            {/* Right column */}
-            <div className="space-y-4">
-              {[
-                { icon: Activity, title: t('aiRecruitmentPage.portal.card5.title'), desc: t('aiRecruitmentPage.portal.card5.desc') },
-                { icon: TrendingUp, title: t('aiRecruitmentPage.portal.card6.title'), desc: t('aiRecruitmentPage.portal.card6.desc') },
-                { icon: Layers, title: t('aiRecruitmentPage.portal.card7.title'), desc: t('aiRecruitmentPage.portal.card7.desc') },
-              ].map((item, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: i * 0.1 }}
-                  className="liquid-glass-card rounded-2xl p-5 flex items-start gap-4"
-                >
-                  <div className="liquid-glass rounded-full w-9 h-9 flex items-center justify-center shrink-0 mt-0.5">
-                    <item.icon className="w-4 h-4 text-black/50" />
-                  </div>
-                  <div>
-                    <h4 className="text-sm font-medium text-black mb-1" style={font.heading}>{item.title}</h4>
-                    <p className="text-black/40 text-xs leading-relaxed" style={font.body}>{item.desc}</p>
-                  </div>
-                </motion.div>
-              ))}
-
-              {/* Mini feature cards */}
-              <div className="grid grid-cols-2 gap-3 pt-2">
-                {[
-                  { icon: CheckCircle2, label: t('aiRecruitmentPage.portal.mini1') },
-                  { icon: Send, label: t('aiRecruitmentPage.portal.mini2') },
-                ].map((item, i) => (
-                  <div key={i} className="liquid-glass rounded-xl p-3 flex items-center gap-2">
-                    <item.icon className="w-3.5 h-3.5 text-black/40" />
-                    <span className="text-[11px] text-black/50 font-medium" style={font.body}>{item.label}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* ═════════════════════════════════════════════════════════════════
           SECTION 6 — WHY IT MATTERS
@@ -509,7 +400,7 @@ export function AIRecruitmentPage() {
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <Badge>{t('aiRecruitmentPage.why.title')}</Badge>
+
             <Heading>
               {t('aiRecruitmentPage.why.title')}
             </Heading>
@@ -628,30 +519,11 @@ export function AIRecruitmentPage() {
       </section>
 
       {/* ═════════════════════════════════════════════════════════════════
-          SECTION 8 — FINAL CTA
+          SECTION 8 — FOOTER
       ═════════════════════════════════════════════════════════════════ */}
-      <section id="cta" className="relative z-10 py-32 px-6 md:px-16 lg:px-24">
-        {/* Background accents */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full opacity-15 pointer-events-none" style={{ background: 'radial-gradient(circle, #60B1FF 0%, transparent 60%)' }} />
-
-        <div className="relative z-10 flex flex-col items-center text-center max-w-3xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
-          >
-            <Heading className="mb-6">
-              {t('aiRecruitmentPage.cta.title')}
-            </Heading>
-            <p className="text-base text-black/50 max-w-xl mx-auto leading-relaxed mb-10" style={font.body}>
-              {t('aiRecruitmentPage.cta.description')}
-            </p>
-          </motion.div>
-        </div>
-
+      <section id="footer" className="relative z-10 py-10 px-6 md:px-16 lg:px-24 border-t border-black/5">
         {/* Footer */}
-        <div className="relative z-10 mt-32 pt-8 border-t border-black/5 flex flex-col md:flex-row justify-between items-center text-black/30 text-xs" style={font.body}>
+        <div className="relative z-10 pt-4 flex flex-col md:flex-row justify-between items-center text-black/30 text-xs" style={font.body}>
           <span>{t('aiRecruitmentPage.footer.copy')}</span>
           <div className="flex items-center gap-6 mt-4 md:mt-0">
             <Link to="/privacy-policy" className="hover:text-black/50 transition-colors">{t('aiRecruitmentPage.footer.privacy')}</Link>
