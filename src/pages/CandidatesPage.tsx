@@ -26,10 +26,10 @@ function Badge({ children, className = '' }: { children: React.ReactNode; classN
 }
 
 function SectionHeading({ children, className = '' }: { children: React.ReactNode; className?: string }) {
+  const cleanClassName = className.replace(/text-\[#[a-fA-F0-9]+\]|text-white/g, '').trim();
   return (
     <h2
-      className={`text-4xl md:text-5xl lg:text-6xl tracking-[-1px] leading-[1.05] ${className}`}
-      style={font.heading}
+      className={`text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.05] bg-gradient-to-r from-[#4D6614] via-[#3A4D0F] to-[#2D3D0C] bg-clip-text text-transparent ${cleanClassName}`}
     >
       {children}
     </h2>
@@ -48,7 +48,7 @@ const FeatureCard: React.FC<{ icon: any; title: string; desc: string; delay?: nu
       <div className="w-12 h-12 rounded-xl bg-[#F8FAF6] flex items-center justify-center mb-6 group-hover:bg-[#172008] transition-colors duration-300">
         <Icon className="w-5 h-5 text-[#4a6a24] group-hover:text-[#caff04] transition-colors duration-300" />
       </div>
-      <h3 className="text-xl text-[#172008] mb-3 tracking-tight font-semibold" style={font.body}>
+      <h3 className="text-xl text-[#172008] mb-3 tracking-tight font-bold">
         {title}
       </h3>
       <p className="text-gray-500 text-sm leading-relaxed" style={font.body}>
@@ -109,10 +109,11 @@ export function CandidatesPage() {
               {t('candidatesPage.hero.badge')}
             </div>
             <h1
-              className="text-5xl md:text-6xl lg:text-[84px] text-[#172008] italic leading-[0.95] tracking-tight"
-              style={font.heading}
+              className="text-5xl md:text-6xl lg:text-[84px] font-bold tracking-tight leading-[1.05] pb-2"
             >
-              {t('candidatesPage.hero.title')}
+              <span className="bg-gradient-to-r from-[#4D6614] via-[#3A4D0F] to-[#2D3D0C] bg-clip-text text-transparent">
+                {t('candidatesPage.hero.title')}
+              </span>
             </h1>
           </motion.div>
 
@@ -224,24 +225,24 @@ export function CandidatesPage() {
               <div className="space-y-4 pt-8">
                 <div className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-md">
                   <Calendar className="w-6 h-6 text-[#caff04] mb-4" />
-                  <div className="text-2xl text-white mb-1" style={font.heading}>{t('candidatesPage.dashboard.cards.timesheets.title')}</div>
+                  <div className="text-2xl text-white mb-1 font-bold tracking-tight">{t('candidatesPage.dashboard.cards.timesheets.title')}</div>
                   <div className="text-xs text-white/50 font-medium tracking-wide uppercase" style={font.body}>{t('candidatesPage.dashboard.cards.timesheets.subtitle')}</div>
                 </div>
                 <div className="rounded-2xl border border-white/10 bg-gradient-to-br from-[#2a3a12] to-[#4a6a24] p-6 backdrop-blur-md shadow-lg">
                   <CreditCard className="w-6 h-6 text-white mb-4" />
-                  <div className="text-2xl text-white mb-1" style={font.heading}>{t('candidatesPage.dashboard.cards.revenue.title')}</div>
+                  <div className="text-2xl text-white mb-1 font-bold tracking-tight">{t('candidatesPage.dashboard.cards.revenue.title')}</div>
                   <div className="text-xs text-white/70 font-medium tracking-wide uppercase" style={font.body}>{t('candidatesPage.dashboard.cards.revenue.subtitle')}</div>
                 </div>
               </div>
               <div className="space-y-4">
                 <div className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-md">
                   <FileText className="w-6 h-6 text-white/60 mb-4" />
-                  <div className="text-2xl text-white mb-1" style={font.heading}>{t('candidatesPage.dashboard.cards.documents.title')}</div>
+                  <div className="text-2xl text-white mb-1 font-bold tracking-tight">{t('candidatesPage.dashboard.cards.documents.title')}</div>
                   <div className="text-xs text-white/50 font-medium tracking-wide uppercase" style={font.body}>{t('candidatesPage.dashboard.cards.documents.subtitle')}</div>
                 </div>
                 <div className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-md">
                   <Activity className="w-6 h-6 text-white/60 mb-4" />
-                  <div className="text-2xl text-white mb-1" style={font.heading}>{t('candidatesPage.dashboard.cards.timeline.title')}</div>
+                  <div className="text-2xl text-white mb-1 font-bold tracking-tight">{t('candidatesPage.dashboard.cards.timeline.title')}</div>
                   <div className="text-xs text-white/50 font-medium tracking-wide uppercase" style={font.body}>{t('candidatesPage.dashboard.cards.timeline.subtitle')}</div>
                 </div>
               </div>
@@ -283,7 +284,7 @@ export function CandidatesPage() {
                 className="rounded-2xl border border-gray-100 bg-white p-6 py-10 flex flex-col items-center justify-center text-center shadow-sm hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] transition-shadow"
               >
                 <div className="text-xs text-gray-400 font-medium uppercase tracking-widest mb-2" style={font.body}>{stat.label}</div>
-                <div className="text-3xl lg:text-4xl text-[#172008] tracking-tight" style={font.heading}>{stat.value}</div>
+                <div className="text-3xl lg:text-4xl text-[#172008] tracking-tight font-bold">{stat.value}</div>
               </motion.div>
             ))}
           </div>
@@ -313,10 +314,11 @@ export function CandidatesPage() {
             transition={{ duration: 0.6 }}
           >
             <h2
-              className="text-5xl md:text-7xl text-[#172008] leading-[1.05] tracking-tight mb-6"
-              style={font.heading}
+              className="text-5xl md:text-7xl font-bold tracking-tight leading-[1.05] mb-6 pb-2"
             >
-              {t('candidatesPage.closing.title')}
+              <span className="bg-gradient-to-r from-[#4D6614] via-[#3A4D0F] to-[#2D3D0C] bg-clip-text text-transparent">
+                {t('candidatesPage.closing.title')}
+              </span>
             </h2>
             <p className="text-lg text-gray-500 max-w-2xl mx-auto leading-relaxed" style={font.body}>
               {t('candidatesPage.closing.description')}
