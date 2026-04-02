@@ -28,6 +28,7 @@ export const fr = {
     candidates: "Candidats",
     aiRecruitment: "IA Recrutement",
     expertise: "Expertises",
+    pricing: "Modèle & Tarifs",
   },
   hero: {
     preloading: "Préchargement des textures...",
@@ -461,6 +462,85 @@ export const fr = {
         description: "Passez de la théorie à l'implémentation. Nous plaçons les profils techniques capables d'intégrer des modèles d'IA complexes dans vos applications métier.",
         roles: ["ML Engineer", "Prompt Engineer", "AI Researcher", "NLP Specialist", "Directeur IA"]
       }
+    }
+  },
+  pricingPage: {
+    hero: {
+      tagline: "Le modèle d'affaires de la Confiance.",
+      title: "Scalez en toute",
+      titleItalic: "transparence.",
+      description: "La plupart des agences cachent leurs marges. Nous les affichons. Nous remplaçons le recrutement opaque par l'alignement à long terme, grâce à notre modèle Pay As They Stay™ et nos Marges Transparentes.",
+      btnPrimary: "Démarrer un recrutement",
+      btnSecondary: "Expertises"
+    },
+    quote: {
+      text: "L'opacité détruit la confiance. Nous avons construit un modèle où recruteur, client et talent connaissent exactement la répartition financière depuis le premier jour. C'est ça, recruter",
+      italicWord: "autrement.",
+      author: "Raphaël Paya",
+      role: "Fondateur de TRIBU"
+    },
+    marquee: [
+      "ZÉRO FRAIS CACHÉS", 
+      "MODÈLE PAY AS THEY STAY", 
+      "GARANTIE DE SUCCÈS", 
+      "MARGES PUBLIQUES",
+      "ÉVALUATION IA",
+      "CANDIDATS VÉRIFIÉS"
+    ],
+    pricing: {
+      title: "Un investissement clair.",
+      freelance: {
+        badge: "Ressources Flexibles",
+        title: "Partenariat Freelance",
+        price: "Marge Publique",
+        description: "Accédez à notre réseau de top ingénieurs freelances avec une transparence totale sur les frais.",
+        features: [
+          "Marge fixe dévoilée au client et au talent",
+          "Recherche ciblée et évaluation technique incluses",
+          "Dossier de compétences IA fourni",
+          "Gestion administrative / portage sans friction"
+        ],
+        cta: "Rechercher un Freelance"
+      },
+      permanent: {
+        badge: "Talents Long-Terme",
+        title: "Recrutement CDI",
+        price: "Pay As They Stay™",
+        description: "Sécurisez vos embauches permanentes : vous ne payez l'intégralité que si le talent reste.",
+        features: [
+          "Fractionnement du risque financier sur la durée",
+          "Garantie alignée sur la période d'essai",
+          "Chasse ciblée et approche directe sur profils passifs",
+          "Evaluation soft-skills (DISC) garantie"
+        ],
+        cta: "Lancer une recherche CDI"
+      }
+    },
+    faq: {
+      title: "Questions Rapides.",
+      items: [
+        {
+          q: "En quoi consiste le 'Pay As They Stay™' pour les recrutements CDI ?",
+          a: "Plutôt que d'exiger des frais initiaux massifs (20 à 30% d'un salaire) sans garantie, nous échelonnons les paiements. Une partie au succès (à la signature), et le reste lissé pendant et après la période d'essai. Si le candidat part, vous arrêtez de payer."
+        },
+        {
+          q: "Pourquoi parlez-vous de 'Marges Transparentes' pour les freelances ?",
+          a: "Dans la majorité des Entreprises de Services Numériques (ESN/SSII), ni le client ni le freelance ne connaissent la marge prélevée au milieu. Chez TRIBU, le TJM du freelance et les frais de TRIBU sont contractualisés et connus de tous dès l'entretien."
+        },
+        {
+          q: "Recrutez-vous dans d'autres domaines que la Tech / IT ?",
+          a: "Nous sommes hyper-spécialisés. Nous recrutons uniquement dans les environnements d'Ingénierie (Dev, Architecture, SRE), Data (Engineer, Scientist), et Produit (PM, CRM, Salesforce). C'est ce qui nous permet d'évaluer chirurgicalement les candidats."
+        },
+        {
+          q: "Comment fonctionne l'évaluation par intelligence artificielle ?",
+          a: "Nous ne filtrons pas sur de simples mots-clés bêtes. Notre propre algorithme (Miixeo) analyse la cohérence de la track record, évalue le profil comportemental (DISC) et fournit au client un 'Dossier de Compétences' qui dépasse de très loin un vulgaire CV."
+        }
+      ]
+    },
+    cta: {
+      title: "Prêt à construire",
+      italic: "la suite ?",
+      btn: "Prendre un rendez-vous"
     }
   }
 };

@@ -27,6 +27,7 @@ export function Navbar() {
   const navLinks = [
     { label: t('nav.home'), href: '/', isRoute: true },
     { label: t('nav.expertise'), href: '/expertise', isRoute: true },
+    { label: t('nav.pricing'), href: '/pricing', isRoute: true },
     { label: t('nav.candidates'), href: '/candidates', isRoute: true },
     { label: t('nav.about'), href: '/about', isRoute: true },
     { label: t('nav.aiRecruitment'), href: '/ai-recruitment', isRoute: true },

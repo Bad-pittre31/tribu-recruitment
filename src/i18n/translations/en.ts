@@ -28,6 +28,7 @@ export const en = {
     candidates: "Candidates",
     aiRecruitment: "AI Recruitment",
     expertise: "Expertise",
+    pricing: "Model & Pricing",
   },
   home: {
     hero: {
@@ -471,6 +472,85 @@ export const en = {
         description: "Move from theory to implementation. We place technical profiles capable of integrating complex AI models into your business applications.",
         roles: ["ML Engineer", "Prompt Engineer", "AI Researcher", "NLP Specialist", "AI Director"]
       }
+    }
+  },
+  pricingPage: {
+    hero: {
+      tagline: "The Business Model of Trust.",
+      title: "Scale with absolute",
+      titleItalic: "transparency.",
+      description: "Most agencies hide their margins. We publish them. We replace opaque recruitment with long-term alignment, driven by our Pay As They Stay™ model and Transparent Margins.",
+      btnPrimary: "Start Hiring",
+      btnSecondary: "Our Expertise"
+    },
+    quote: {
+      text: "Opacity destroys trust. We built a model where the recruiter, the client, and the talent know exactly the financial breakdown from day one. This is hiring",
+      italicWord: "done right.",
+      author: "Raphaël Paya",
+      role: "Founder of TRIBU"
+    },
+    marquee: [
+      "NO HIDDEN FEES", 
+      "PAY AS THEY STAY MODEL", 
+      "GUARANTEED SUCCESS", 
+      "PUBLIC MARGINS",
+      "AI EVALUATION",
+      "VETTED CANDIDATES"
+    ],
+    pricing: {
+      title: "A clear investment.",
+      freelance: {
+        badge: "Flexible Resources",
+        title: "Freelance Partnership",
+        price: "Public Margin",
+        description: "Access our network of top freelance engineers with complete transparency on fees.",
+        features: [
+          "Fixed margin disclosed to both client and talent",
+          "Targeted search and technical evaluation included",
+          "AI competency dossier provided",
+          "Frictionless administrative management"
+        ],
+        cta: "Search for a Freelancer"
+      },
+      permanent: {
+        badge: "Long-Term Talent",
+        title: "Permanent Hiring",
+        price: "Pay As They Stay™",
+        description: "Secure your permanent hires: you only pay the full fee if the talent stays.",
+        features: [
+          "Financial risk scattered across the duration",
+          "Guarantee aligned with the probation period",
+          "Targeted headhunting for passive profiles",
+          "Soft-skills evaluation (DISC) guaranteed"
+        ],
+        cta: "Launch a Search"
+      }
+    },
+    faq: {
+      title: "Quick Answers.",
+      items: [
+        {
+          q: "What is 'Pay As They Stay™' for permanent roles?",
+          a: "Instead of demanding massive upfront fees (20 to 30% of a salary) with zero guarantees, we spread the payments. A portion is paid at signature, and the rest is distributed during and after the probation period. If the candidate leaves, you stop paying."
+        },
+        {
+          q: "Why do you talk about 'Transparent Margins' for freelancers?",
+          a: "In most consulting agencies (ESN), neither the client nor the freelancer knows the margin taken in the middle. At TRIBU, the freelancer's daily rate and TRIBU's fees are contractually established and known by everyone from the first interview."
+        },
+        {
+          q: "Do you recruit in other fields than Tech / IT?",
+          a: "We are hyper-specialized. We only recruit in Engineering (Dev, Architecture, SRE), Data (Engineer, Scientist), and Product (PM, CRM, Salesforce). This is what allows us to surgically evaluate candidates."
+        },
+        {
+          q: "How does your artificial intelligence evaluation work?",
+          a: "We don't just filter silly keywords. Our proprietary algorithm (Miixeo) analyzes the coherence of the track record, evaluates the behavioral profile (DISC), and provides the client with a 'Competency Dossier' that goes way beyond a raw CV."
+        }
+      ]
+    },
+    cta: {
+      title: "Ready to build",
+      italic: "what's next?",
+      btn: "Book a meeting"
     }
   }
 };
