@@ -1,5 +1,5 @@
 export const config = {
-  runtime: 'edge', // Vercel Edge Function
+  runtime: 'edge',
 };
 
 export default async function handler(req: Request) {

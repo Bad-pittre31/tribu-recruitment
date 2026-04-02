@@ -29,7 +29,11 @@ export function ClientContactPage() {
         body: JSON.stringify(formData)
       });
       
-      if (!res.ok) throw new Error('API Error');
+      if (!res.ok) {
+        const errorText = await res.text();
+        console.error("Server API Error details:", errorText);
+        throw new Error(`API Error: ${errorText}`);
+      }
       
       setStatus('success');
       setFormData({ firstName: '', lastName: '', email: '', company: '', needs: '' });
