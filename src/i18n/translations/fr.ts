@@ -144,7 +144,7 @@ export const fr = {
     titleHighlight: "Bâtissez votre équipe avec",
     titleSuffix: "plus d'alignement.",
     description: "Un partenaire de talent premium combinant expertise en recrutement humain, précision portée par l'IA et modèles d'affaires transparents pour créer des relations de recrutement qui durent vraiment.",
-    ctaCandidate: "Créer un compte",
+    ctaCandidate: "Espace candidat",
     ctaClient: "J'ai un besoin de recrutement",
   },
   footer: {
@@ -541,6 +541,25 @@ export const fr = {
       title: "Prêt à construire",
       italic: "la suite ?",
       btn: "Prendre un rendez-vous"
+    }
+  },
+  contactPage: {
+    hero: {
+      tagline: "Briefez-nous",
+      title: "Lançons votre",
+      titleItalic: "chasse.",
+      description: "Laissez-nous vos coordonnées et qualifions ensemble votre besoin en quelques minutes. Les ingénieurs du recrutement TRIBU vous répondent sous 24h."
+    },
+    form: {
+      firstName: "Prénom",
+      lastName: "Nom",
+      email: "Email professionnel",
+      company: "Entreprise",
+      needs: "Votre besoin (ex: Recherche un Dev React Senior, Modélisation Data...)",
+      submit: "Envoyer le brief",
+      submitting: "Envoi en cours...",
+      success: "Demande envoyée avec succès. Nous revenons vers vous très vite.",
+      error: "Une erreur est survenue. Veuillez réessayer."
     }
   }
 };

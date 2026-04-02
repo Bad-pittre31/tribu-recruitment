@@ -58,9 +58,12 @@ export function FinalCTA() {
           </Link>
 
           {/* Client CTA */}
-          <button className="w-full sm:w-auto flex items-center justify-center gap-3 relative group overflow-hidden rounded-[2rem] border border-[#a8b894]/50 bg-transparent text-white px-12 py-5 font-semibold tracking-wide transition-all duration-500 hover:bg-[#a8b894]/10 hover:border-[#a8b894] hover:shadow-[0_0_30px_rgba(168,184,148,0.2)] hover:scale-105">
+          <Link 
+            to="/contact"
+            className="w-full sm:w-auto flex items-center justify-center gap-3 relative group overflow-hidden rounded-[2rem] border border-[#a8b894]/50 bg-transparent text-white px-12 py-5 font-semibold tracking-wide transition-all duration-500 hover:bg-[#a8b894]/10 hover:border-[#a8b894] hover:shadow-[0_0_30px_rgba(168,184,148,0.2)] hover:scale-105"
+          >
             <span className="relative z-10">{t('finalCTA.ctaClient')}</span>
-          </button>
+          </Link>
         </div>
       </div>
 

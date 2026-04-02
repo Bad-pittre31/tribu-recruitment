@@ -154,7 +154,7 @@ export const en = {
     titleHighlight: "Build your team with",
     titleSuffix: "more alignment.",
     description: "A premium talent partner combining human recruitment expertise, AI-powered precision, and transparent business models to create hiring relationships that actually last.",
-    ctaCandidate: "Create account",
+    ctaCandidate: "Candidate Portal",
     ctaClient: "I need to hire",
   },
   footer: {
@@ -551,6 +551,25 @@ export const en = {
       title: "Ready to build",
       italic: "what's next?",
       btn: "Book a meeting"
+    }
+  },
+  contactPage: {
+    hero: {
+      tagline: "Brief us",
+      title: "Let's start your",
+      titleItalic: "search.",
+      description: "Leave your details and let's qualify your needs together in minutes. TRIBU recruitment engineers will respond within 24h."
+    },
+    form: {
+      firstName: "First Name",
+      lastName: "Last Name",
+      email: "Work Email",
+      company: "Company",
+      needs: "Your needs (eg: Looking for Senior React Dev, Data Modeling...)",
+      submit: "Send brief",
+      submitting: "Sending...",
+      success: "Request successfully sent. We'll get back to you shortly.",
+      error: "An error occurred. Please try again."
     }
   }
 };

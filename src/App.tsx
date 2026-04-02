@@ -26,6 +26,7 @@ import { AboutPage } from './pages/AboutPage';
 import { AIRecruitmentPage } from './pages/AIRecruitmentPage';
 import { ExpertisePage } from './pages/ExpertisePage';
 import { PricingPage } from './pages/PricingPage';
+import { ClientContactPage } from './pages/ClientContactPage';
 import { TermsConditions } from './pages/TermsConditions';
 import { useAuth } from './contexts/AuthContext';
 
@@ -79,6 +80,7 @@ export default function App() {
       <Route path="/about" element={<AboutPage />} />
       <Route path="/expertise" element={<ExpertisePage />} />
       <Route path="/pricing" element={<PricingPage />} />
+      <Route path="/contact" element={<ClientContactPage />} />
       <Route path="/ai-recruitment" element={<AIRecruitmentPage />} />
       <Route path="/legal-notice" element={<LegalNotice />} />
       <Route path="/privacy-policy" element={<PrivacyPolicy />} />
