@@ -38,12 +38,34 @@ export function PricingPage() {
 
       <main className="pt-[calc(8rem-75px)] overflow-hidden">
         
+        {/* VIDEO BLOCK */}
+        <section className="w-full max-w-7xl mx-auto px-6 pt-12">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            // We use aspect-[21/9] to make it ultra-wide, which naturally cuts off the top and bottom of a 16:9 video when using object-cover.
+            // Using object-top or a custom translate shifts the crop to guarantee the bottom logo is hidden.
+            className="relative w-full aspect-video md:aspect-[21/9] overflow-hidden rounded-[2rem] shadow-2xl"
+          >
+             <video
+                src="/assets/videos/veo.mp4"
+                muted
+                playsInline
+                autoPlay
+                loop
+                // Scale up slightly and shift up to completely hide the bottom-right VEO logo
+                className="w-full h-full object-cover scale-110 -translate-y-2"
+             />
+          </motion.div>
+        </section>
+
         {/* 1. HERO SECTION */}
         <motion.section 
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="max-w-4xl mx-auto px-6 pt-20 md:pt-32 pb-24 text-center relative z-10"
+          className="max-w-4xl mx-auto px-6 pt-16 md:pt-24 pb-24 text-center relative z-10"
         >
           <motion.h1 variants={itemVariants} className="text-5xl sm:text-7xl md:text-[5rem] font-bold tracking-tight text-black leading-[1.05] mb-8">
             {t('pricingPage.hero.title')} <br />
