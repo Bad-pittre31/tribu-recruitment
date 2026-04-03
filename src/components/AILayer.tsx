@@ -36,7 +36,7 @@ export function AILayer() {
   }, []);
 
   return (
-    <section ref={containerRef} className="relative pt-20 pb-0 overflow-hidden bg-white">
+    <section ref={containerRef} id="ai-layer" className="relative py-48 overflow-hidden bg-white">
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
