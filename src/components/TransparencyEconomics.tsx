@@ -35,32 +35,41 @@ export function TransparencyEconomics() {
     return (
         <section ref={sectionRef} id="transparency" className="relative w-full min-h-[900px] bg-white overflow-hidden flex items-center">
 
-            {/* Background Spline Visual - Full Width */}
-            <div className="absolute inset-0 w-full h-full z-0 overflow-hidden">
+            {/* Background Spline Visual - Full Width & Centered */}
+            <div className="absolute inset-0 w-full h-full z-0 overflow-hidden bg-[#FBFDFB]">
                 <iframe
                     src="https://my.spline.design/reededliquidglassprismherosectionconcept-hzAqWz4flc21BZNyZvQOdVXh/?scroll=false&zoom=false"
                     frameBorder="0"
-                    className="w-[150%] h-[110%] absolute top-1/2 left-[70%] -translate-x-1/2 -translate-y-1/2 border-none"
+                    className="w-full h-full md:w-[150%] md:h-[120%] absolute top-1/2 left-1/2 md:left-[60%] -translate-x-1/2 -translate-y-1/2 border-none"
                     title="Liquid Glass Prism Transparency Concept"
                 ></iframe>
             </div>
 
             {/* Foreground Text Block - Absolute over left side */}
-            <div className="relative z-10 w-full max-w-7xl mx-auto px-8 lg:px-12 pointer-events-none">
-                <div ref={leftColRef} className="max-w-2xl pointer-events-auto bg-white/10 md:bg-transparent backdrop-blur-sm md:backdrop-blur-none p-6 md:p-0 rounded-3xl md:rounded-none">
+            <div className="relative z-10 w-full px-6 md:px-20 lg:px-32 pointer-events-none">
+                <div ref={leftColRef} className="max-w-4xl pointer-events-auto">
 
                     <h2 className="text-5xl md:text-7xl lg:text-[100px] font-bold tracking-tighter leading-[0.9] text-[#172008] mb-12">
-                        <span className="opacity-10 block">{t('transparency.titleHighlight')}</span>
+                        <motion.span 
+                            initial={{ filter: 'blur(10px)', opacity: 0.5 }}
+                            whileHover={{ filter: 'blur(0px)', opacity: 1 }}
+                            transition={{ duration: 0.5 }}
+                            className="block cursor-crosshair"
+                        >
+                            {t('transparency.titleHighlight')}
+                        </motion.span>
                         <span className="block">{t('transparency.titlePrefix')}</span>
                         <span className="block opacity-40">{t('transparency.titleSuffix')}</span>
                     </h2>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-xl md:text-2xl text-[#172008]/60 tracking-tight leading-snug max-w-4xl">
-                        <p>{t('transparency.p1')}</p>
-                        <p>{t('transparency.p2')}</p>
-                        <p>{t('transparency.p3')}</p>
-                        <p>{t('transparency.p4')}</p>
-                    </div>
+                    <ul className="space-y-4 text-base md:text-lg text-[#172008]/70 tracking-tight leading-relaxed list-none p-0">
+                        {[t('transparency.p1'), t('transparency.p2'), t('transparency.p3'), t('transparency.p4')].map((item, idx) => (
+                            <li key={idx} className="flex items-center gap-3">
+                                <div className="w-1.5 h-1.5 rounded-full bg-[#84A232]" />
+                                {item}
+                            </li>
+                        ))}
+                    </ul>
                 </div>
             </div>
         </section>
