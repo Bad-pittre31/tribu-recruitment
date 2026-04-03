@@ -88,7 +88,7 @@ export const fr = {
   },
   aiLayer: {
     titlePrefix: "L'Intelligence Artificielle",
-    titleSuffix: "au service du sur-mesure.",
+    titleSuffix: "au service du recrutement.",
     description: "Automatisation de recherche candidats ultra-ciblée couplée à notre Miixeo Engine pour des dossiers de compétences 2.0. Scoring, analyse profonde et profilage psychologique D.I.S.C IA.",
     item1: { title: "Miixeo Engine", desc: "Dossiers de compétences 2.0 avec scoring et analyse de données poussée pour chaque talent." },
     item2: { title: "D.I.S.C AI", desc: "Profilage psychologique automatisé pour garantir l'alignement culturel et comportemental." },

@@ -98,7 +98,7 @@ export const en = {
   },
   aiLayer: {
     titlePrefix: "Artificial Intelligence",
-    titleSuffix: "tailored for excellence.",
+    titleSuffix: "tailored for recruitment.",
     description: "Bespoke candidate search automation combined with our Miixeo Engine for next-gen competency dossiers. Scoring, deep analytics, and D.I.S.C AI psychological profiling.",
     item1: { title: "Miixeo Engine", desc: "Competency Dossiers 2.0 with scoring and advanced data analytics for every talent." },
     item2: { title: "D.I.S.C AI", desc: "Automated psychological profiling to ensure cultural and behavioral alignment." },
