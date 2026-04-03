@@ -8,16 +8,16 @@ export function CinematicVideoSection() {
     const videoRef = useRef<HTMLVideoElement>(null);
 
     useEffect(() => {
-        // Trigger the headline at 4 seconds
+        // Trigger the headline at 5.5 seconds (1.5s later than before)
         const timer = setTimeout(() => {
             setShowHeadline(true);
-        }, 4000);
+        }, 5500);
 
         return () => clearTimeout(timer);
     }, []);
 
     return (
-        <section className="relative w-full h-[60vh] md:h-screen overflow-hidden bg-black flex items-center justify-center">
+        <section className="relative w-full h-[50vh] lg:h-[75vh] max-h-[800px] overflow-hidden bg-black flex items-center justify-center border-y border-white/5">
             {/* Background Video */}
             <div className="absolute inset-0 w-full h-full z-0 overflow-hidden">
                 <video
@@ -34,8 +34,9 @@ export function CinematicVideoSection() {
                     <source src="/video/subway-cinematic.mp4" type="video/mp4" />
                 </video>
                 
-                {/* Immersive Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/40 pointer-events-none z-10" />
+                {/* Immersive Overlay - slightly darker as requested */}
+                <div className="absolute inset-0 bg-black/40 pointer-events-none z-10" />
+                <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/60 pointer-events-none z-10" />
             </div>
 
             {/* Premium Headline Overlay */}
@@ -49,9 +50,11 @@ export function CinematicVideoSection() {
                                 duration: 1.5, 
                                 ease: [0.16, 1, 0.3, 1] 
                             }}
-                            className="font-instrument italic font-normal text-white text-5xl md:text-7xl lg:text-[100px] tracking-tight leading-[1.1] drop-shadow-2xl"
+                            className="font-sans font-bold text-5xl md:text-7xl lg:text-[90px] tracking-tighter leading-[1.1] drop-shadow-2xl"
                         >
-                            {t('cinematic.title')}
+                            <span className="bg-gradient-to-r from-white via-gray-200 to-gray-500 bg-clip-text text-transparent">
+                                {t('cinematic.title')}
+                            </span>
                         </motion.h2>
                     )}
                 </AnimatePresence>
