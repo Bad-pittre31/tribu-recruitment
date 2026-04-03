@@ -16,10 +16,10 @@ export function CinematicVideoSection() {
             // Play video only when in view
             videoRef.current.play().catch(e => console.log("Autoplay prevented:", e));
             
-            // Trigger the headline 7.5 seconds AFTER the video actually starts
+            // Trigger the headline 5 seconds AFTER the video actually starts
             const timer = setTimeout(() => {
                 setShowHeadline(true);
-            }, 7500);
+            }, 5000);
 
             return () => clearTimeout(timer);
         }
@@ -52,11 +52,11 @@ export function CinematicVideoSection() {
                 <AnimatePresence>
                     {showHeadline && (
                         <motion.h2
-                            initial={{ opacity: 0, y: 40 }}
-                            animate={{ opacity: 1, y: 0 }}
+                            initial={{ opacity: 0, y: 20, filter: 'blur(12px)' }}
+                            animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
                             transition={{ 
-                                duration: 1.5, 
-                                ease: [0.16, 1, 0.3, 1] 
+                                duration: 2.5, 
+                                ease: [0.22, 1, 0.36, 1] 
                             }}
                             className="font-sans font-bold text-5xl md:text-7xl lg:text-[90px] tracking-tighter leading-[1.1] drop-shadow-2xl"
                         >
