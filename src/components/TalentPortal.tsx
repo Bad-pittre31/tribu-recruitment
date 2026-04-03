@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Briefcase, FileText, Clock, CreditCard, ChevronRight } from 'lucide-react';
+import { Briefcase, FileText, Clock, CreditCard } from 'lucide-react';
 import { useTranslation } from '../contexts/LanguageContext';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -36,10 +36,8 @@ export function TalentPortal() {
   return (
     <section ref={sectionRef} id="talent" className="relative z-[10000] py-32 bg-tribu-brand-green">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="flex flex-col md:flex-row justify-between items-end mb-24 gap-12">
-
-          {/* Left Column Text Group */}
-          <div className="max-w-3xl">
+        <div className="mb-24">
+          <div className="max-w-4xl">
             <h5 className="text-sm md:text-base font-bold tracking-[0.4em] text-[#d0e0b8] uppercase mb-6 drop-shadow-sm">
               {t('talentPortal.label')}
             </h5>
@@ -51,14 +49,6 @@ export function TalentPortal() {
             <p className="text-lg md:text-xl text-[#94a382] leading-relaxed max-w-2xl">
               {t('talentPortal.description')}
             </p>
-          </div>
-
-          {/* Right Column CTA */}
-          <div className="shrink-0 mb-2 md:mb-0">
-            <button className="flex items-center gap-3 px-8 py-4 rounded-full bg-white text-[#172008] text-sm font-semibold tracking-wide hover:scale-105 transition-transform duration-300 group shadow-[0_0_30px_rgba(255,255,255,0.1)] hover:shadow-[0_0_40px_rgba(255,255,255,0.2)]">
-              {t('talentPortal.cta')}
-              <ChevronRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-            </button>
           </div>
         </div>
 
