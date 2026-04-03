@@ -75,11 +75,11 @@ export function ExpertisePage() {
   ];
 
   return (
-    <div className="min-h-screen bg-[var(--color-tribu-bg)] text-[var(--color-tribu-text)] selection:bg-[var(--color-tribu-accent)] selection:text-[var(--color-tribu-bg)]">
+    <div className="min-h-screen bg-white text-[#172008] selection:bg-[#84A232] selection:text-white">
       <Navbar />
       
       {/* Cinematic Hero Section */}
-      <section className="relative min-h-screen w-full flex flex-col items-center justify-center text-center px-6 pt-24 overflow-hidden">
+      <section className="relative min-h-[85vh] w-full flex flex-col items-center justify-center text-center px-6 pt-24 overflow-hidden">
         
         {/* Video Background Layer with loop logic */}
         <div 
@@ -97,60 +97,55 @@ export function ExpertisePage() {
           />
         </div>
 
-        {/* Dark Overlay for Text Readability */}
-        <div className="absolute inset-0 bg-black/40 z-0 pointer-events-none" />
+        {/* Dark Overlay for Text Readability - slightly adjusted for white transition */}
+        <div className="absolute inset-0 bg-black/30 z-0 pointer-events-none" />
 
-        {/* Gradient Overlay linking video to background smoothly */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[var(--color-tribu-bg)] via-transparent to-[var(--color-tribu-bg)] opacity-90 z-0 pointer-events-none" />
+        {/* Smooth Gradient Overlay linking video to white background */}
+        <div className="absolute inset-0 bg-gradient-to-b from-white via-transparent to-white opacity-80 z-0 pointer-events-none" />
 
         <div className="relative z-10 w-full max-w-5xl mx-auto flex flex-col items-center">
           
-          <h1 className="text-5xl sm:text-7xl md:text-[5.5rem] font-bold tracking-tight text-white leading-[0.95] max-w-4xl animate-fade-rise">
+          <h1 className="text-5xl sm:text-7xl md:text-[5.5rem] font-bold tracking-tight text-[#172008] leading-[0.95] max-w-4xl animate-fade-rise">
             {t('expertisePage.hero.headlineStart')} <br/>
-            <span className="text-[#8a928a] animate-pulse">
+            <span className="bg-gradient-to-r from-[#7dd3fc] via-[#4a7c59] to-[#172008] bg-clip-text text-transparent italic block mt-2">
               {t('expertisePage.hero.italic')}
             </span>
           </h1>
 
-          <p className="text-base sm:text-lg text-[#8a928a] max-w-2xl mt-12 leading-relaxed animate-fade-rise-delay font-medium tracking-wide">
+          <p className="text-base sm:text-lg text-gray-500 max-w-2xl mt-12 leading-relaxed animate-fade-rise-delay font-medium tracking-wide">
             {t('expertisePage.hero.description')}
           </p>
-
-          <Link
-            to="/candidate-space"
-            className="mt-14 inline-flex items-center px-10 py-4 rounded-full font-bold uppercase tracking-widest text-[11px] text-white bg-[#4a7c59] hover:bg-[#3d6a4a] hover:scale-105 transition-all duration-300 shadow-[0_0_30px_rgba(74,124,89,0.3)] animate-fade-rise-delay-2"
-          >
-            {t('expertisePage.hero.cta')}
-          </Link>
         </div>
       </section>
 
       {/* Grid Pillars Layout */}
-      <section className="relative z-10 py-32 bg-[var(--color-tribu-bg)]">
+      <section className="relative z-10 py-32 bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
             {pillars.map((pillar, index) => (
               <div 
                 key={index} 
-                className="glass-card rounded-[2rem] p-10 md:p-12 hover:border-[var(--color-tribu-border)] transition-all duration-500 group flex flex-col h-full"
+                className="bg-[#172008] rounded-[2.5rem] p-10 md:p-12 transition-all duration-500 group flex flex-col h-full shadow-xl shadow-black/5"
               >
-                <div className="mb-8 p-4 rounded-full bg-white/5 w-fit border border-white/10 group-hover:scale-110 transition-transform duration-500">
-                  {getPillarIcon(pillar.title || '')}
+                <div className="mb-8 p-4 rounded-full bg-white/10 w-fit border border-white/20 group-hover:scale-110 transition-transform duration-500">
+                  <div className="text-[#84A232]">
+                    {getPillarIcon(pillar.title || '')}
+                  </div>
                 </div>
                 
                 <h3 className="text-3xl font-bold tracking-tight text-white mb-6">
                   {pillar.title}
                 </h3>
                 
-                <p className="text-[15px] font-medium leading-relaxed text-[#8a928a] mb-10 flex-grow">
+                <p className="text-[15px] font-medium leading-relaxed text-gray-300 mb-10 flex-grow">
                   {pillar.description}
                 </p>
 
-                <div className="space-y-3 mt-auto">
+                <div className="space-y-4 mt-auto">
                   {(pillar.roles || []).map((role: string, rIdx: number) => (
-                    <div key={rIdx} className="flex items-center gap-3 text-[13px] font-semibold text-white/80">
-                      <CheckCircle2 className="w-4 h-4 text-[#84A232]/80" />
+                    <div key={rIdx} className="flex items-center gap-3 text-[13px] font-bold text-white/90">
+                      <CheckCircle2 className="w-4 h-4 text-[#84A232]" />
                       {role}
                     </div>
                   ))}
@@ -160,14 +155,14 @@ export function ExpertisePage() {
           </div>
 
           {/* Sectors Feature */}
-          <div className="mt-40 text-center">
-            <h4 className="text-sm font-bold uppercase tracking-[0.2em] text-[#8a928a] mb-8">
+          <div className="mt-48 text-center">
+            <h4 className="text-sm font-bold uppercase tracking-[0.2em] text-[#172008]/40 mb-12">
               {t('expertisePage.sectors.title')}
             </h4>
-            <div className="flex flex-wrap justify-center items-center gap-4 md:gap-8 opacity-80">
-              <div className="flex flex-wrap justify-center gap-6">
+            <div className="flex flex-wrap justify-center items-center gap-4 md:gap-8 overflow-hidden">
+              <div className="flex flex-wrap justify-center gap-10">
                 {(t('expertisePage.sectors.list', { returnObjects: true }) as string[] || []).map((sector, sIdx) => (
-                   <span key={sIdx} className="text-lg md:text-2xl font-bold tracking-tight text-white hover:text-[#84A232] transition-colors duration-300">
+                   <span key={sIdx} className="text-lg md:text-3xl font-bold tracking-tighter text-[#172008] hover:text-[#84A232] transition-colors duration-300">
                      {sector}
                    </span>
                 ))}
