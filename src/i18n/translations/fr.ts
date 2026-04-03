@@ -95,7 +95,7 @@ export const fr = {
     item3: { title: "Gain de temps", desc: "Des résumés exécutifs pour vos managers, qui saisissent l'essentiel en une minute." },
   },
   transition: {
-    title: "REJOINDRE LA TRIBU",
+    title: "REJOIGNEZ LA TRIBU",
   },
   talentPortal: {
     label: "POUR LES TALENTS",
