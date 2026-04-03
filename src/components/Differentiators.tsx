@@ -80,7 +80,7 @@ export function Differentiators() {
               ref={el => {
                 if (el) cardsRef.current[index] = el;
               }}
-              className="bg-white rounded-[2.5rem] p-10 md:p-12 flex flex-col h-full border border-gray-100 shadow-[0_5px_40px_rgba(0,0,0,0.02)] hover:shadow-[0_20px_80px_rgba(0,0,0,0.04)] transition-all duration-700 ease-out group hover:-translate-y-2"
+              className="bg-white rounded-[2.5rem] p-10 md:p-12 flex flex-col h-full border border-gray-200 shadow-[0_5px_40px_rgba(0,0,0,0.015)] hover:shadow-[0_20px_80px_rgba(0,0,0,0.04)] hover:border-black/10 transition-all duration-700 ease-out group hover:-translate-y-2"
             >
               <h3 className="text-2xl font-bold mb-6 tracking-tight text-black">
                 {feature.title}
