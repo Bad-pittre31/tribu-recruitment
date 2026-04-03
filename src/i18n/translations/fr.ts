@@ -57,7 +57,7 @@ export const fr = {
     },
   },
   cinematic: {
-    title: "Ouvrez l’accès aux bons talents",
+    title: "Les bons talents sont enfin accessibles",
   },
   protocol: {
     titlePrefix: "Le protocole de",

@@ -1,28 +1,36 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
+import { motion, AnimatePresence, useInView } from 'motion/react';
 import { useTranslation } from '../contexts/LanguageContext';
 
 export function CinematicVideoSection() {
     const { t } = useTranslation();
     const [showHeadline, setShowHeadline] = useState(false);
+    const sectionRef = useRef<HTMLElement>(null);
     const videoRef = useRef<HTMLVideoElement>(null);
+    
+    // Check if the section is mostly visible before paying the video
+    const isInView = useInView(sectionRef, { once: true, amount: 0.4 });
 
     useEffect(() => {
-        // Trigger the headline at 5.5 seconds (1.5s later than before)
-        const timer = setTimeout(() => {
-            setShowHeadline(true);
-        }, 5500);
+        if (isInView && videoRef.current) {
+            // Play video only when in view
+            videoRef.current.play().catch(e => console.log("Autoplay prevented:", e));
+            
+            // Trigger the headline 7.5 seconds AFTER the video actually starts
+            const timer = setTimeout(() => {
+                setShowHeadline(true);
+            }, 7500);
 
-        return () => clearTimeout(timer);
-    }, []);
+            return () => clearTimeout(timer);
+        }
+    }, [isInView]);
 
     return (
-        <section className="relative w-full h-[50vh] lg:h-[75vh] max-h-[800px] overflow-hidden bg-black flex items-center justify-center border-y border-white/5">
+        <section ref={sectionRef} className="relative w-full h-[50vh] lg:h-[75vh] max-h-[800px] overflow-hidden bg-black flex items-center justify-center border-y border-white/5">
             {/* Background Video */}
             <div className="absolute inset-0 w-full h-full z-0 overflow-hidden">
                 <video
                     ref={videoRef}
-                    autoPlay
                     muted
                     playsInline
                     className="w-full h-full object-cover"

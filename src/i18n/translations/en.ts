@@ -67,7 +67,7 @@ export const en = {
     },
   },
   cinematic: {
-    title: "Unlock access to the right talent",
+    title: "Good talent is finally accessible",
   },
   protocol: {
     titlePrefix: "The protocol for",
