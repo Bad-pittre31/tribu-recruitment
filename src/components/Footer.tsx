@@ -80,8 +80,6 @@ export function Footer() {
         <div className="mt-20 pt-8 border-t border-black/5 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] font-bold uppercase tracking-widest text-gray-400">
           <div>
             <span>© {new Date().getFullYear()} TRIBU — {t('footer.rights')}</span>
-            <span className="hidden md:block mx-4">•</span>
-            <span className="text-[#84A232]">{t('footer.systemsOperational')}</span>
           </div>
 
           <div className="flex items-center gap-8">
