@@ -134,7 +134,7 @@ export const fr = {
     p4: "La transparence fait partie de l'architecture de confiance.",
   },
   manifesto: {
-    title: "TRIBU a été bâti par des recruteurs obsédés par la précision, la confiance et la responsabilité.",
+    title: "TRIBU a été bâti par des recruteurs fascinés par la précision, la confiance et la responsabilité.",
     item1: { trad: "La plupart des cabinets optimisent pour le volume de placements.", tribu: "Nous optimisons pour la ", highlight: "Rétention." },
     item2: { trad: "La plupart des agences facturent et disparaissent.", tribu: "Nous restons alignés après l'embauche.", highlight: "Responsabilité." },
     item3: { trad: "La plupart des cabinets envoient des CV bruts.", tribu: "Nous livrons des dossiers structurés.", highlight: "Précision." },

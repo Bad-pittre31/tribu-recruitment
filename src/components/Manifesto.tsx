@@ -37,14 +37,14 @@ export function Manifesto() {
   const manifestoItems = [1, 2, 3, 4];
 
   return (
-    <section ref={sectionRef} className="relative z-[10000] py-40 bg-tribu-brand-green overflow-hidden">
+    <section ref={sectionRef} className="relative z-[10000] py-40 overflow-hidden" style={{ backgroundColor: 'rgb(239, 250, 232)' }}>
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-[#d0e0b8]/5 rounded-full blur-[200px] opacity-20 -translate-y-1/2 translate-x-1/3" />
+        <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-black/5 rounded-full blur-[200px] opacity-10 -translate-y-1/2 translate-x-1/3" />
       </div>
 
-      <div className="max-w-5xl mx-auto px-6 relative z-10">
+      <div className="max-w-6xl mx-auto px-6 relative z-10">
         <div className="mb-24 text-center">
-          <h2 className="text-3xl md:text-5xl font-bold tracking-tighter leading-tight text-white">
+          <h2 className="text-3xl md:text-5xl font-bold tracking-tighter leading-tight text-[#172008]">
             {t('manifesto.title')}
           </h2>
         </div>
@@ -54,24 +54,27 @@ export function Manifesto() {
             <div
               key={num}
               ref={el => { if (el) itemsRef.current[index] = el; }}
-              className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8 group"
+              className="grid grid-cols-1 md:grid-cols-[1fr_80px_1fr] items-center gap-8 group"
             >
-              <div className="md:w-5/12">
-                <span className="text-xs font-bold tracking-[0.3em] opacity-40 mb-2 block uppercase text-white">Traditional</span>
-                <p className="text-lg md:text-xl text-white/60 mb-2">
+              {/* Left Column (Traditional) - Right align on desktop */}
+              <div className="md:text-right">
+                <span className="text-xs font-bold tracking-[0.3em] opacity-40 mb-2 block uppercase text-black">Traditional</span>
+                <p className="text-lg md:text-xl text-black/60 font-medium">
                   {t(`manifesto.item${num}.trad`)}
                 </p>
               </div>
 
-              <div className="hidden md:flex w-2/12 justify-center">
-                <div className="w-[1px] h-16 bg-white/20 transition-colors duration-500 group-hover:bg-[#d0e0b8]" />
+              {/* Vertical Dash - Perfectly Centered Grid Cell */}
+              <div className="hidden md:flex justify-center items-center">
+                <div className="w-[1px] h-20 bg-black/10 transition-colors duration-500 group-hover:bg-[#84A232]" />
               </div>
 
-              <div className="md:w-5/12">
-                <span className="text-xs font-bold tracking-[0.3em] text-[#d0e0b8] mb-2 block uppercase">TRIBU Model</span>
-                <p className="text-2xl md:text-3xl font-bold text-white">
+              {/* Right Column (TRIBU) */}
+              <div className="md:text-left">
+                <span className="text-xs font-bold tracking-[0.3em] text-[#84A232] mb-2 block uppercase">TRIBU Model</span>
+                <p className="text-2xl md:text-3xl font-bold text-black leading-tight">
                   {t(`manifesto.item${num}.tribu`)}
-                  <span className="text-[#d0e0b8] italic ml-2">{t(`manifesto.item${num}.highlight`)}</span>
+                  <span className="text-[#84A232] italic ml-2">{t(`manifesto.item${num}.highlight`)}</span>
                 </p>
               </div>
             </div>
