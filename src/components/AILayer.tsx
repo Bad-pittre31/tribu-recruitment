@@ -46,11 +46,11 @@ export function AILayer() {
               src="https://my.spline.design/interactiveaiwebsite-Rfv89PWmTh8h7T9pELuNWADT/?antialiasing=1&quality=high"
               frameBorder="0"
               style={{
-                width: '240%',
-                height: '240%',
+                width: '320%',
+                height: '320%',
                 position: 'absolute',
                 top: '50%',
-                left: '55%', // Adjusted left to balance the larger size
+                left: '75%', // Shifted even further right to allow a massive size without clipping the left edge
                 transform: 'translate(-50%, -50%)',
               }}
               className="z-10 bg-transparent block"
