@@ -71,6 +71,12 @@ export const en = {
     italic: "than just a CV.",
     description: "Hiring the wrong person is expensive. That is why we model talent across 3 dimensions: raw technical expertise, behavioral profile (DISC), and integration velocity. You no longer hire blind.",
   },
+  urbanJungle: {
+    heroTitle: "The art of recruitment ",
+    heroItalic: "cinematic.",
+    panelTitle: "Deeper than just a CV.",
+    panelDescription: "Hiring the wrong person is costly. That's why we model talent in 3 dimensions: raw technical expertise, behavioral profiling (DISC model), and integration velocity. You're no longer hiring in the dark.",
+  },
   protocol: {
     titlePrefix: "The protocol for",
     titleSuffix: "guaranteed success.",
