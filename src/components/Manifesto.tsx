@@ -44,8 +44,10 @@ export function Manifesto() {
 
       <div className="max-w-6xl mx-auto px-6 relative z-10">
         <div className="mb-24 text-center">
-          <h2 className="text-3xl md:text-5xl font-bold tracking-tighter leading-tight text-[#172008]">
-            {t('manifesto.title')}
+          <h2 className="text-4xl md:text-6xl lg:text-[80px] font-instrument italic font-normal tracking-tight leading-[1.1]">
+            <span className="bg-gradient-to-r from-[#172008] via-[#4a7c59] to-[#172008] bg-clip-text text-transparent">
+              {t('manifesto.title')}
+            </span>
           </h2>
         </div>
 
