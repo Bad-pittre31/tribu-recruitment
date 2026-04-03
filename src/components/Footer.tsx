@@ -32,7 +32,7 @@ export function Footer() {
   };
 
   return (
-    <footer className="bg-[#FFFFFF] border-t border-black/5 pt-24 pb-12 overflow-hidden relative z-[10001]">
+    <footer className="bg-[#F7F6F1] border-t border-black/5 pt-24 pb-12 overflow-hidden relative z-[10001]">
       <div className="max-w-7xl mx-auto px-8 lg:px-12">
 
         {/* Main Single/Two Line Horizontal Layout Container */}
