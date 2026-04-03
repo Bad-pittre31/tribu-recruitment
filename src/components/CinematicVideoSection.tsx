@@ -31,9 +31,7 @@ export function CinematicVideoSection() {
                         console.log("Video ended, freezing on last frame.");
                     }}
                 >
-                    <source src="https://streamable.com/6icc4e" type="video/mp4" />
-                    {/* Fallback to Streamable's CDN pattern if needed, but the user's URL is a good start */}
-                    <source src="https://cdn-cf-east.streamable.com/video/mp4/6icc4e.mp4" type="video/mp4" />
+                    <source src="/video/subway-cinematic.mp4" type="video/mp4" />
                 </video>
                 
                 {/* Immersive Overlay */}
