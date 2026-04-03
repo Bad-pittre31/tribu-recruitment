@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { motion } from 'motion/react';
-import { ArrowUpRight, ShieldCheck, Activity, BrainCircuit } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 import { useTranslation } from '../contexts/LanguageContext';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -14,28 +14,19 @@ export function Differentiators() {
 
   const features = [
     {
-      id: '01',
       title: t('differentiators.item1.title'),
       description: t('differentiators.item1.description'),
-      icon: ShieldCheck,
-      tags: t('differentiators.item1.tags'),
-      visual: 'Diagnostic Shuffler'
+      tags: t('differentiators.item1.tags')
     },
     {
-      id: '02',
       title: t('differentiators.item2.title'),
       description: t('differentiators.item2.description'),
-      icon: Activity,
-      tags: t('differentiators.item2.tags'),
-      visual: 'Telemetry Typewriter'
+      tags: t('differentiators.item2.tags')
     },
     {
-      id: '03',
       title: t('differentiators.item3.title'),
       description: t('differentiators.item3.description'),
-      icon: BrainCircuit,
-      tags: t('differentiators.item3.tags'),
-      visual: 'Cursor Protocol Scheduler'
+      tags: t('differentiators.item3.tags')
     }
   ];
 
@@ -43,17 +34,16 @@ export function Differentiators() {
     const ctx = gsap.context(() => {
       cardsRef.current.forEach((card, index) => {
         gsap.fromTo(card,
-          { opacity: 0, y: 100, scale: 0.95 },
+          { opacity: 0, y: 40 },
           {
             opacity: 1,
             y: 0,
-            scale: 1,
             duration: 1.2,
-            ease: "power3.out",
+            ease: "expo.out",
+            delay: index * 0.15,
             scrollTrigger: {
               trigger: card,
-              start: "top 85%",
-              end: "bottom 20%",
+              start: "top 90%",
               toggleActions: "play none none reverse"
             }
           }
@@ -65,61 +55,51 @@ export function Differentiators() {
   }, []);
 
   return (
-    <section ref={sectionRef} id="model" className="relative py-32 bg-white overflow-hidden">
-
+    <section ref={sectionRef} id="model" className="relative py-40 bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <div className="mb-32 text-center">
-          <h2 className="text-4xl md:text-6xl font-bold tracking-tighter mb-6">
-            <span className="bg-gradient-to-r from-[#19200B] via-[#4a7c59] to-[#19200B] bg-clip-text text-transparent">
+        <div className="mb-24 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1 }}
+          >
+            <h2 className="text-4xl md:text-6xl font-bold tracking-tighter mb-8 bg-gradient-to-r from-[#19200B] via-[#4a7c59] to-[#19200B] bg-clip-text text-transparent">
               {t('differentiators.title')}
-            </span>
-          </h2>
-          <p className="text-lg md:text-xl text-gray-500 max-w-2xl leading-relaxed mx-auto">
-            {t('differentiators.description')}
-          </p>
+            </h2>
+            <p className="text-lg md:text-xl text-gray-400 max-w-2xl leading-relaxed mx-auto font-medium">
+              {t('differentiators.description')}
+            </p>
+          </motion.div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {features.map((feature, index) => (
             <div
-              key={feature.id}
+              key={index}
               ref={el => {
                 if (el) cardsRef.current[index] = el;
               }}
-              className="bg-white rounded-3xl p-8 flex flex-col h-full group hover:border-gray-300 border border-gray-100 shadow-[0_4px_24px_rgba(0,0,0,0.02)] transition-colors duration-500"
+              className="bg-white rounded-[2.5rem] p-10 md:p-12 flex flex-col h-full border border-gray-100 shadow-[0_5px_40px_rgba(0,0,0,0.02)] hover:shadow-[0_20px_80px_rgba(0,0,0,0.04)] transition-all duration-700 ease-out group hover:-translate-y-2"
             >
-              <div className="flex justify-between items-start mb-12">
-                <span className="text-sm font-mono text-gray-400 tracking-widest">{feature.id}</span>
-                <div className="w-12 h-12 rounded-full bg-gray-50 flex items-center justify-center border border-gray-100 group-hover:bg-gray-100 group-hover:text-black text-gray-400 transition-colors duration-500">
-                  <feature.icon className="w-5 h-5" />
-                </div>
-              </div>
-
-              <h3 className="text-2xl font-bold mb-4 tracking-tight text-black">{feature.title}</h3>
-              <p className="text-gray-500 mb-8 flex-grow leading-relaxed">
+              <h3 className="text-2xl font-bold mb-6 tracking-tight text-black">
+                {feature.title}
+              </h3>
+              
+              <p className="text-gray-500 mb-10 text-[17px] leading-relaxed font-medium flex-grow">
                 {feature.description}
               </p>
 
-              <div className="space-y-3 mb-8">
-                {feature.tags.map((tag, i) => (
-                  <div key={i} className="flex items-center gap-3 text-sm text-gray-500 font-medium">
-                    <div className="w-1.5 h-1.5 rounded-full bg-gray-300 group-hover:bg-black transition-colors duration-500" />
-                    <span>{tag}</span>
-                  </div>
-                ))}
-              </div>
-
-              {/* Abstract Visual Representation Placeholder */}
-              <div className="mt-auto pt-8 border-t border-gray-100">
-                <div className="h-24 rounded-xl bg-gray-50 border border-gray-100 overflow-hidden relative flex items-center justify-center group/visual">
-                  <span className="text-xs font-mono text-gray-400 uppercase tracking-widest opacity-60 z-10 transition-opacity duration-500 group-hover/visual:opacity-100">
-                    {feature.visual}
-                  </span>
-                  {/* Simulate activity */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-black/5 to-transparent opacity-0 group-hover/visual:opacity-100 group-hover/visual:animate-[pulse_2s_ease-in-out_infinite] transition-opacity duration-1000" />
-
-                  {/* Scanning line effect */}
-                  <div className="absolute top-0 left-0 w-full h-[1px] bg-black/10 opacity-0 group-hover/visual:opacity-100 group-hover/visual:animate-[scan_3s_linear_infinite]" />
+              <div className="mt-auto pt-8 border-t border-gray-50">
+                <div className="flex flex-wrap gap-2.5">
+                  {Array.isArray(feature.tags) && feature.tags.map((tag, i) => (
+                    <span 
+                      key={i} 
+                      className="px-4 py-2 rounded-full bg-gray-50 text-[13px] text-gray-400 font-bold tracking-tight border border-gray-100 group-hover:bg-black group-hover:text-white group-hover:border-black transition-all duration-500"
+                    >
+                      {tag}
+                    </span>
+                  ))}
                 </div>
               </div>
             </div>
