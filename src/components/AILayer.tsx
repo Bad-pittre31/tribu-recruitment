@@ -60,7 +60,7 @@ export function AILayer() {
 
           <div className="order-1 lg:order-2 flex flex-col justify-center text-center lg:text-left items-center lg:items-start max-w-2xl mx-auto lg:mx-0">
             <h2 className="text-5xl md:text-7xl font-bold tracking-tighter mb-10 leading-[1.05]" ref={el => { if (el) elementsRef.current[0] = el; }}>
-              <span className="bg-gradient-to-r from-[#172008] via-[#4a7c59] to-[#172008] bg-clip-text text-transparent block">{t('aiLayer.titlePrefix')}</span>
+              <span className="bg-gradient-to-r from-[#7dd3fc] via-[#4a7c59] to-[#172008] bg-clip-text text-transparent block">{t('aiLayer.titlePrefix')}</span>
               <span className="text-black">{t('aiLayer.titleSuffix')}</span>
             </h2>
 
