@@ -8,7 +8,7 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import { Navbar } from './components/Navbar';
 import { HeroJungleReveal } from './components/HeroJungleReveal';
 import { Differentiators } from './components/Differentiators';
-import { UrbanJungleHero } from './components/UrbanJungleHero';
+import { SplineFeature } from './components/SplineFeature';
 import { AILayer } from './components/AILayer';
 import { TribuTransition } from './components/TribuTransition';
 import { TalentPortal } from './components/TalentPortal';
@@ -40,7 +40,7 @@ function LandingPage() {
       <main>
         <HeroJungleReveal />
         <Differentiators />
-        <UrbanJungleHero />
+        <SplineFeature />
         <Protocol />
         <AILayer />
         <TribuTransition />

@@ -61,12 +61,6 @@ export const fr = {
     italic: "qu'un simple CV.",
     description: "Embaucher la mauvaise personne coûte cher. C'est pourquoi nous modélisons les talents en 3 dimensions : expertise technique brute, profil comportemental (modèle DISC), et vélocité d'intégration. Vous ne recrutez plus à l'aveugle.",
   },
-  urbanJungle: {
-    heroTitle: "L'art du recrutement ",
-    heroItalic: "cinématique.",
-    panelTitle: "Bien plus profond qu'un simple CV.",
-    panelDescription: "Embaucher la mauvaise personne coûte cher. C'est pourquoi nous modélisons les talents en 3 dimensions : expertise technique brute, profil comportemental (modèle DISC), et vélocité d'intégration. Vous ne recrutez plus à l'aveugle.",
-  },
   protocol: {
     titlePrefix: "Le protocole de",
     titleSuffix: "réussite garantie.",
