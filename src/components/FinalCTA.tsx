@@ -79,7 +79,7 @@ export function FinalCTA() {
           <source src="/video/forest-sequence.mp4" type="video/mp4" />
         </video>
         {/* Subtle dark overlay to integrate the video seamlessly into the dark background */}
-        <div className="absolute inset-0 bg-tribu-brand-green/40 mix-blend-multiply pointer-events-none" />
+        <div className="absolute inset-0 bg-tribu-brand-green/20 mix-blend-multiply pointer-events-none" />
         <div className="absolute inset-0 ring-1 ring-white/10 rounded-[3rem] pointer-events-none" />
       </div>
     </section>
