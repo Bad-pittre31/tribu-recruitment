@@ -47,7 +47,7 @@ export function SharedSuccess() {
     ];
 
     return (
-        <section ref={sectionRef} id="shared-success" className="relative z-[10000] py-32 bg-[#172008] overflow-hidden">
+        <section ref={sectionRef} id="shared-success" className="relative z-[10000] py-56 bg-[#172008] overflow-hidden">
             <div className="max-w-7xl mx-auto px-6">
 
                 {/* Centered Header Block */}

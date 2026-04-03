@@ -33,7 +33,7 @@ export function TransparencyEconomics() {
     }, []);
 
     return (
-        <section ref={sectionRef} id="transparency" className="relative w-full min-h-[900px] bg-white overflow-hidden flex items-center">
+        <section ref={sectionRef} id="transparency" className="relative w-full min-h-[1100px] bg-white overflow-hidden flex items-center py-40">
 
             {/* Background Spline Visual - Full Width & Centered */}
             <div className="absolute inset-0 w-full h-full z-0 overflow-hidden bg-[#FBFDFB]">
