@@ -56,10 +56,8 @@ export const fr = {
       tags: ["Technologie propriétaire", "Diagnostic cognitif", "Matching culturel", "Dossier 360°"],
     },
   },
-  splineFeature: {
-    title: "Bien plus profond",
-    italic: "qu'un simple CV.",
-    description: "Embaucher la mauvaise personne coûte cher. C'est pourquoi nous modélisons les talents en 3 dimensions : expertise technique brute, profil comportemental (modèle DISC), et vélocité d'intégration. Vous ne recrutez plus à l'aveugle.",
+  cinematic: {
+    title: "Ouvrez l’accès aux bons talents",
   },
   protocol: {
     titlePrefix: "Le protocole de",

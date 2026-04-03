@@ -66,10 +66,8 @@ export const en = {
       tags: ["Proprietary technology", "Cognitive diagnostic", "Cultural matching", "360° Dossier"],
     },
   },
-  splineFeature: {
-    title: "Much deeper",
-    italic: "than just a CV.",
-    description: "Hiring the wrong person is expensive. That is why we model talent across 3 dimensions: raw technical expertise, behavioral profile (DISC), and integration velocity. You no longer hire blind.",
+  cinematic: {
+    title: "Unlock access to the right talent",
   },
   protocol: {
     titlePrefix: "The protocol for",
