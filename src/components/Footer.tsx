@@ -32,26 +32,27 @@ export function Footer() {
   };
 
   return (
-    <footer className="bg-[#F7F6F1] border-t border-black/5 pt-24 pb-12 overflow-hidden relative z-[10001]">
+    <footer className="bg-[#F7F6F1] border-t border-black/5 pt-16 pb-12 overflow-hidden relative z-[10001]">
       <div className="max-w-7xl mx-auto px-8 lg:px-12">
 
-        {/* Main Single/Two Line Horizontal Layout Container */}
+        {/* Main Horizontal Layout */}
         <div className="flex flex-col md:flex-row justify-between items-center gap-8">
 
-          {/* Status & Logo */}
-          <div className="space-y-6">
+          {/* Logo & Status */}
+          <div className="flex flex-col items-center md:items-start gap-4">
             <Link to="/" className="inline-block">
-              <img src="/assets/tribu-logo-jungle.png" alt="TRIBU" className="h-24 w-auto object-contain brightness-0" />
+              <img src="/assets/tribu-logo-jungle.png" alt="TRIBU" className="h-10 w-auto object-contain brightness-0" />
             </Link>
-            <div className="flex items-center gap-3">
-              <div className="w-2 h-2 rounded-full bg-[#84A232] animate-pulse" />
-              <span className="text-xs font-bold tracking-widest uppercase text-gray-400">
+            <div className="flex items-center gap-2.5">
+              <div className="w-1.5 h-1.5 rounded-full bg-[#84A232] animate-pulse" />
+              <span className="text-[10px] font-bold tracking-widest uppercase text-gray-400">
                 {t('footer.status')}
               </span>
             </div>
           </div>
 
-          <div className="flex flex-wrap items-center justify-center gap-6 text-[11px] font-bold uppercase tracking-widest text-gray-500">
+          {/* Navigation Links */}
+          <div className="flex flex-wrap items-center justify-center md:justify-end gap-x-8 gap-y-3 text-[10px] font-bold uppercase tracking-widest text-gray-500 max-w-2xl">
             {navLinks.map((link) => (
               link.isRoute ? (
                 <Link
@@ -77,7 +78,7 @@ export function Footer() {
         </div>
 
         {/* Secondary Info / Legal Row */}
-        <div className="mt-20 pt-8 border-t border-black/5 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] font-bold uppercase tracking-widest text-gray-400">
+        <div className="mt-12 pt-8 border-t border-black/5 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] font-bold uppercase tracking-widest text-gray-400">
           <div>
             <span>© {new Date().getFullYear()} TRIBU — {t('footer.rights')}</span>
           </div>
