@@ -41,21 +41,44 @@ export function AILayer() {
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 
-          <div className="order-2 lg:order-1 relative h-[600px] lg:h-[800px] w-full z-0 flex items-center justify-center overflow-hidden rounded-[3rem]">
-            <iframe
-              src="https://my.spline.design/interactiveaiwebsite-Rfv89PWmTh8h7T9pELuNWADT/?antialiasing=1&quality=high"
-              frameBorder="0"
-              style={{
-                width: '320%',
-                height: '320%',
-                position: 'absolute',
-                top: '50%',
-                left: '75%', // Shifted even further right to allow a massive size without clipping the left edge
-                transform: 'translate(-50%, -50%)',
-              }}
-              className="z-10 bg-transparent block"
-              title="Interactive AI Website Candidate Delivery"
-            ></iframe>
+          <div className="order-2 lg:order-1 relative h-[340px] lg:h-[800px] w-full z-0 flex items-center justify-center overflow-hidden rounded-[3rem]">
+            {/* Desktop: Spline 3D iframe */}
+            <div className="hidden lg:block absolute inset-0">
+              <iframe
+                src="https://my.spline.design/interactiveaiwebsite-Rfv89PWmTh8h7T9pELuNWADT/?antialiasing=1&quality=high"
+                frameBorder="0"
+                style={{
+                  width: '320%',
+                  height: '320%',
+                  position: 'absolute',
+                  top: '50%',
+                  left: '75%',
+                  transform: 'translate(-50%, -50%)',
+                }}
+                className="z-10 bg-transparent block"
+                title="Interactive AI Website Candidate Delivery"
+              ></iframe>
+            </div>
+            {/* Mobile: CSS-only abstract visual, no WebGL */}
+            <div className="lg:hidden absolute inset-0 rounded-[3rem] overflow-hidden"
+              style={{ background: 'linear-gradient(135deg, #0f1a05 0%, #1e3a0f 40%, #2a5a20 70%, #4a8a3a 100%)' }}
+            >
+              <div className="absolute inset-0 opacity-20"
+                style={{ backgroundImage: 'radial-gradient(circle at 30% 50%, #84A232 0%, transparent 60%), radial-gradient(circle at 80% 20%, #caff04 0%, transparent 50%)' }}
+              />
+              <div className="absolute inset-0 flex items-center justify-center">
+                <svg viewBox="0 0 200 200" className="w-48 h-48 opacity-20" fill="none">
+                  <circle cx="100" cy="100" r="80" stroke="#84A232" strokeWidth="1"/>
+                  <circle cx="100" cy="100" r="55" stroke="#84A232" strokeWidth="0.5"/>
+                  <circle cx="100" cy="100" r="30" stroke="#caff04" strokeWidth="0.5"/>
+                  <line x1="20" y1="100" x2="180" y2="100" stroke="#84A232" strokeWidth="0.5"/>
+                  <line x1="100" y1="20" x2="100" y2="180" stroke="#84A232" strokeWidth="0.5"/>
+                </svg>
+              </div>
+              <div className="absolute bottom-6 left-6 right-6">
+                <div className="text-[10px] font-mono text-[#84A232] uppercase tracking-[0.2em] opacity-60">AI RECRUITMENT LAYER</div>
+              </div>
+            </div>
           </div>
 
           <div className="order-1 lg:order-2 flex flex-col justify-center text-center lg:text-left items-center lg:items-start max-w-2xl mx-auto lg:mx-0">
