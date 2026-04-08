@@ -2,6 +2,14 @@ export const config = {
   runtime: 'edge',
 };
 
+// Strips HTML tags and limits length to prevent XSS in email content
+function sanitizeInput(value: unknown, maxLength = 500): string {
+  if (typeof value !== 'string') return '';
+  return value.replace(/<[^>]*>/g, '').replace(/[&<>"']/g, (c) => ({
+    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#x27;'
+  }[c] ?? c)).slice(0, maxLength);
+}
+
 export default async function handler(req: Request) {
   if (req.method === 'OPTIONS') {
     return new Response(null, {
@@ -23,7 +31,12 @@ export default async function handler(req: Request) {
 
   try {
     const body = await req.json();
-    const { firstName, lastName, email, company, needs } = body;
+    const raw = body;
+    const firstName = sanitizeInput(raw.firstName, 100);
+    const lastName  = sanitizeInput(raw.lastName, 100);
+    const email     = sanitizeInput(raw.email, 200);
+    const company   = sanitizeInput(raw.company, 200);
+    const needs     = sanitizeInput(raw.needs, 2000);
 
     const resendApiKey = process.env.RESEND_API_KEY;
     if (!resendApiKey) {

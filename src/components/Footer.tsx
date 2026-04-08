@@ -84,8 +84,8 @@ export function Footer() {
           </div>
 
           <div className="flex items-center gap-8">
-            <Link to="/legal" className="hover:text-black transition-colors">{t('footer.legalNotice')}</Link>
-            <Link to="/privacy" className="hover:text-black transition-colors">{t('footer.privacyPolicy')}</Link>
+            <Link to="/legal-notice" className="hover:text-black transition-colors">{t('footer.legalNotice')}</Link>
+            <Link to="/privacy-policy" className="hover:text-black transition-colors">{t('footer.privacyPolicy')}</Link>
             <Link to="/terms" className="hover:text-black transition-colors">{t('footer.terms')}</Link>
           </div>
         </div>

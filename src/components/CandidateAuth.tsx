@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import { useTranslation } from '../contexts/LanguageContext';
+import { supabase } from '../lib/supabaseClient';
 import { motion } from 'motion/react';
-import { ArrowLeft, Eye, EyeOff, Loader2 } from 'lucide-react';
+import { ArrowLeft, Eye, EyeOff, Loader2, CheckCircle2 } from 'lucide-react';
 
 export function CandidateAuth() {
     const { t } = useTranslation();
@@ -14,6 +15,11 @@ export function CandidateAuth() {
     const [password, setPassword] = useState('');
     const [error, setError] = useState<string | null>(null);
     const [loading, setLoading] = useState(false);
+    const [showForgot, setShowForgot] = useState(false);
+    const [forgotEmail, setForgotEmail] = useState('');
+    const [forgotLoading, setForgotLoading] = useState(false);
+    const [forgotSent, setForgotSent] = useState(false);
+    const [forgotError, setForgotError] = useState<string | null>(null);
 
     // If already authenticated, redirect
     React.useEffect(() => {
@@ -42,6 +48,21 @@ export function CandidateAuth() {
             setLoading(false);
         } else {
             navigate('/candidate-space/dashboard');
+        }
+    };
+
+    const handleForgotPassword = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setForgotError(null);
+        setForgotLoading(true);
+        const { error: err } = await supabase.auth.resetPasswordForEmail(forgotEmail, {
+            redirectTo: `${window.location.origin}/candidate-space/reset-password`,
+        });
+        setForgotLoading(false);
+        if (err) {
+            setForgotError(err.message);
+        } else {
+            setForgotSent(true);
         }
     };
 
@@ -142,7 +163,16 @@ export function CandidateAuth() {
                             </div>
 
                             <div>
-                                <label className="block text-[11px] font-semibold text-gray-500 uppercase tracking-wider mb-2">{t('common.password')}</label>
+                                <div className="flex items-center justify-between mb-2">
+                                    <label className="block text-[11px] font-semibold text-gray-500 uppercase tracking-wider">{t('common.password')}</label>
+                                    <button
+                                        type="button"
+                                        onClick={() => setShowForgot(true)}
+                                        className="text-[11px] text-gray-400 hover:text-[#172008] transition-colors font-medium"
+                                    >
+                                        Mot de passe oublié ?
+                                    </button>
+                                </div>
                                 <div className="relative">
                                     <input
                                         type={showPassword ? 'text' : 'password'}
@@ -167,6 +197,56 @@ export function CandidateAuth() {
                                 {loading ? t('common.signingIn') : t('common.signIn')}
                             </button>
                         </form>
+
+                        {/* Forgot Password Modal */}
+                        {showForgot && (
+                            <motion.div
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                className="fixed inset-0 z-[200] flex items-center justify-center bg-black/40 backdrop-blur-sm p-4"
+                                onClick={(e) => { if (e.target === e.currentTarget) setShowForgot(false); }}
+                            >
+                                <motion.div
+                                    initial={{ opacity: 0, y: 20, scale: 0.96 }}
+                                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                                    transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                                    className="bg-white rounded-2xl border border-gray-100 shadow-2xl p-8 w-full max-w-sm"
+                                >
+                                    {forgotSent ? (
+                                        <div className="text-center">
+                                            <CheckCircle2 className="w-10 h-10 text-emerald-500 mx-auto mb-4" />
+                                            <h3 className="text-lg font-bold text-gray-900 mb-2">Email envoyé !</h3>
+                                            <p className="text-sm text-gray-400 mb-6">Vérifiez votre boîte mail pour réinitialiser votre mot de passe.</p>
+                                            <button onClick={() => { setShowForgot(false); setForgotSent(false); setForgotEmail(''); }} className="w-full py-2.5 rounded-xl text-sm font-semibold bg-[#172008] text-white hover:bg-[#1e2a0e] transition-colors">Fermer</button>
+                                        </div>
+                                    ) : (
+                                        <form onSubmit={handleForgotPassword}>
+                                            <h3 className="text-lg font-bold text-gray-900 mb-1">Réinitialiser le mot de passe</h3>
+                                            <p className="text-sm text-gray-400 mb-6">Entrez votre email pour recevoir un lien de réinitialisation.</p>
+                                            {forgotError && <p className="mb-4 text-sm text-red-500">{forgotError}</p>}
+                                            <div className="mb-4">
+                                                <label className="block text-[11px] font-semibold text-gray-500 uppercase tracking-wider mb-2">Email</label>
+                                                <input
+                                                    type="email"
+                                                    value={forgotEmail}
+                                                    onChange={e => setForgotEmail(e.target.value)}
+                                                    placeholder="name@company.com"
+                                                    required
+                                                    className="w-full px-4 py-3 bg-[#F6F8F6] border border-gray-100 rounded-xl text-sm text-gray-900 placeholder:text-gray-300 focus:outline-none focus:ring-2 focus:ring-[#172008]/10 transition-all"
+                                                />
+                                            </div>
+                                            <div className="flex gap-3">
+                                                <button type="button" onClick={() => setShowForgot(false)} className="flex-1 py-2.5 rounded-xl text-sm font-medium border border-gray-200 text-gray-500 hover:bg-gray-50 transition-colors">Annuler</button>
+                                                <button type="submit" disabled={forgotLoading} className="flex-1 py-2.5 rounded-xl text-sm font-semibold bg-[#172008] text-white hover:bg-[#1e2a0e] disabled:opacity-50 transition-colors flex items-center justify-center gap-2">
+                                                    {forgotLoading && <Loader2 className="w-3.5 h-3.5 animate-spin" />}
+                                                    Envoyer
+                                                </button>
+                                            </div>
+                                        </form>
+                                    )}
+                                </motion.div>
+                            </motion.div>
+                        )}
                     </div>
 
                     <p className="mt-6 text-center text-[11px] text-gray-300">
