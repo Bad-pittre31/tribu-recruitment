@@ -12,7 +12,7 @@ const FRAME_DIRECTORY = '/assets/logo-sequence';
 function MobileHero() {
     const { t } = useTranslation();
     return (
-        <section className="relative min-h-[100svh] bg-[rgb(248,247,242)] flex flex-col items-center justify-between px-6 pt-32 pb-14">
+        <section className="relative min-h-[100svh] bg-[rgb(248,247,242)] flex flex-col items-center justify-between px-6 pt-44 pb-14">
             {/* Subtle grain texture */}
             <div
                 className="absolute inset-0 opacity-[0.025] pointer-events-none"
@@ -134,7 +134,7 @@ function DesktopHero() {
             }
 
             const offsetX = (window.innerWidth - drawWidth) / 2;
-            const offsetY = (window.innerHeight - drawHeight) * 0.4;
+            const offsetY = (window.innerHeight - drawHeight) * 0.5;
 
             const topCrop = img.height * 0.08;
             const bottomCrop = img.height * 0.12;
@@ -193,7 +193,7 @@ function DesktopHero() {
                         opacity: useTransform(scrollYProgress, [0.75, 0.9], [0, 1]),
                         y: useTransform(scrollYProgress, [0.75, 0.9], [40, 0])
                     }}
-                    className="absolute inset-0 z-20 flex flex-col items-center justify-center px-6 text-center pt-[52vh]"
+                    className="absolute inset-0 z-20 flex flex-col items-center justify-center px-6 text-center pt-[60vh]"
                 >
                     <h2 className="text-7xl font-bold tracking-tight text-gray-900 mb-6 max-w-5xl leading-[1.1]">
                         <span className="bg-gradient-to-r from-[#4D6614] via-[#3A4D0F] to-[#2D3D0C] bg-clip-text text-transparent">
