@@ -151,7 +151,7 @@ export function HeroJungleReveal() {
                         opacity: useTransform(scrollYProgress, [0.75, 0.9], [0, 1]),
                         y: useTransform(scrollYProgress, [0.75, 0.9], [40, 0])
                     }}
-                    className="absolute inset-0 z-20 flex flex-col items-center justify-center px-6 text-center pt-[50vh]"
+                    className="absolute inset-0 z-20 flex flex-col items-center justify-center px-6 text-center pt-[60vh]"
                 >
                     <h2 className="text-4xl md:text-7xl font-bold tracking-tight text-gray-900 mb-6 max-w-5xl leading-[1.1]">
                         <span className="bg-gradient-to-r from-[#4D6614] via-[#3A4D0F] to-[#2D3D0C] bg-clip-text text-transparent">
