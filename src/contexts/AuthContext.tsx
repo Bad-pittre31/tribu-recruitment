@@ -52,56 +52,62 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     useEffect(() => {
         let isMounted = true;
 
-        async function initializeAuth() {
-            try {
-                const { data: { session: s }, error } = await supabase.auth.getSession();
-                
-                if (error) throw error;
-
-                if (isMounted) {
-                    setSession(s);
-                    setUser(s?.user ?? null);
-                    if (s?.user) {
-                        await fetchProfile(s.user.id);
-                    }
-                }
-            } catch (err) {
-                console.error("Supabase getSession error:", err);
-                if (isMounted) {
-                    setUser(null);
-                    setSession(null);
-                }
-            } finally {
-                if (isMounted) setLoading(false);
+        // Safety valve: never show infinite loading beyond 8 seconds
+        const safetyTimeout = setTimeout(() => {
+            if (isMounted) {
+                console.warn('Auth safety timeout triggered — forcing loading=false');
+                setLoading(false);
             }
+        }, 8000);
+
+        // fetchProfile is called WITHOUT await in the auth critical path.
+        // A slow/failed profile query must never block the auth state from resolving.
+        function fetchProfileBackground(userId: string) {
+            Promise.resolve(
+                supabase
+                    .from('profiles')
+                    .select('*')
+                    .eq('id', userId)
+                    .single()
+            ).then(({ data, error }) => {
+                if (!isMounted) return;
+                if (error) {
+                    console.warn('Profile fetch error:', error);
+                    setProfile(null);
+                } else {
+                    setProfile(data as Profile | null);
+                }
+            }).catch((err) => {
+                console.error('Unexpected profile fetch error:', err);
+                if (isMounted) setProfile(null);
+            });
         }
 
-        initializeAuth();
-
-        // Listen for auth changes
+        // onAuthStateChange is the single source of truth for session.
+        // Supabase v2 fires INITIAL_SESSION immediately, replacing the need for getSession().
         const { data: { subscription } } = supabase.auth.onAuthStateChange(
-            async (_event, s) => {
-                try {
-                    if (!isMounted) return;
-                    
-                    setSession(s);
-                    setUser(s?.user ?? null);
-                    
-                    if (s?.user) {
-                        await fetchProfile(s.user.id);
-                    } else {
-                        setProfile(null);
-                    }
-                } catch (err) {
-                    console.error("Auth state change error:", err);
-                } finally {
-                    if (isMounted) setLoading(false);
+            (_event, s) => {
+                if (!isMounted) return;
+
+                setSession(s);
+                setUser(s?.user ?? null);
+
+                if (s?.user) {
+                    // Kick off profile fetch in the background — do NOT await
+                    fetchProfileBackground(s.user.id);
+                } else {
+                    setProfile(null);
                 }
+
+                // Auth state is known — clear loading and the safety timeout
+                clearTimeout(safetyTimeout);
+                setLoading(false);
             }
         );
 
         return () => {
             isMounted = false;
+            clearTimeout(safetyTimeout);
             subscription.unsubscribe();
         };
     }, []);
