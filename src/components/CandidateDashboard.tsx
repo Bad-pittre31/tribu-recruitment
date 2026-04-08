@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import {
     ArrowLeft, FileText, Download, Clock, CheckCircle2, AlertCircle,
     Send, Phone, ChevronRight, TrendingUp, Upload, Loader2, LogOut,
-    Calculator, Lock, Briefcase, CreditCard, Shield, CheckCircle, Activity, MessageSquare
+    Calculator, Lock, Briefcase, CreditCard, Shield, CheckCircle, Activity, MessageSquare, Trash2
 } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
 import { useMission } from '../hooks/useMission';
@@ -223,9 +223,11 @@ function EconomicsCard() {
 // ─── Document Center ─────────────────────────────────────────────────────────
 
 function DocumentCenter() {
-    const { documents, loading, uploading, uploadDocument, downloadDocument } = useDocuments();
+    const { documents, loading, uploading, uploadDocument, downloadDocument, deleteDocument } = useDocuments();
     const { mission } = useMission();
     const [isDragOver, setIsDragOver] = useState(false);
+    const [confirmDeleteId, setConfirmDeleteId] = useState<string | null>(null);
+    const [deleting, setDeleting] = useState(false);
     const fileInputRef = useRef<HTMLInputElement>(null);
     const { t } = useTranslation();
 
@@ -245,6 +247,13 @@ function DocumentCenter() {
     const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
         const files = Array.from(e.target.files || []) as File[];
         files.forEach(f => uploadDocument(f, 'other', mission?.id));
+    };
+
+    const handleDelete = async (doc: Parameters<typeof deleteDocument>[0]) => {
+        setDeleting(true);
+        await deleteDocument(doc);
+        setDeleting(false);
+        setConfirmDeleteId(null);
     };
 
     return (
@@ -282,31 +291,62 @@ function DocumentCenter() {
                 <div className="space-y-2">
                     {documents.map((doc) => {
                         const cfg = statusConfig[doc.status] || statusConfig.available;
-                        const Icon = cfg.icon;
+                        const canDelete = doc.uploaded_by !== 'tribu';
+                        const isConfirming = confirmDeleteId === doc.id;
                         return (
                             <div key={doc.id} className="flex items-center justify-between py-3 px-4 rounded-xl hover:bg-[#F8FAF6] transition-colors group">
-                                <div className="flex items-center gap-3">
-                                    <div className={`w-8 h-8 rounded-lg ${cfg.bg} flex items-center justify-center`}>
-                                        {doc.type === 'contract' ? <Shield className="w-4 h-4" /> : <FileText className="w-4 h-4" />}
+                                <div className="flex items-center gap-3 min-w-0">
+                                    <div className={`w-8 h-8 rounded-lg ${cfg.bg} flex items-center justify-center shrink-0`}>
+                                        {doc.document_type === 'contract' ? <Shield className="w-4 h-4" /> : <FileText className="w-4 h-4" />}
                                     </div>
-                                    <div>
+                                    <div className="min-w-0">
                                         <div className="flex items-center gap-2">
-                                            <div className="text-sm font-medium text-gray-900">{doc.document_name}</div>
+                                            <div className="text-sm font-medium text-gray-900 truncate">{doc.document_name}</div>
                                             {doc.uploaded_by === 'tribu' && (
-                                                <span className="px-1.5 py-0.5 rounded text-[8px] font-bold bg-[#172008] text-white uppercase tracking-tighter">TRIBU</span>
+                                                <span className="px-1.5 py-0.5 rounded text-[8px] font-bold bg-[#172008] text-white uppercase tracking-tighter shrink-0">TRIBU</span>
                                             )}
                                         </div>
                                         <div className="text-[11px] text-gray-400">{new Date(doc.created_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</div>
                                     </div>
                                 </div>
-                                <div className="flex items-center gap-3">
-                                    <span className={`text-[10px] font-semibold uppercase tracking-wider ${cfg.color}`}>{cfg.label}</span>
+                                <div className="flex items-center gap-1.5 shrink-0 ml-2">
+                                    <span className={`text-[10px] font-semibold uppercase tracking-wider ${cfg.color} hidden sm:inline`}>{cfg.label}</span>
                                     <button
                                         onClick={() => downloadDocument(doc)}
                                         className="opacity-0 group-hover:opacity-100 transition-opacity p-1.5 rounded-lg hover:bg-gray-100"
+                                        title="Télécharger"
                                     >
                                         <Download className="w-3.5 h-3.5 text-gray-400" />
                                     </button>
+                                    {canDelete && (
+                                        isConfirming ? (
+                                            <div className="flex items-center gap-1">
+                                                <button
+                                                    onClick={() => handleDelete(doc)}
+                                                    disabled={deleting}
+                                                    className="px-2 py-1 rounded-lg text-[10px] font-bold bg-red-500 text-white hover:bg-red-600 transition-colors disabled:opacity-50 flex items-center gap-1"
+                                                >
+                                                    {deleting && <Loader2 className="w-3 h-3 animate-spin" />}
+                                                    Supprimer
+                                                </button>
+                                                <button
+                                                    onClick={() => setConfirmDeleteId(null)}
+                                                    disabled={deleting}
+                                                    className="px-2 py-1 rounded-lg text-[10px] font-medium text-gray-500 hover:bg-gray-100 transition-colors"
+                                                >
+                                                    Annuler
+                                                </button>
+                                            </div>
+                                        ) : (
+                                            <button
+                                                onClick={() => setConfirmDeleteId(doc.id)}
+                                                className="opacity-0 group-hover:opacity-100 transition-opacity p-1.5 rounded-lg hover:bg-red-50"
+                                                title="Supprimer"
+                                            >
+                                                <Trash2 className="w-3.5 h-3.5 text-red-400" />
+                                            </button>
+                                        )
+                                    )}
                                 </div>
                             </div>
                         );

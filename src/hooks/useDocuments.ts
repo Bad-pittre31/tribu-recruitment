@@ -106,5 +106,41 @@ export function useDocuments() {
         URL.revokeObjectURL(url);
     }
 
-    return { documents, loading, uploading, uploadDocument, downloadDocument };
+    async function deleteDocument(doc: Document) {
+        if (!user) return;
+        // Guard: candidates can only delete their own uploads, not Tribu's
+        if (doc.uploaded_by === 'tribu') return;
+
+        try {
+            // 1. Remove from Supabase Storage
+            if (doc.file_path) {
+                const { error: storageError } = await supabase.storage
+                    .from('documents')
+                    .remove([doc.file_path]);
+                if (storageError) {
+                    console.error('Storage delete error:', storageError);
+                    // Don't abort — still try to remove the DB row
+                }
+            }
+
+            // 2. Remove the metadata row from the DB
+            const { error: dbError } = await supabase
+                .from('documents')
+                .delete()
+                .eq('id', doc.id)
+                .eq('user_id', user.id); // safety: only own documents
+
+            if (dbError) {
+                console.error('Database delete error:', dbError);
+                return;
+            }
+
+            // 3. Refresh local state optimistically
+            setDocuments((prev) => prev.filter((d) => d.id !== doc.id));
+        } catch (err) {
+            console.error('Delete document error:', err);
+        }
+    }
+
+    return { documents, loading, uploading, uploadDocument, downloadDocument, deleteDocument };
 }
