@@ -73,8 +73,8 @@ export function HeroJungleReveal() {
             const imgRatio = img.width / img.height;
             const canvasRatio = window.innerWidth / window.innerHeight;
 
-            // Aim for 65% of viewport size for a more qualitative and sharper presence
-            const scaleFactor = 0.65;
+            // Aim for 45% of viewport size for a more qualitative and sharper presence
+            const scaleFactor = 0.45;
             let drawWidth, drawHeight;
 
             if (canvasRatio > imgRatio) {
