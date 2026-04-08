@@ -33,7 +33,7 @@ function DashCard({ children, className = '', delay = 0 }: { children: React.Rea
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1], delay }}
-            className={`bg-white rounded-2xl border border-gray-100 shadow-[0_1px_3px_rgba(0,0,0,0.04)] p-8 transition-shadow duration-300 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] ${className}`}
+            className={`bg-white rounded-2xl border border-gray-100 shadow-[0_1px_3px_rgba(0,0,0,0.04)] p-5 md:p-8 transition-shadow duration-300 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] ${className}`}
         >
             {children}
         </motion.div>
@@ -406,9 +406,9 @@ function CRACard() {
                 </div>
             </div>
 
-            <div className="bg-[#F8FAF6] rounded-xl p-4 mb-6">
+            <div className="bg-[#F8FAF6] rounded-xl p-3 md:p-4 mb-6">
                 <div className="grid grid-cols-7 gap-1 text-center mb-2">
-                    {['M', 'T', 'W', 'T', 'F', 'S', 'S'].map((d, i) => (
+                    {['L', 'M', 'M', 'J', 'V', 'S', 'D'].map((d, i) => (
                         <div key={i} className="text-[9px] font-semibold text-gray-300 uppercase">{d}</div>
                     ))}
                 </div>
@@ -426,7 +426,7 @@ function CRACard() {
                                 key={day}
                                 disabled={isWeekend || isSubmitted}
                                 onClick={() => !isWeekend && toggleDay(dateStr)}
-                                className={`w-6 h-6 rounded-md text-[10px] font-medium flex items-center justify-center mx-auto transition-all ${isWorked
+                                className={`w-8 h-8 md:w-6 md:h-6 rounded-md text-[11px] md:text-[10px] font-medium flex items-center justify-center mx-auto transition-all ${isWorked
                                     ? 'bg-[#172008] text-white shadow-sm'
                                     : isWeekend
                                         ? 'text-gray-200 cursor-default'
@@ -608,13 +608,13 @@ export function CandidateDashboard() {
       `}</style>
 
             <nav className="bg-white border-b border-gray-100 sticky top-0 z-50">
-                <div className="max-w-7xl mx-auto px-6 lg:px-10 h-16 flex items-center justify-between">
-                    <div className="flex items-center gap-6">
+                <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-10 h-14 md:h-16 flex items-center justify-between">
+                    <div className="flex items-center gap-4 md:gap-6">
                         <Link to="/" className="flex items-center gap-2 text-gray-400 hover:text-gray-600 transition-colors">
                             <ArrowLeft className="w-4 h-4" />
-                            <span className="text-xs font-medium uppercase tracking-widest">TRIBU</span>
+                            <span className="text-xs font-medium uppercase tracking-widest hidden sm:inline">TRIBU</span>
                         </Link>
-                        <div className="h-5 w-px bg-gray-100" />
+                        <div className="h-5 w-px bg-gray-100 hidden sm:block" />
                         <span className="text-xs font-bold text-gray-900 uppercase tracking-widest">{t('common.candidateSpace')}</span>
                     </div>
                     <div className="flex items-center gap-3">
@@ -644,29 +644,29 @@ export function CandidateDashboard() {
                 <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full opacity-[0.05]"
                     style={{ background: 'radial-gradient(circle, rgba(166,184,148,0.8) 0%, transparent 70%)' }}
                 />
-                <div className="max-w-7xl mx-auto px-6 lg:px-10 py-16 lg:py-20 relative z-10">
+                <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-10 py-10 md:py-16 lg:py-20 relative z-10">
                     <motion.div
                         initial={{ opacity: 0, y: 16 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
                     >
-                        <h1 className="text-4xl lg:text-5xl font-bold text-white tracking-tight">
+                        <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white tracking-tight">
                             {t('dashboard.hello')}, <span className="bg-gradient-to-r from-[#a8b894] to-[#cde0b8] bg-clip-text text-transparent">{firstName}</span>
                         </h1>
-                        <p className="mt-3 text-white/50 text-lg max-w-lg">
+                        <p className="mt-2 md:mt-3 text-white/50 text-base md:text-lg max-w-lg hidden sm:block">
                             {t('dashboard.description')}
                         </p>
                     </motion.div>
                 </div>
             </motion.div>
 
-            <div className="max-w-7xl mx-auto px-6 lg:px-10 py-10 lg:py-14">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-10 py-6 md:py-10 lg:py-14 pb-20 md:pb-14">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6">
                     <MissionTimeline />
                     <EconomicsCard />
                     <DocumentCenter />
                     <CRACard />
-                    <div className="flex flex-col gap-6">
+                    <div className="flex flex-col gap-4 md:gap-6">
                         <NextActions />
                         <TribuContactCard />
                     </div>

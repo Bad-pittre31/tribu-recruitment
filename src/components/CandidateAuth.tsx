@@ -121,7 +121,7 @@ export function CandidateAuth() {
             </div>
 
             {/* RIGHT — Auth Form */}
-            <div className="flex-1 flex items-center justify-center p-8 bg-[#FAFBFA]">
+            <div className="flex-1 flex items-center justify-center p-5 md:p-8 bg-[#FAFBFA] min-h-screen lg:min-h-0">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -129,15 +129,18 @@ export function CandidateAuth() {
                     className="w-full max-w-md"
                 >
                     {/* Mobile logo */}
-                    <div className="lg:hidden mb-10">
+                    <div className="lg:hidden mb-6">
                         <Link to="/" className="text-xs font-medium text-gray-400 uppercase tracking-widest hover:text-gray-600 transition-colors flex items-center gap-2">
                             <ArrowLeft className="w-3.5 h-3.5" />
                             {t('common.backToTribu')}
                         </Link>
-                        <h2 className="mt-6 text-2xl font-bold text-gray-900 tracking-tight">{t('common.yourTribuCandidateSpace')}</h2>
+                        <div className="flex items-center gap-3 mt-5 mb-1">
+                            <img src="/assets/tribu-logo-jungle.png" alt="TRIBU" className="h-8 w-auto brightness-0" />
+                        </div>
+                        <h2 className="text-xl font-bold text-gray-900 tracking-tight">{t('common.yourTribuCandidateSpace')}</h2>
                     </div>
 
-                    <div className="bg-white rounded-2xl border border-gray-100 shadow-[0_2px_20px_rgba(0,0,0,0.04)] p-10">
+                    <div className="bg-white rounded-2xl border border-gray-100 shadow-[0_2px_20px_rgba(0,0,0,0.04)] p-6 md:p-10">
                         <div className="mb-8">
                             <h3 className="text-xl font-bold text-gray-900 tracking-tight">{t('common.welcomeBack')}</h3>
                             <p className="mt-1.5 text-sm text-gray-400">{t('common.signInToYourSpace')}</p>

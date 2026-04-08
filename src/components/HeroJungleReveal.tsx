@@ -70,23 +70,32 @@ export function HeroJungleReveal() {
             context.imageSmoothingEnabled = true;
             context.imageSmoothingQuality = 'high';
 
+            const isMobile = window.innerWidth < 768;
             const imgRatio = img.width / img.height;
             const canvasRatio = window.innerWidth / window.innerHeight;
 
-            // Aim for 45% of viewport size for a more qualitative and sharper presence
-            const scaleFactor = 0.45;
             let drawWidth, drawHeight;
 
-            if (canvasRatio > imgRatio) {
-                drawHeight = window.innerHeight * scaleFactor;
-                drawWidth = drawHeight * imgRatio;
-            } else {
-                drawWidth = window.innerWidth * scaleFactor;
+            if (isMobile) {
+                // On portrait mobile: base size on 70% of screen width for a bold, fillig presence
+                drawWidth = window.innerWidth * 0.70;
                 drawHeight = drawWidth / imgRatio;
+            } else {
+                // Desktop: original aspect-ratio aware logic (UNCHANGED)
+                if (canvasRatio > imgRatio) {
+                    drawHeight = window.innerHeight * 0.45;
+                    drawWidth = drawHeight * imgRatio;
+                } else {
+                    drawWidth = window.innerWidth * 0.45;
+                    drawHeight = drawWidth / imgRatio;
+                }
             }
 
             const offsetX = (window.innerWidth - drawWidth) / 2;
-            const offsetY = (window.innerHeight - drawHeight) * 0.4;
+            // Mobile: logo in upper 15% of screen; Desktop: slightly above center (unchanged)
+            const offsetY = isMobile
+                ? (window.innerHeight - drawHeight) * 0.12
+                : (window.innerHeight - drawHeight) * 0.4;
 
             // Crop 8% from top, 12% from bottom, and 5% from each side
             const topCrop = img.height * 0.08;
@@ -151,16 +160,18 @@ export function HeroJungleReveal() {
                         opacity: useTransform(scrollYProgress, [0.75, 0.9], [0, 1]),
                         y: useTransform(scrollYProgress, [0.75, 0.9], [40, 0])
                     }}
-                    className="absolute inset-0 z-20 flex flex-col items-center justify-center px-6 text-center pt-[52vh]"
+                    className="absolute inset-0 z-20 flex flex-col items-center px-6 text-center
+                        justify-end pb-12
+                        md:justify-center md:pb-0 md:pt-[52vh]"
                 >
-                    <h2 className="text-4xl md:text-7xl font-bold tracking-tight text-gray-900 mb-6 max-w-5xl leading-[1.1]">
+                    <h2 className="text-2xl sm:text-3xl md:text-7xl font-bold tracking-tight text-gray-900 mb-3 md:mb-6 max-w-5xl leading-[1.1]">
                         <span className="bg-gradient-to-r from-[#4D6614] via-[#3A4D0F] to-[#2D3D0C] bg-clip-text text-transparent">
                             {t('hero.title')}
                         </span>
                         <br />
                         {t('hero.subtitle')}
                     </h2>
-                    <p className="text-lg md:text-xl text-gray-600 max-w-2xl leading-relaxed">
+                    <p className="hidden md:block text-lg md:text-xl text-gray-600 max-w-2xl leading-relaxed">
                         {t('hero.description')}
                     </p>
                 </motion.div>
