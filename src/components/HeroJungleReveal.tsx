@@ -24,7 +24,7 @@ function MobileHero() {
                 initial={{ opacity: 0, scale: 0.92 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-                className="flex-1 flex items-center justify-center"
+                className="flex-1 flex items-center justify-center pt-12"
             >
                 <img
                     src="/assets/tribu-logo-jungle.png"
@@ -134,7 +134,7 @@ function DesktopHero() {
             }
 
             const offsetX = (window.innerWidth - drawWidth) / 2;
-            const offsetY = (window.innerHeight - drawHeight) * 0.5;
+            const offsetY = (window.innerHeight - drawHeight) * 0.62;
 
             const topCrop = img.height * 0.08;
             const bottomCrop = img.height * 0.12;
