@@ -134,7 +134,7 @@ function DesktopHero() {
             }
 
             const offsetX = (window.innerWidth - drawWidth) / 2;
-            const offsetY = (window.innerHeight - drawHeight) * 0.56;
+            const offsetY = (window.innerHeight - drawHeight) * 0.40;
 
             const topCrop = img.height * 0.08;
             const bottomCrop = img.height * 0.12;
@@ -166,7 +166,7 @@ function DesktopHero() {
     }, [images, frameIndex]);
 
     return (
-        <section ref={containerRef} className="relative h-[400vh] bg-[rgb(248,247,242)]">
+        <section ref={containerRef} className="relative h-[600vh] bg-[rgb(248,247,242)]">
             <div className="sticky top-0 h-screen w-full overflow-hidden flex items-center justify-center bg-[rgb(248,247,242)]">
 
                 {/* Canvas */}
@@ -190,10 +190,10 @@ function DesktopHero() {
                 {/* Value Proposition Text — fades in at end of reveal */}
                 <motion.div
                     style={{
-                        opacity: useTransform(scrollYProgress, [0.85, 0.95], [0, 1]),
-                        y: useTransform(scrollYProgress, [0.85, 0.95], [40, 0])
+                        opacity: useTransform(scrollYProgress, [0.65, 0.75], [0, 1]),
+                        y: useTransform(scrollYProgress, [0.65, 0.75], [40, 0])
                     }}
-                    className="absolute inset-0 z-20 flex flex-col items-center justify-end px-6 text-center pb-32"
+                    className="absolute inset-x-0 bottom-8 lg:bottom-[8vh] z-20 flex flex-col items-center justify-end px-6 text-center"
                 >
                     <h2 className="text-7xl font-bold tracking-tight text-gray-900 mb-6 max-w-5xl leading-[1.1]">
                         <span className="bg-gradient-to-r from-[#4D6614] via-[#3A4D0F] to-[#2D3D0C] bg-clip-text text-transparent">
