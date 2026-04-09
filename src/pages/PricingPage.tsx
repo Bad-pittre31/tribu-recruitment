@@ -252,7 +252,7 @@ export function PricingPage() {
           </motion.h2>
           
           <motion.div variants={itemVariants} className="relative z-10">
-            <Link to="/contact" className="inline-flex items-center px-12 py-5 rounded-full font-bold uppercase tracking-widest text-xs text-white bg-black hover:bg-[#84A232] hover:scale-105 transition-all duration-300 shadow-[0_10px_40_gap-40px_rgba(0,0,0,0.1)]">
+            <Link to="/contact" className="inline-flex items-center px-12 py-5 rounded-full font-bold uppercase tracking-widest text-xs text-white bg-black hover:bg-[#84A232] hover:scale-105 transition-all duration-300 shadow-[0_10px_40px_rgba(0,0,0,0.1)]">
               {t('pricingPage.cta.btn')}
             </Link>
           </motion.div>
