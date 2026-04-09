@@ -79,7 +79,7 @@ export function PricingPage() {
           </motion.p>
           
           <motion.div variants={itemVariants} className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link to="/candidate-space" className="w-full sm:w-auto px-10 py-4 rounded-full font-bold uppercase tracking-widest text-[11px] text-black bg-white border border-gray-200 shadow-sm hover:bg-gray-50 transition-all duration-300">
+            <Link to="/contact" className="w-full sm:w-auto px-10 py-4 rounded-full font-bold uppercase tracking-widest text-[11px] text-black bg-white border border-gray-200 shadow-sm hover:bg-gray-50 transition-all duration-300">
               {t('pricingPage.hero.btnPrimary')}
             </Link>
             <Link to="/expertise" className="w-full sm:w-auto px-10 py-4 rounded-full font-bold uppercase tracking-widest text-[11px] text-white bg-[#4a7c59] hover:bg-[#3d6a4a] hover:scale-105 transition-all duration-300 shadow-[0_0_30px_rgba(74,124,89,0.3)]">
@@ -161,7 +161,7 @@ export function PricingPage() {
                 ))}
               </ul>
               
-              <Link to="/candidate-space" className="w-full flex items-center justify-between px-8 py-4 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 transition-colors text-sm font-bold uppercase tracking-widest text-white mt-auto">
+              <Link to="/contact" className="w-full flex items-center justify-between px-8 py-4 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 transition-colors text-sm font-bold uppercase tracking-widest text-white mt-auto">
                 {t('pricingPage.pricing.freelance.cta')}
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
@@ -192,7 +192,7 @@ export function PricingPage() {
                 ))}
               </ul>
               
-              <Link to="/candidate-space" className="w-full flex items-center justify-between px-8 py-4 rounded-full bg-black text-white hover:bg-black/90 transition-colors text-sm font-bold uppercase tracking-widest mt-auto shadow-xl shadow-black/10">
+              <Link to="/contact" className="w-full flex items-center justify-between px-8 py-4 rounded-full bg-black text-white hover:bg-black/90 transition-colors text-sm font-bold uppercase tracking-widest mt-auto shadow-xl shadow-black/10">
                 {t('pricingPage.pricing.permanent.cta')}
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
@@ -252,7 +252,7 @@ export function PricingPage() {
           </motion.h2>
           
           <motion.div variants={itemVariants} className="relative z-10">
-            <Link to="/candidate-space" className="inline-flex items-center px-12 py-5 rounded-full font-bold uppercase tracking-widest text-xs text-white bg-black hover:bg-[#84A232] hover:scale-105 transition-all duration-300 shadow-[0_10px_40px_rgba(0,0,0,0.1)]">
+            <Link to="/contact" className="inline-flex items-center px-12 py-5 rounded-full font-bold uppercase tracking-widest text-xs text-white bg-black hover:bg-[#84A232] hover:scale-105 transition-all duration-300 shadow-[0_10px_40_gap-40px_rgba(0,0,0,0.1)]">
               {t('pricingPage.cta.btn')}
             </Link>
           </motion.div>
