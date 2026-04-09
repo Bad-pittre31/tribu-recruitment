@@ -126,15 +126,15 @@ function DesktopHero() {
 
             let drawWidth, drawHeight;
             if (canvasRatio > imgRatio) {
-                drawHeight = window.innerHeight * 0.45;
+                drawHeight = window.innerHeight * 0.40;
                 drawWidth = drawHeight * imgRatio;
             } else {
-                drawWidth = window.innerWidth * 0.45;
+                drawWidth = window.innerWidth * 0.40;
                 drawHeight = drawWidth / imgRatio;
             }
 
             const offsetX = (window.innerWidth - drawWidth) / 2;
-            const offsetY = (window.innerHeight - drawHeight) * 0.62;
+            const offsetY = (window.innerHeight - drawHeight) * 0.56;
 
             const topCrop = img.height * 0.08;
             const bottomCrop = img.height * 0.12;
@@ -166,7 +166,7 @@ function DesktopHero() {
     }, [images, frameIndex]);
 
     return (
-        <section ref={containerRef} className="relative h-[300vh] bg-[rgb(248,247,242)]">
+        <section ref={containerRef} className="relative h-[400vh] bg-[rgb(248,247,242)]">
             <div className="sticky top-0 h-screen w-full overflow-hidden flex items-center justify-center bg-[rgb(248,247,242)]">
 
                 {/* Canvas */}
@@ -190,10 +190,10 @@ function DesktopHero() {
                 {/* Value Proposition Text — fades in at end of reveal */}
                 <motion.div
                     style={{
-                        opacity: useTransform(scrollYProgress, [0.75, 0.9], [0, 1]),
-                        y: useTransform(scrollYProgress, [0.75, 0.9], [40, 0])
+                        opacity: useTransform(scrollYProgress, [0.85, 0.95], [0, 1]),
+                        y: useTransform(scrollYProgress, [0.85, 0.95], [40, 0])
                     }}
-                    className="absolute inset-0 z-20 flex flex-col items-center justify-center px-6 text-center pt-[60vh]"
+                    className="absolute inset-0 z-20 flex flex-col items-center justify-end px-6 text-center pb-32"
                 >
                     <h2 className="text-7xl font-bold tracking-tight text-gray-900 mb-6 max-w-5xl leading-[1.1]">
                         <span className="bg-gradient-to-r from-[#4D6614] via-[#3A4D0F] to-[#2D3D0C] bg-clip-text text-transparent">
