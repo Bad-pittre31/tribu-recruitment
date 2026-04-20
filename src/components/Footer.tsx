@@ -79,8 +79,12 @@ export function Footer() {
 
         {/* Secondary Info / Legal Row */}
         <div className="mt-12 pt-8 border-t border-black/5 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] font-bold uppercase tracking-widest text-gray-400">
-          <div>
+          <div className="flex items-center gap-2 lg:gap-3">
             <span>© {new Date().getFullYear()} TRIBU — {t('footer.rights')}</span>
+            <span className="opacity-50 select-none">|</span>
+            <span className="opacity-80">
+              Fondé par <a href="https://raphaelpaya.com" target="_blank" rel="noopener noreferrer" className="hover:text-black transition-colors duration-300">Raphaël Paya</a>
+            </span>
           </div>
 
           <div className="flex items-center gap-8">
