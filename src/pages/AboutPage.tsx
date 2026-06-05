@@ -389,7 +389,7 @@ export function AboutPage() {
                                 : '"I spent 6 years seeing what was broken. TRIBU is my answer: a model where transparency, precision, and shared success aren\'t marketing promises — they are the system itself."'}
                         </blockquote>
                         <p className="text-sm text-[hsl(184,5%,55%)] font-medium uppercase tracking-widest mb-12">
-                            — Raphael Paya, {isFr ? 'Fondateur de TRIBU' : 'Founder of TRIBU'}
+                            — <a href="https://www.raphaelpaya.com" target="_blank" rel="noopener noreferrer" className="hover:text-black transition-colors underline underline-offset-4 decoration-gray-400">Raphael Paya</a>, {isFr ? 'Fondateur de TRIBU' : 'Founder of TRIBU'}
                         </p>
 
 
