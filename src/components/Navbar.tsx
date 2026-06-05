@@ -47,16 +47,18 @@ export function Navbar() {
       )}
     >
       {/* Independent Branding Logo (Top Left) - Clickable */}
-      <Link to="/" onClick={() => { setMobileMenuOpen(false); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="absolute top-0 left-6 z-50 pointer-events-auto transition-transform hover:scale-[1.02] active:scale-[0.98]">
-        <img
-          src="/assets/tribu-logo-jungle.png"
-          alt="TRIBU Branding"
-          className={cn(
-            "w-auto object-contain transition-all duration-300",
-            isScrolled ? "h-[65px] md:h-[95px]" : "h-[90px] md:h-[130px]"
-          )}
-        />
-      </Link>
+      <div className="absolute left-6 top-1/2 -translate-y-1/2 z-50 pointer-events-auto">
+        <Link to="/" onClick={() => { setMobileMenuOpen(false); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="block transition-transform hover:scale-[1.02] active:scale-[0.98]">
+          <img
+            src="/assets/tribu-logo-jungle.png"
+            alt="TRIBU Branding"
+            className={cn(
+              "w-auto object-contain transition-all duration-300",
+              isScrolled ? "h-[32px] md:h-[40px]" : "h-[40px] md:h-[48px]"
+            )}
+          />
+        </Link>
+      </div>
 
       {/* Main Container */}
       <div className="w-full max-w-5xl relative pointer-events-none flex justify-end md:justify-center">
