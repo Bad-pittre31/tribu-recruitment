@@ -126,10 +126,10 @@ function DesktopHero() {
 
             let drawWidth, drawHeight;
             if (canvasRatio > imgRatio) {
-                drawHeight = window.innerHeight * 0.28;
+                drawHeight = window.innerHeight * 0.40;
                 drawWidth = drawHeight * imgRatio;
             } else {
-                drawWidth = window.innerWidth * 0.28;
+                drawWidth = window.innerWidth * 0.40;
                 drawHeight = drawWidth / imgRatio;
             }
 
