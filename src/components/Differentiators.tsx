@@ -64,7 +64,7 @@ export function Differentiators() {
             viewport={{ once: true }}
             transition={{ duration: 1 }}
           >
-            <h2 className="text-4xl md:text-6xl font-bold tracking-tighter mb-8 bg-gradient-to-r from-[#19200B] via-[#4a7c59] to-[#19200B] bg-clip-text text-transparent">
+            <h2 className="text-4xl md:text-6xl font-bold tracking-tighter mb-8 py-2 bg-gradient-to-r from-[#19200B] via-[#4a7c59] to-[#19200B] bg-clip-text text-transparent">
               {t('differentiators.title')}
             </h2>
             <p className="text-lg md:text-xl text-gray-400 max-w-2xl leading-relaxed mx-auto font-medium">
