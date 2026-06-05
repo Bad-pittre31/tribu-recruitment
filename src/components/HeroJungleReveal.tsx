@@ -134,7 +134,7 @@ function DesktopHero() {
             }
 
             const offsetX = (window.innerWidth - drawWidth) / 2;
-            const offsetY = (window.innerHeight - drawHeight) * 0.40;
+            const offsetY = (window.innerHeight - drawHeight) * 0.55;
 
             const topCrop = img.height * 0.08;
             const bottomCrop = img.height * 0.12;

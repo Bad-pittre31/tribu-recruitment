@@ -51,7 +51,10 @@ export function Navbar() {
         <img
           src="/assets/tribu-logo-jungle.png"
           alt="TRIBU Branding"
-          className="h-[120px] md:h-[180px] w-auto object-contain"
+          className={cn(
+            "w-auto object-contain transition-all duration-300",
+            isScrolled ? "h-[65px] md:h-[95px]" : "h-[90px] md:h-[130px]"
+          )}
         />
       </Link>
 
