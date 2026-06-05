@@ -134,7 +134,7 @@ function DesktopHero() {
             }
 
             const offsetX = (window.innerWidth - drawWidth) / 2;
-            const offsetY = (window.innerHeight - drawHeight) * 0.45;
+            const offsetY = (window.innerHeight - drawHeight) * 0.35;
 
             const topCrop = img.height * 0.08;
             const bottomCrop = img.height * 0.12;
@@ -193,9 +193,9 @@ function DesktopHero() {
                         opacity: useTransform(scrollYProgress, [0.65, 0.75], [0, 1]),
                         y: useTransform(scrollYProgress, [0.65, 0.75], [40, 0])
                     }}
-                    className="absolute inset-x-0 top-[68vh] lg:top-[64vh] z-20 flex flex-col items-center justify-start px-6 text-center"
+                    className="absolute inset-x-0 bottom-8 lg:bottom-[10vh] z-20 flex flex-col items-center justify-end px-6 text-center"
                 >
-                    <h2 className="text-7xl font-bold tracking-tight text-gray-900 mb-6 max-w-5xl leading-[1.1]">
+                    <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-gray-900 mb-6 max-w-5xl leading-[1.1]">
                         <span className="bg-gradient-to-r from-[#4D6614] via-[#3A4D0F] to-[#2D3D0C] bg-clip-text text-transparent">
                             {t('hero.title')}
                         </span>
